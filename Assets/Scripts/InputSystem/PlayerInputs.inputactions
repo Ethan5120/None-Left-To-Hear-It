@@ -6,7 +6,7 @@
             "id": "705f672e-b648-4bbb-8c05-ae6c51ad9f22",
             "actions": [
                 {
-                    "name": "MovePlayer",
+                    "name": "Move",
                     "type": "Value",
                     "id": "d22e2cd0-5716-48c7-9bb2-b5f66bbf1466",
                     "expectedControlType": "Vector2",
@@ -17,13 +17,24 @@
             ],
             "bindings": [
                 {
-                    "name": "MovePlayer",
+                    "name": "",
+                    "id": "752abdf8-9954-4ebe-a0e8-8493a88b2991",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "Keyboard",
                     "id": "b4a65763-e361-4a4c-9f06-692b3b381ccd",
                     "path": "2DVector",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "MovePlayer",
+                    "action": "Move",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -34,7 +45,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "MovePlayer",
+                    "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -45,7 +56,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "MovePlayer",
+                    "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -56,7 +67,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "MovePlayer",
+                    "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -67,7 +78,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "MovePlayer",
+                    "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
                 }

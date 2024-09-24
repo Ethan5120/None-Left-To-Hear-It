@@ -115,8 +115,8 @@
     ],
     "controlSchemes": [
         {
-            "name": "Keyboard",
-            "bindingGroup": "Keyboard",
+            "name": "Player",
+            "bindingGroup": "Player",
             "devices": []
         }
     ]

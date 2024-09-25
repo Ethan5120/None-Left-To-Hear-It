@@ -1,24 +1,33 @@
 {
-    "name": "PlayerInputs",
+    "name": "PlayerController",
     "maps": [
         {
             "name": "GameState",
-            "id": "705f672e-b648-4bbb-8c05-ae6c51ad9f22",
+            "id": "d8ddfb77-a1cd-4298-9e97-0a1796e5c0d9",
             "actions": [
                 {
                     "name": "Move",
                     "type": "Value",
-                    "id": "d22e2cd0-5716-48c7-9bb2-b5f66bbf1466",
+                    "id": "1b3f9395-704a-4b5f-be6c-747a701c891c",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "EnterAim",
+                    "type": "Button",
+                    "id": "267256c0-a502-459c-a2fc-15020c273abf",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
                 {
                     "name": "",
-                    "id": "752abdf8-9954-4ebe-a0e8-8493a88b2991",
+                    "id": "cec2c1f4-0abd-4b5e-b8cf-c96003e1e0f6",
                     "path": "<Gamepad>/leftStick",
                     "interactions": "",
                     "processors": "",
@@ -29,7 +38,7 @@
                 },
                 {
                     "name": "Keyboard",
-                    "id": "b4a65763-e361-4a4c-9f06-692b3b381ccd",
+                    "id": "492edbcb-baec-4a72-9b72-5ac85f83e527",
                     "path": "2DVector",
                     "interactions": "",
                     "processors": "",
@@ -40,7 +49,7 @@
                 },
                 {
                     "name": "up",
-                    "id": "217e5c63-52a1-4e92-9c34-862b54c40353",
+                    "id": "8448300b-405a-40d5-8acb-78536efeb7d9",
                     "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
@@ -51,7 +60,7 @@
                 },
                 {
                     "name": "down",
-                    "id": "6abf8bbf-b71d-4c1e-a745-5f387295bdae",
+                    "id": "efd7ff22-92c2-410d-a4da-df54e6409623",
                     "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
@@ -62,7 +71,7 @@
                 },
                 {
                     "name": "left",
-                    "id": "056778f7-42ef-4c62-8e6d-ce7a306860e8",
+                    "id": "ad818d16-5eb2-4b07-aef8-c8fcad8426ac",
                     "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
@@ -73,7 +82,7 @@
                 },
                 {
                     "name": "right",
-                    "id": "231f9111-fac6-4762-9c84-e0634a26a211",
+                    "id": "e80a91c3-86ea-4465-ad68-dd0fd60a06d1",
                     "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
@@ -81,43 +90,31 @@
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
-                }
-            ]
-        },
-        {
-            "name": "MenuState",
-            "id": "c4b395df-f8b9-4763-a844-68f7f84482f0",
-            "actions": [
-                {
-                    "name": "New action",
-                    "type": "Button",
-                    "id": "0e901015-b946-45d3-b997-e4d1ce2fae02",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                }
-            ],
-            "bindings": [
+                },
                 {
                     "name": "",
-                    "id": "c75f937e-f69d-456f-977d-3f0d005217c4",
-                    "path": "",
+                    "id": "133a7633-6e64-4939-b4fb-17391c4ef4cf",
+                    "path": "<Keyboard>/ctrl",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "New action",
+                    "action": "EnterAim",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "40a6ae78-3ea6-4769-a019-cacb0c95a95f",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "EnterAim",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
             ]
         }
     ],
-    "controlSchemes": [
-        {
-            "name": "Player",
-            "bindingGroup": "Player",
-            "devices": []
-        }
-    ]
+    "controlSchemes": []
 }

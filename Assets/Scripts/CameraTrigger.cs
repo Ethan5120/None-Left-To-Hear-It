@@ -9,6 +9,9 @@ public class CameraTrigger : MonoBehaviour
     [SerializeField] CameraChanger cameraChanger;
     void OnTriggerEnter(Collider collider)
     {
-        cameraChanger.ChangeStaticCamera(cameraToTrigger);
+        if(collider.CompareTag("Player"))
+        {
+            cameraChanger.ChangeStaticCamera(cameraToTrigger);
+        }
     }
 }

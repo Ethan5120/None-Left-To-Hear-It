@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     [Header("InputSystemDeclarations")]
     private Vector2 playerInput;
     [SerializeField] CharacterController controller;
-    [SerializeField] InputActionReference Move, Aim;
+    [SerializeField] InputActionReference Move, Aim, Shoot;
 
     [Header("GameManagerVariables")]
     [SerializeField] CameraChanger cameraManager;
@@ -27,12 +27,15 @@ public class PlayerController : MonoBehaviour
     private void OnEnable()
     {
         Aim.action.performed += EnterThirdPerson;
+        Shoot.action.performed += PlayerShoot;
         cameraManager = GameObject.Find(cameraObjectName).GetComponent<CameraChanger>();
     }
 
     private void OnDisable()
     {
         Aim.action.performed -= EnterThirdPerson;
+        Shoot.action.performed -= PlayerShoot;
+
     }   
 
     private void EnterThirdPerson(InputAction.CallbackContext context)
@@ -46,6 +49,14 @@ public class PlayerController : MonoBehaviour
         {
             cameraManager.TriggerThirdPerson();
             isAim = false;
+        }
+    }
+
+    private void PlayerShoot(InputAction.CallbackContext context)
+    {
+        if(isAim)
+        {
+            Debug.Log("PlayerShot");
         }
     }
 

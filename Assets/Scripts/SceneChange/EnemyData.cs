@@ -8,7 +8,14 @@ public class EnemyData : ScriptableObject
 {
     public int enemyHealth;
     public bool isAlive;
+    public bool isAmbush;
     public float deadTime; 
-    public Vector3 position;
-    public Quaternion rotation;
+    
+    [Header("Original positions")]
+    public Vector3 originalPosition;
+    public Quaternion originalPotation;
+
+    [Header("On Load Positions")]
+    public Vector3 newPosition;
+    public Quaternion newPotation;
 }

@@ -578,7 +578,7 @@ MonoBehaviour:
   Shoot: {fileID: -1312178788781955072, guid: 65476d7987a9a714abb9f737564d18ea, type: 3}
   cameraManager: {fileID: 0}
   cameraObjectName: GameManager
-  playerSpeed: 10
+  playerSpeed: 6
   playerRotation: 200
   playerAimSpeed: 50
   isAim: 0
@@ -6321,6 +6321,79 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &721319487
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5042996961765226606, guid: ebf3d3a862330344798b623a5e257f5b,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.13625
+      objectReference: {fileID: 0}
+    - target: {fileID: 5042996961765226606, guid: ebf3d3a862330344798b623a5e257f5b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 5042996961765226606, guid: ebf3d3a862330344798b623a5e257f5b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 12.44
+      objectReference: {fileID: 0}
+    - target: {fileID: 5042996961765226606, guid: ebf3d3a862330344798b623a5e257f5b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -39.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5042996961765226606, guid: ebf3d3a862330344798b623a5e257f5b,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5042996961765226606, guid: ebf3d3a862330344798b623a5e257f5b,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5042996961765226606, guid: ebf3d3a862330344798b623a5e257f5b,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5042996961765226606, guid: ebf3d3a862330344798b623a5e257f5b,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5042996961765226606, guid: ebf3d3a862330344798b623a5e257f5b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5042996961765226606, guid: ebf3d3a862330344798b623a5e257f5b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5042996961765226606, guid: ebf3d3a862330344798b623a5e257f5b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5698563158979063930, guid: ebf3d3a862330344798b623a5e257f5b,
+        type: 3}
+      propertyPath: m_Name
+      value: LLUVIA
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ebf3d3a862330344798b623a5e257f5b, type: 3}
 --- !u!1 &783994900
 GameObject:
   m_ObjectHideFlags: 0
@@ -15140,3 +15213,4 @@ SceneRoots:
   - {fileID: 1810811410}
   - {fileID: 1544961650}
   - {fileID: 783994901}
+  - {fileID: 721319487}

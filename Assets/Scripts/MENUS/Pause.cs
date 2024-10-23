@@ -39,6 +39,7 @@ public class Pause : MonoBehaviour
                 //Cursor.visible = false;
                 //Cursor.lockState = CursorLockMode.Locked;
                 //AudioListener.pause = false;
+                PausaSettings.SetActive(false);
             }
         }
     }

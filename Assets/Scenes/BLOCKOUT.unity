@@ -7393,6 +7393,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PausaMenu: {fileID: 286657055}
   PausaSettings: {fileID: 2039216203}
+  PausaVHS: {fileID: 1383881475}
   player: {fileID: 60886777}
   paused: 0
   menuSceneName: MenuBLOCKOUT

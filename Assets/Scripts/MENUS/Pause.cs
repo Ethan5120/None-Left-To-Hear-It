@@ -7,6 +7,7 @@ public class Pause : MonoBehaviour
 {
     public GameObject PausaMenu;
     public GameObject PausaSettings;
+    public GameObject PausaVHS;
     public PlayerController player; 
     public bool paused;
     public string menuSceneName;
@@ -30,6 +31,7 @@ public class Pause : MonoBehaviour
                 //Cursor.visible = true;
                 //Cursor.lockState = CursorLockMode.None;
                 //AudioListener.pause = false;
+                PausaVHS.SetActive(true);
             }
             if(paused == false)
             {
@@ -39,6 +41,8 @@ public class Pause : MonoBehaviour
                 //Cursor.visible = false;
                 //Cursor.lockState = CursorLockMode.Locked;
                 //AudioListener.pause = false;
+                PausaSettings.SetActive(false);
+                PausaVHS.SetActive(false);
             }
         }
     }
@@ -52,6 +56,7 @@ public class Pause : MonoBehaviour
         //Cursor.lockState= CursorLockMode.Locked;
         //AudioListener.pause= false;
         paused = false;
+        PausaVHS.SetActive(false);
     }
     public void backToMenu()
     {

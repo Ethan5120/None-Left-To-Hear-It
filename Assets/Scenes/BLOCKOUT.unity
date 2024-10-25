@@ -5261,7 +5261,7 @@ MonoBehaviour:
   - {fileID: 2034545226}
   - {fileID: 291116540}
   - {fileID: 14272820}
-  cameraVolume: {fileID: 1383881475}
+  cameraVolume: {fileID: 1827836949}
   currentCamera: 0
 --- !u!4 &550363796
 Transform:
@@ -6774,38 +6774,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 778618782}
   m_CullTransparentMesh: 1
---- !u!1 &783994900
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 783994901}
-  m_Layer: 0
-  m_Name: Puertas
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &783994901
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 783994900}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.850556, y: 4.379532, z: -13.599393}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1477160297}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &806420451
 GameObject:
   m_ObjectHideFlags: 3
@@ -7392,6 +7360,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PausaMenu: {fileID: 286657055}
+  PausaSettings: {fileID: 2039216203}
+  PausaVHS: {fileID: 1383881475}
   player: {fileID: 60886777}
   paused: 0
   menuSceneName: MenuBLOCKOUT
@@ -12797,13 +12767,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1477160296}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.39, y: -0.2, z: 3.22}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 33.856007, y: 54.169617, z: -4.1325207}
   m_LocalScale: {x: 4.8659, y: 7.879403, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1902193478}
-  m_Father: {fileID: 783994901}
+  m_Father: {fileID: 1810811410}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1477160298
 BoxCollider:
@@ -14058,7 +14028,8 @@ Transform:
   m_LocalPosition: {x: -24.615452, y: -49.990086, z: -6.246872}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1477160297}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!850595691 &1813588631
@@ -14125,6 +14096,55 @@ LightingSettings:
   m_PVRTiledBaking: 0
   m_NumRaysToShootPerTexel: -1
   m_RespectSceneVisibilityWhenBakingGI: 0
+--- !u!1 &1827836949
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1827836951}
+  - component: {fileID: 1827836950}
+  m_Layer: 0
+  m_Name: VolumeSinNada
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1827836950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1827836949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IsGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 0}
+--- !u!4 &1827836951
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1827836949}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 437.87607, y: 115.7671, z: -226.61716}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1876151307
 GameObject:
   m_ObjectHideFlags: 0
@@ -16594,5 +16614,5 @@ SceneRoots:
   - {fileID: 300242078}
   - {fileID: 1810811410}
   - {fileID: 1544961650}
-  - {fileID: 783994901}
   - {fileID: 721319487}
+  - {fileID: 1827836951}

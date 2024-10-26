@@ -346,6 +346,8 @@ GameObject:
   - component: {fileID: 156182562}
   - component: {fileID: 156182561}
   - component: {fileID: 156182564}
+  - component: {fileID: 156182566}
+  - component: {fileID: 156182565}
   m_Layer: 0
   m_Name: RyanMonster
   m_TagString: Untagged
@@ -442,6 +444,41 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!136 &156182565
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 156182559}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 3.673137
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.96724594, z: 0}
+--- !u!114 &156182566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 156182559}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8f1a3e2b00c82c4499a02e86b10addd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &156852368
 GameObject:
   m_ObjectHideFlags: 0
@@ -1273,7 +1310,6 @@ GameObject:
   - component: {fileID: 513898439}
   - component: {fileID: 513898442}
   - component: {fileID: 513898441}
-  - component: {fileID: 513898440}
   m_Layer: 0
   m_Name: Cylinder (2)
   m_TagString: Untagged
@@ -1297,29 +1333,6 @@ Transform:
   - {fileID: 1615075505}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &513898440
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 513898438}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!23 &513898441
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2004,7 +2017,6 @@ GameObject:
   - component: {fileID: 1037710159}
   - component: {fileID: 1037710158}
   - component: {fileID: 1037710157}
-  - component: {fileID: 1037710156}
   m_Layer: 0
   m_Name: Cylinder (1)
   m_TagString: Untagged
@@ -2012,29 +2024,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!136 &1037710156
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1037710155}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!23 &1037710157
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2696,7 +2685,6 @@ GameObject:
   - component: {fileID: 1924256751}
   - component: {fileID: 1924256750}
   - component: {fileID: 1924256749}
-  - component: {fileID: 1924256748}
   m_Layer: 0
   m_Name: Cube (2)
   m_TagString: Untagged
@@ -2704,22 +2692,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!208 &1924256748
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1924256747}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
-  m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0, z: 0}
-  m_TimeToStationary: 0.5
 --- !u!65 &1924256749
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2800,7 +2772,7 @@ Transform:
   m_GameObject: {fileID: 1924256747}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.079, y: 3.6559, z: -1.957}
+  m_LocalPosition: {x: -5.079, y: 3.02, z: -1.957}
   m_LocalScale: {x: 24.937716, y: 6.3918, z: 0.8261}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3014,6 +2986,7 @@ GameObject:
   - component: {fileID: 2084651517}
   - component: {fileID: 2084651516}
   - component: {fileID: 2084651515}
+  - component: {fileID: 2084651519}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -3108,6 +3081,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2084651519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2084651514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 1
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: a5471eefa5184b142b8274a0960b9d25, type: 2}
+  m_BuildHeightMesh: 0
 --- !u!1 &2124650565
 GameObject:
   m_ObjectHideFlags: 0
@@ -3119,7 +3123,6 @@ GameObject:
   - component: {fileID: 2124650569}
   - component: {fileID: 2124650568}
   - component: {fileID: 2124650567}
-  - component: {fileID: 2124650566}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -3127,29 +3130,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!136 &2124650566
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2124650565}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!23 &2124650567
 MeshRenderer:
   m_ObjectHideFlags: 0

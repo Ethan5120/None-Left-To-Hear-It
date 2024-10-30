@@ -5,13 +5,20 @@ using UnityEngine.SceneManagement;
 
 public class DoorController : MonoBehaviour
 {
+    public GameObject CamDoor;
+
+    private void Start()
+    {
+        CamDoor.SetActive(false);      
+    }
     private void OnTriggerStay(Collider other)
     {
         if (other.tag == "DoorUNLOCKED")
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                SceneManager.LoadScene("SampleScene");
+                CamDoor.SetActive(true);                
+                //SceneManager.LoadScene("SampleScene");
             }
         }
     }

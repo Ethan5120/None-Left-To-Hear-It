@@ -5,9 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Pause : MonoBehaviour
 {
-    public GameObject PausaMenu;
-    public GameObject PausaSettings;
-    public GameObject PausaVHS;
+    public GameObject PausaMenu, PausaControls, PausaSettings, PausaQuit, PausaVHS;
     public PlayerController player; 
     public bool paused;
     public string menuSceneName;
@@ -15,6 +13,8 @@ public class Pause : MonoBehaviour
     private void Start()
     {
        PausaMenu.SetActive(false);
+       PausaControls.SetActive(false);
+       PausaSettings.SetActive(false);
     }
 
     // Update is called once per frame
@@ -26,7 +26,10 @@ public class Pause : MonoBehaviour
             if(paused == true) 
             {
                 player.enabled = false;  
-                PausaMenu.SetActive(true);             
+                PausaMenu.SetActive(true);
+                PausaControls.SetActive(false);
+                PausaSettings.SetActive(false);
+                PausaQuit.SetActive(false);
                 Time.timeScale = 0;
                 //Cursor.visible = true;
                 //Cursor.lockState = CursorLockMode.None;
@@ -37,11 +40,13 @@ public class Pause : MonoBehaviour
             {
                 player.enabled=true;
                 PausaMenu.SetActive(false);
+                PausaControls.SetActive(false);
+                PausaSettings.SetActive(false);
+                PausaQuit.SetActive(false);
                 Time.timeScale = 1;
                 //Cursor.visible = false;
                 //Cursor.lockState = CursorLockMode.Locked;
                 //AudioListener.pause = false;
-                PausaSettings.SetActive(false);
                 PausaVHS.SetActive(false);
             }
         }

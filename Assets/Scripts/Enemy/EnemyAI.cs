@@ -1,20 +1,28 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
+    [SerializeField] EnemyData enemyData;
     private Transform player;
     private NavMeshAgent agent;
+    private float distance;
     
-    private enum EnemyState{aliveState, deadState, ambushState}
-    private EnemyState currentState;
 
 
     void Awake()
     {
-        
+        if(enemyData.firstLoad)
+        {
+            enemyData.currentState = enemyData.startingState;
+            transform.SetPositionAndRotation(enemyData.startingPosition, enemyData.startingRotation);
+            enemyData.enemyHealth = 1;
+            enemyData.firstLoad = false;
+        }
+        else
+        {
+            transform.SetPositionAndRotation(enemyData.newPosition, enemyData.newRotation);
+        }
     }
     
     void Start()
@@ -26,6 +34,52 @@ public class EnemyAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        agent.destination = player.position;
+        switch (enemyData.currentState)
+        {
+            case EnemyData.EnemyState.aliveState:
+            {
+                agent.destination = player.position;
+                agent.isStopped = false;
+
+                distance = Vector3.Distance(agent.destination, player.position);
+                if(distance <= 1)
+                {
+                    Debug.Log("StartAttack");
+                }
+                break;
+            }
+
+            case EnemyData.EnemyState.deadState:
+            {
+                agent.isStopped = true;
+                enemyData.deadTime -= 1 * Time.deltaTime;
+                if(enemyData.deadTime <= 0)
+                {
+                    enemyData.currentState = EnemyData.EnemyState.aliveState;
+                }
+                break;
+            }
+
+            case EnemyData.EnemyState.ambushState:
+            {
+                agent.isStopped = true;
+                if(enemyData.startAmbush)
+                {
+                    enemyData.currentState = EnemyData.EnemyState.aliveState;
+                }
+                break;
+            }
+        }
+    }
+
+    public void TakeDamage()
+    {
+        enemyData.enemyHealth = 0;
+        if(enemyData.enemyHealth <= 0)
+        {
+            Debug.Log("DamageTaken");
+            enemyData.currentState = EnemyData.EnemyState.deadState;
+            enemyData.deadTime = 30f;
+        }
     }
 }

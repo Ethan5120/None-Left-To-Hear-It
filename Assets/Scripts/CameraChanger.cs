@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CameraChanger : MonoBehaviour
@@ -23,13 +24,13 @@ public class CameraChanger : MonoBehaviour
         if(!thirdPersonActive)
         {
             thirdPersonCamera.Priority = 30;
-            cameraVolume.SetActive(false);
+            if(cameraVolume != null) cameraVolume.SetActive(false);
             thirdPersonActive = true;
         }
         else
         {
             thirdPersonCamera.Priority = 0;
-            cameraVolume.SetActive(true);
+            if(cameraVolume != null) cameraVolume.SetActive(true);
             thirdPersonActive = false;
         }
     }

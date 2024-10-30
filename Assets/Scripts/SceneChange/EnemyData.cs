@@ -7,11 +7,11 @@ public class EnemyData : ScriptableObject
     public bool firstLoad = true;
 
     [Header("EnemyState")]
-    public int enemyHealth;
+    public int enemyHealth = 1;
     public float deadTime; 
     public bool startAmbush = false;
     public enum EnemyState{aliveState, deadState, ambushState}
-    public EnemyState startingState;
+    public EnemyState startingState = EnemyState.aliveState;
     public EnemyState currentState;
     
     [Header("Original positions")]

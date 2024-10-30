@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 024bd5f22f8033e48888ecc65e6cb70b, type: 3}
-  m_Name: RyanMonster
+  m_Name: MEnemy_2
   m_EditorClassIdentifier: 
   firstLoad: 1
-  enemyHealth: 0
-  deadTime: 6.6111755
-  startAmbush: 1
-  startingState: 2
-  currentState: 1
-  startingPosition: {x: -5, y: 1.7, z: 3}
+  enemyHealth: 1
+  deadTime: 0
+  startAmbush: 0
+  startingState: 0
+  currentState: 0
+  startingPosition: {x: 0, y: 0, z: 0}
   startingRotation: {x: 0, y: 0, z: 0, w: 0}
   newPosition: {x: 0, y: 0, z: 0}
   newRotation: {x: 0, y: 0, z: 0, w: 0}

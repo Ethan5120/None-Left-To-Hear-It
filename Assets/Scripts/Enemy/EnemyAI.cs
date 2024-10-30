@@ -4,6 +4,7 @@ using UnityEngine.AI;
 public class EnemyAI : MonoBehaviour
 {
     [SerializeField] EnemyData enemyData;
+    public EnemyData.EnemyState newState;
     private Transform player;
     private NavMeshAgent agent;
     private float distance;
@@ -12,6 +13,14 @@ public class EnemyAI : MonoBehaviour
 
     void Awake()
     {
+        if(enemyData == null)
+        {
+            enemyData = ScriptableObject.CreateInstance<EnemyData>();
+            enemyData.startingPosition = transform.position;
+            enemyData.startingRotation = transform.rotation;
+            enemyData.startingState = newState;
+        }
+
         if(enemyData.firstLoad)
         {
             enemyData.currentState = enemyData.startingState;
@@ -81,5 +90,11 @@ public class EnemyAI : MonoBehaviour
             enemyData.currentState = EnemyData.EnemyState.deadState;
             enemyData.deadTime = 30f;
         }
+    }
+
+    public void SaveData(Component sender, object data)
+    {
+        enemyData.newPosition = transform.position;
+        enemyData.newRotation = transform.rotation;
     }
 }

@@ -280,6 +280,37 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+--- !u!1 &6033313359104381862
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6497997788324535256}
+  m_Layer: 0
+  m_Name: ObjectSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6497997788324535256
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6033313359104381862}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.275, y: 2.5538, z: 2.05}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7623303358941213680}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8148871113806376163
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,7 +322,7 @@ GameObject:
   - component: {fileID: 5243518415579924207}
   - component: {fileID: 8131201873951823368}
   m_Layer: 0
-  m_Name: ThirdPersonCamera
+  m_Name: PlayerCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -378,17 +409,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 712a51a319e23604f97e83724aaf6943,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -6.676193
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 712a51a319e23604f97e83724aaf6943,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.63081217
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 712a51a319e23604f97e83724aaf6943,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -10.019618
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 712a51a319e23604f97e83724aaf6943,
         type: 3}
@@ -438,7 +469,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 712a51a319e23604f97e83724aaf6943,
         type: 3}
       propertyPath: m_Name
-      value: SAMapuntar
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 712a51a319e23604f97e83724aaf6943,
         type: 3}
@@ -465,6 +496,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 7826215444345742917}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 712a51a319e23604f97e83724aaf6943,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6497997788324535256}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 712a51a319e23604f97e83724aaf6943,
         type: 3}
@@ -545,6 +580,9 @@ MonoBehaviour:
   playerSpeed: 6
   playerRotation: 200
   playerAimSpeed: 50
+  bullet: {fileID: 7148494144607915820, guid: 2cf9024972dbe2c41b7c44517655c5e6, type: 3}
+  spawnPoint: {fileID: 6033313359104381862}
+  shootCooldown: 5
   isAim: 0
 --- !u!143 &6799265008916181843
 CharacterController:
@@ -589,7 +627,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.7055654
   m_Height: 3.7111259

@@ -7,9 +7,15 @@ public class CameraChanger : MonoBehaviour
 {
     public bool thirdPersonActive;
     [SerializeField] CinemachineVirtualCamera thirdPersonCamera;
+    [SerializeField] string playerCameraName;
     [SerializeField] List<CinemachineVirtualCamera> staticCameras = new List<CinemachineVirtualCamera>();
     [SerializeField] GameObject cameraVolume;
     [SerializeField] int currentCamera;
+
+    void Awake()
+    {
+    thirdPersonCamera = GameObject.Find(playerCameraName).GetComponent<CinemachineVirtualCamera>();
+    }
 
     
     public void TriggerThirdPerson()

@@ -577,6 +577,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CamDoor: {fileID: 1056255232}
+  puertaAnim: {fileID: 0}
+  camaraAnim: {fileID: 0}
 --- !u!1 &64547109
 GameObject:
   m_ObjectHideFlags: 0

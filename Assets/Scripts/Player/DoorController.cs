@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class DoorController : MonoBehaviour
 {
     public GameObject CamDoor;
+    public Animator puertaAnim, camaraAnim;
 
     private void Start()
     {
@@ -17,7 +18,9 @@ public class DoorController : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                CamDoor.SetActive(true);                
+                CamDoor.SetActive(true);
+                
+                    
                 //SceneManager.LoadScene("SampleScene");
             }
         }

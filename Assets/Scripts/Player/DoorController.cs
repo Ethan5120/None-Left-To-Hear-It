@@ -10,6 +10,7 @@ public class DoorController : MonoBehaviour
 
     private void Start()
     {
+        GameObject animatorObject = GameObject.Find("Base");
         CamDoor.SetActive(false);      
     }
     private void OnTriggerStay(Collider other)
@@ -19,8 +20,8 @@ public class DoorController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E))
             {
                 CamDoor.SetActive(true);
-                
-                    
+                puertaAnim.SetTrigger("DoorOpen");
+                camaraAnim.SetTrigger("CamWalk");
                 //SceneManager.LoadScene("SampleScene");
             }
         }

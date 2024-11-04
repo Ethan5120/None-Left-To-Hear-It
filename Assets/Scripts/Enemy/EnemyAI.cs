@@ -7,7 +7,7 @@ public class EnemyAI : MonoBehaviour
     public EnemyData.EnemyState newState;
     private Transform player;
     private NavMeshAgent agent;
-    private float distance;
+    [SerializeField] private float distance;
     
 
 
@@ -50,8 +50,8 @@ public class EnemyAI : MonoBehaviour
                 agent.destination = player.position;
                 agent.isStopped = false;
 
-                distance = Vector3.Distance(agent.destination, player.position);
-                if(distance <= 1)
+                distance = Vector3.Distance(transform.position, player.position);
+                if(distance <= 1f)
                 {
                     Debug.Log("StartAttack");
                 }

@@ -1,15 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CameraChanger : MonoBehaviour
 {
     public bool thirdPersonActive;
     [SerializeField] CinemachineVirtualCamera thirdPersonCamera;
+    [SerializeField] string playerCameraName;
     [SerializeField] List<CinemachineVirtualCamera> staticCameras = new List<CinemachineVirtualCamera>();
     [SerializeField] GameObject cameraVolume;
     [SerializeField] int currentCamera;
+
+    void Awake()
+    {
+    thirdPersonCamera = GameObject.Find(playerCameraName).GetComponent<CinemachineVirtualCamera>();
+    }
 
     
     public void TriggerThirdPerson()
@@ -17,13 +24,13 @@ public class CameraChanger : MonoBehaviour
         if(!thirdPersonActive)
         {
             thirdPersonCamera.Priority = 30;
-            cameraVolume.SetActive(false);
+            if(cameraVolume != null) cameraVolume.SetActive(false);
             thirdPersonActive = true;
         }
         else
         {
             thirdPersonCamera.Priority = 0;
-            cameraVolume.SetActive(true);
+            if(cameraVolume != null) cameraVolume.SetActive(true);
             thirdPersonActive = false;
         }
     }

@@ -18,6 +18,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float playerSpeed = 3;
     [SerializeField] float playerRotation = 40;
     [SerializeField] float playerAimSpeed = 20;
+
+    [Header("ShootingSettings")]
+    [SerializeField] GameObject bullet;
+    [SerializeField] GameObject spawnPoint;
+    [SerializeField] float shootCooldown;
+    float shootTimer;
     
 
     [Header("PlayeStatus")]
@@ -54,9 +60,11 @@ public class PlayerController : MonoBehaviour
 
     private void PlayerShoot(InputAction.CallbackContext context)
     {
-        if(isAim)
+        if(isAim && shootTimer <= 0)
         {
-            Debug.Log("PlayerShot");
+            var bull = Instantiate(bullet, spawnPoint.transform.position, transform.rotation);
+            bull.GetComponent<bulletScript>().bulletLife = 5f;
+            shootTimer = shootCooldown;
         }
     }
 
@@ -88,6 +96,10 @@ public class PlayerController : MonoBehaviour
     
     void Update()
     {
+        if(shootTimer > 0)
+        {
+            shootTimer -= 1*Time.deltaTime;
+        }
         playerInput = Move.action.ReadValue<Vector2>();
         PlayerMovement();
     }

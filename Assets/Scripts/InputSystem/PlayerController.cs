@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     [Header("InputSystemDeclarations")]
     private Vector2 playerInput;
     [SerializeField] CharacterController controller;
-    [SerializeField] InputActionReference Move, Aim, Shoot;
+    [SerializeField] InputActionReference Move, Aim, Shoot, Interact;
 
     [Header("GameManagerVariables")]
     [SerializeField] CameraChanger cameraManager;
@@ -24,6 +24,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject spawnPoint;
     [SerializeField] float shootCooldown;
     float shootTimer;
+
+    [Header ("InteractSettings")]
+    [SerializeField] GameEvent InteractEvent;
     
 
     [Header("PlayeStatus")]
@@ -34,6 +37,7 @@ public class PlayerController : MonoBehaviour
     {
         Aim.action.performed += EnterThirdPerson;
         Shoot.action.performed += PlayerShoot;
+        Interact.action.performed += InteractCall;
         cameraManager = GameObject.Find(cameraObjectName).GetComponent<CameraChanger>();
     }
 
@@ -41,6 +45,8 @@ public class PlayerController : MonoBehaviour
     {
         Aim.action.performed -= EnterThirdPerson;
         Shoot.action.performed -= PlayerShoot;
+        Interact.action.performed -= InteractCall;
+
 
     }   
 
@@ -66,6 +72,11 @@ public class PlayerController : MonoBehaviour
             bull.GetComponent<bulletScript>().bulletLife = 5f;
             shootTimer = shootCooldown;
         }
+    }
+
+    private void InteractCall(InputAction.CallbackContext context)
+    {
+        InteractEvent.Raise(this, null);
     }
 
     private void PlayerMovement()
@@ -103,4 +114,7 @@ public class PlayerController : MonoBehaviour
         playerInput = Move.action.ReadValue<Vector2>();
         PlayerMovement();
     }
+
+
+    
 }

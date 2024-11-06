@@ -8,19 +8,55 @@ public class DoorController : MonoBehaviour
 
     [SerializeField] PlayerSO playerData;
     [SerializeField] int neededKey;
-    [SerializeField] string SceneToLoad;
+    [SerializeField] int sceneToLoadIndex;
+    [SerializeField] bool InTriggerRange;
+    Animator animator;
+    [SerializeField] Animator animatorCamera;
+    [SerializeField] string AnimationName;
+    [SerializeField] string AnimationCameraName;
+
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
+
+
     private void OnTriggerStay(Collider other)
     {
-        if (other.tag == "DoorUNLOCKED" && playerData.PlayerKeys[neededKey] == true)
+        if (other.tag == "Player")
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            InTriggerRange = true;
+        }
+        else
+        {
+            InTriggerRange = false;
+        }
+    }
+
+
+    public void StartAnim(Component sender, object data)
+    {
+        if(sender is PlayerController && InTriggerRange == true)
+        {
+            if(playerData.PlayerKeys[neededKey] == true)
             {
-                SceneManager.LoadScene(SceneToLoad);
+                animator?.Play(AnimationName);
+                animatorCamera?.Play(AnimationCameraName);
+            }
+            else
+            {
+                Debug.Log("This Door is Close");
             }
         }
         else
         {
-            Debug.Log("This Door is locked");
+            return;
         }
+
+    }
+
+    public void ChangeScene()
+    {
+        SceneManager.LoadScene(sceneToLoadIndex);
     }
 }

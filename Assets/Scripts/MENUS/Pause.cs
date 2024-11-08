@@ -8,8 +8,10 @@ public class Pause : MonoBehaviour
     public GameObject PausaMenu;
     public GameObject PausaSettings;
     public GameObject PausaVHS;
+    public GameObject Inventario;
     public PlayerController player; 
     public bool paused;
+    //public bool pausedInv;
     public string menuSceneName;
 
     private void Start()
@@ -43,6 +45,29 @@ public class Pause : MonoBehaviour
                 //AudioListener.pause = false;
                 PausaSettings.SetActive(false);
                 PausaVHS.SetActive(false);
+            }
+        }
+
+        if(Input.GetKeyDown(KeyCode.Tab)) 
+        {
+            paused = !paused;
+            if(paused == true) 
+            {
+                player.enabled = false;  
+                Inventario.SetActive(true);             
+                Time.timeScale = 0;
+                //Cursor.visible = true;
+                //Cursor.lockState = CursorLockMode.None;
+                //AudioListener.pause = false;
+            }
+            if(paused == false)
+            {
+                player.enabled=true;
+                Inventario.SetActive(false);
+                Time.timeScale = 1;
+                //Cursor.visible = false;
+                //Cursor.lockState = CursorLockMode.Locked;
+                //AudioListener.pause = false;
             }
         }
     }

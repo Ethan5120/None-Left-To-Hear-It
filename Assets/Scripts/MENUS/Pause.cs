@@ -100,7 +100,6 @@ public class Pause : MonoBehaviour
         //Cursor.visible = false;
         //Cursor.lockState= CursorLockMode.Locked;
         //AudioListener.pause= false;
-        paused = false;
         PauseVHS.SetActive(false);
     }
     public void backToMenu()

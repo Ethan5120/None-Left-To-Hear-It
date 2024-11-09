@@ -1788,12 +1788,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PausaMenu: {fileID: 3059843594396433347}
-  PausaControls: {fileID: 2353602307217370257}
   PausaSettings: {fileID: 7449132024125589865}
-  PausaQuit: {fileID: 3397149675638094952}
   PausaVHS: {fileID: 2137466761823619767}
+  Inventario: {fileID: 0}
   player: {fileID: 0}
   paused: 0
+  inventaryOpen: 0
   menuSceneName: MenuBLOCKOUT
 --- !u!1 &5060639144624374973
 GameObject:

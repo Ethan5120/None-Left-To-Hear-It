@@ -5,18 +5,19 @@ using UnityEngine.SceneManagement;
 
 public class Pause : MonoBehaviour
 {
-    public GameObject PausaMenu;
-    public GameObject PausaSettings;
-    public GameObject PausaVHS;
-    public GameObject Inventario;
+    public GameObject PauseMenu;
+    public GameObject PauseSettings;
+    public GameObject PauseVHS;
+    public GameObject Inventory;
     public PlayerController player; 
     public bool paused;
-    //public bool pausedInv;
+    public bool inventaryOpen;
     public string menuSceneName;
 
     private void Start()
     {
-       PausaMenu.SetActive(false);
+       paused = false;
+       inventaryOpen = false;
     }
 
     // Update is called once per frame
@@ -25,49 +26,67 @@ public class Pause : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Escape)) 
         {
             paused = !paused;
-            if(paused == true) 
+            if(inventaryOpen == true)
             {
-                player.enabled = false;  
-                PausaMenu.SetActive(true);             
-                Time.timeScale = 0;
-                //Cursor.visible = true;
-                //Cursor.lockState = CursorLockMode.None;
-                //AudioListener.pause = false;
-                PausaVHS.SetActive(true);
+                paused  = false;
             }
-            if(paused == false)
+            else
             {
-                player.enabled=true;
-                PausaMenu.SetActive(false);
-                Time.timeScale = 1;
-                //Cursor.visible = false;
-                //Cursor.lockState = CursorLockMode.Locked;
-                //AudioListener.pause = false;
-                PausaSettings.SetActive(false);
-                PausaVHS.SetActive(false);
+                if(paused == true) 
+                {
+                    player.enabled = false;  
+                    PauseMenu.SetActive(true);             
+                    Time.timeScale = 0;
+                    Inventory.SetActive(false);
+                    //Cursor.visible = true;
+                    //Cursor.lockState = CursorLockMode.None;
+                    //AudioListener.pause = false;
+                    PauseVHS.SetActive(true);
+                }
+                if(paused == false)
+                {
+                    player.enabled=true;
+                    PauseMenu.SetActive(false);
+                    Time.timeScale = 1;
+                    Inventory.SetActive(false);
+                    //Cursor.visible = false;
+                    //Cursor.lockState = CursorLockMode.Locked;
+                    //AudioListener.pause = false;
+                    PauseSettings.SetActive(false);
+                    PauseVHS.SetActive(false);
+                }
             }
         }
 
         if(Input.GetKeyDown(KeyCode.Tab)) 
         {
-            paused = !paused;
-            if(paused == true) 
+            inventaryOpen = !inventaryOpen;
+            if(paused == true)
             {
-                player.enabled = false;  
-                Inventario.SetActive(true);             
-                Time.timeScale = 0;
-                //Cursor.visible = true;
-                //Cursor.lockState = CursorLockMode.None;
-                //AudioListener.pause = false;
+                inventaryOpen  = false;
             }
-            if(paused == false)
+            else
             {
-                player.enabled=true;
-                Inventario.SetActive(false);
-                Time.timeScale = 1;
-                //Cursor.visible = false;
-                //Cursor.lockState = CursorLockMode.Locked;
-                //AudioListener.pause = false;
+                if(inventaryOpen == true) 
+                {
+                    player.enabled = false;  
+                    PauseMenu.SetActive(false);             
+                    Time.timeScale = 0;
+                    Inventory.SetActive(true);
+                    //Cursor.visible = true;
+                    //Cursor.lockState = CursorLockMode.None;
+                    //AudioListener.pause = false;
+                 }
+                 if(inventaryOpen == false)
+                {
+                    player.enabled=true;
+                    PauseMenu.SetActive(false);
+                    Time.timeScale = 1;
+                    Inventory.SetActive(false);
+                    //Cursor.visible = false;
+                    //Cursor.lockState = CursorLockMode.Locked;
+                    //AudioListener.pause = false;
+                }
             }
         }
     }
@@ -75,13 +94,13 @@ public class Pause : MonoBehaviour
     public void resumeGame()
     {
         player.enabled = true;
-        PausaMenu.SetActive(false);
+        PauseMenu.SetActive(false);
+        Inventory.SetActive(false);
         Time.timeScale=1;
         //Cursor.visible = false;
         //Cursor.lockState= CursorLockMode.Locked;
         //AudioListener.pause= false;
-        paused = false;
-        PausaVHS.SetActive(false);
+        PauseVHS.SetActive(false);
     }
     public void backToMenu()
     {

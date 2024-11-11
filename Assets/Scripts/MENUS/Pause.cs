@@ -96,6 +96,8 @@ public class Pause : MonoBehaviour
         player.enabled = true;
         PauseMenu.SetActive(false);
         Inventory.SetActive(false);
+        paused = false;
+        inventaryOpen = false;
         Time.timeScale=1;
         //Cursor.visible = false;
         //Cursor.lockState= CursorLockMode.Locked;

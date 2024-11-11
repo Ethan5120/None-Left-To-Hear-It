@@ -1,7 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+
+interface IInteractable
+{
+    public void Interact();
+}
 
 public class PlayerController : MonoBehaviour
 {
@@ -26,7 +29,8 @@ public class PlayerController : MonoBehaviour
     float shootTimer;
 
     [Header ("InteractSettings")]
-    [SerializeField] GameEvent InteractEvent;
+    [SerializeField] float interactRange;
+    [SerializeField] LayerMask interactLayer;
     
 
     [Header("PlayeStatus")]
@@ -76,7 +80,14 @@ public class PlayerController : MonoBehaviour
 
     private void InteractCall(InputAction.CallbackContext context)
     {
-        InteractEvent.Raise(this, null);
+        Ray r = new Ray (transform.position, transform.forward);
+        if(Physics.Raycast(r, out RaycastHit hitInfo, interactRange))
+        {
+            if(hitInfo.collider.gameObject.TryGetComponent(out IInteractable interactObject))
+            {
+                interactObject.Interact();
+            }
+        }
     }
 
     private void PlayerMovement()

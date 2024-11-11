@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class DoorController : MonoBehaviour
+public class DoorController : MonoBehaviour, IInteractable
 {
 
     [SerializeField] PlayerSO playerData;
@@ -21,42 +19,29 @@ public class DoorController : MonoBehaviour
     }
 
 
-    private void OnTriggerStay(Collider other)
+    public void Interact()
     {
-        if (other.tag == "Player")
-        {
-            InTriggerRange = true;
-        }
-        else
-        {
-            InTriggerRange = false;
-        }
+        StartAnim();
     }
 
 
-    public void StartAnim(Component sender, object data)
+    public void StartAnim()
     {
-        if(sender is PlayerController && InTriggerRange == true)
+        if(playerData.PlayerKeys[neededKey] == true)
         {
-            if(playerData.PlayerKeys[neededKey] == true)
-            {
-                animator?.Play(AnimationName);
-                animatorCamera?.Play(AnimationCameraName);
-            }
-            else
-            {
-                Debug.Log("This Door is Close");
-            }
+            animator?.Play(AnimationName);
+            animatorCamera?.Play(AnimationCameraName);
         }
         else
         {
-            return;
+            Debug.Log("This Door is Close");
         }
-
     }
 
     public void ChangeScene()
     {
         SceneManager.LoadScene(sceneToLoadIndex);
     }
+
+
 }

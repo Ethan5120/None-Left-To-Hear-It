@@ -81,7 +81,7 @@ public class PlayerController : MonoBehaviour
     private void InteractCall(InputAction.CallbackContext context)
     {
         Ray r = new Ray (transform.position, transform.forward);
-        if(Physics.Raycast(r, out RaycastHit hitInfo, interactRange))
+        if(Physics.Raycast(r, out RaycastHit hitInfo, interactRange, interactLayer))
         {
             if(hitInfo.collider.gameObject.TryGetComponent(out IInteractable interactObject))
             {

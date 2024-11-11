@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firstLoad: 0
   enemyHealth: 0
-  deadTime: 17.302246
+  deadTime: 9.787458
   startAmbush: 0
   startingState: 0
   currentState: 1

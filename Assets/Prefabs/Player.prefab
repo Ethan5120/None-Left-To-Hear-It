@@ -409,7 +409,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 712a51a319e23604f97e83724aaf6943,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.676193
+      value: -14.44
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 712a51a319e23604f97e83724aaf6943,
         type: 3}
@@ -419,27 +419,27 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 712a51a319e23604f97e83724aaf6943,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.35
+      value: 3.4
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 712a51a319e23604f97e83724aaf6943,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.16111997
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 712a51a319e23604f97e83724aaf6943,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 712a51a319e23604f97e83724aaf6943,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.98693484
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 712a51a319e23604f97e83724aaf6943,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 712a51a319e23604f97e83724aaf6943,
         type: 3}
@@ -449,7 +449,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 712a51a319e23604f97e83724aaf6943,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 161.456
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 712a51a319e23604f97e83724aaf6943,
         type: 3}
@@ -517,10 +517,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 4212361084282122849}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 712a51a319e23604f97e83724aaf6943,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1060478949453431506}
   m_SourcePrefab: {fileID: 100100000, guid: 712a51a319e23604f97e83724aaf6943, type: 3}
 --- !u!1 &7097878274827348298 stripped
 GameObject:
@@ -575,6 +571,8 @@ MonoBehaviour:
   Move: {fileID: -1255338594610483497, guid: 65476d7987a9a714abb9f737564d18ea, type: 3}
   Aim: {fileID: 491032435536466068, guid: 65476d7987a9a714abb9f737564d18ea, type: 3}
   Shoot: {fileID: -1312178788781955072, guid: 65476d7987a9a714abb9f737564d18ea, type: 3}
+  Interact: {fileID: -3107922652662247150, guid: 65476d7987a9a714abb9f737564d18ea,
+    type: 3}
   cameraManager: {fileID: 0}
   cameraObjectName: GameManager
   playerSpeed: 6
@@ -583,6 +581,10 @@ MonoBehaviour:
   bullet: {fileID: 7148494144607915820, guid: 2cf9024972dbe2c41b7c44517655c5e6, type: 3}
   spawnPoint: {fileID: 6033313359104381862}
   shootCooldown: 5
+  interactRange: 0
+  interactLayer:
+    serializedVersion: 2
+    m_Bits: 0
   isAim: 0
 --- !u!143 &6799265008916181843
 CharacterController:
@@ -627,27 +629,12 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.7055654
   m_Height: 3.7111259
   m_Direction: 1
   m_Center: {x: 0, y: 1.3555626, z: 0.30513626}
---- !u!114 &1060478949453431506
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7097878274827348298}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a3fde239c91ac349a45e9879a04fccc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerData: {fileID: 11400000, guid: d1a095b37d3d3b549880142d542f7fb1, type: 2}
-  neededKey: 0
-  SceneToLoad: 
 --- !u!4 &7623303358941213680 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 712a51a319e23604f97e83724aaf6943,

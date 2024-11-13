@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class Pause : MonoBehaviour
 {
     public GameObject PauseMenu;
-    public GameObject PauseSettings;
     public GameObject PauseVHS;
     public GameObject Inventory;
 
@@ -64,7 +63,6 @@ public class Pause : MonoBehaviour
                     //Cursor.visible = false;
                     //Cursor.lockState = CursorLockMode.Locked;
                     //AudioListener.pause = false;
-                    PauseSettings.SetActive(false);
                     PauseVHS.SetActive(false);
                 }
             }

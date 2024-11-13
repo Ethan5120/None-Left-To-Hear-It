@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class Pause : MonoBehaviour
 {
     public GameObject PauseMenu;
-    public GameObject PauseSettings;
     public GameObject PauseVHS;
     public GameObject Inventory;
 
@@ -20,7 +19,7 @@ public class Pause : MonoBehaviour
 
     public PlayerSO keyData;
 
-    public Image k0, k1, k2, k3, k4, k5;
+    public GameObject k0, k1, k2, k3, k4, k5;
 
     private void Start()
     {
@@ -64,7 +63,6 @@ public class Pause : MonoBehaviour
                     //Cursor.visible = false;
                     //Cursor.lockState = CursorLockMode.Locked;
                     //AudioListener.pause = false;
-                    PauseSettings.SetActive(false);
                     PauseVHS.SetActive(false);
                 }
             }
@@ -134,11 +132,11 @@ public class Pause : MonoBehaviour
 
     public void UpdateInventory()
     {
-        k0.enabled = keyData.PlayerKeys[0];
-        k0.enabled = keyData.PlayerKeys[1];
-        k0.enabled = keyData.PlayerKeys[2];
-        k0.enabled = keyData.PlayerKeys[3];
-        k0.enabled = keyData.PlayerKeys[4];
-        k0.enabled = keyData.PlayerKeys[5];
+        k0.SetActive(keyData.PlayerKeys[0]);
+        k1.SetActive(keyData.PlayerKeys[1]);
+        k2.SetActive(keyData.PlayerKeys[2]);
+        k3.SetActive(keyData.PlayerKeys[3]);
+        k4.SetActive(keyData.PlayerKeys[4]);
+        k5.SetActive(keyData.PlayerKeys[5]);
     }
 }

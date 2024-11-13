@@ -7,11 +7,8 @@ public class DoorController : MonoBehaviour, IInteractable
     [SerializeField] PlayerSO playerData;
     [SerializeField] int neededKey;
     [SerializeField] int sceneToLoadIndex;
-    [SerializeField] bool InTriggerRange;
     Animator animator;
-    [SerializeField] Animator animatorCamera;
     [SerializeField] string AnimationName;
-    [SerializeField] string AnimationCameraName;
 
     private void Awake()
     {
@@ -30,7 +27,6 @@ public class DoorController : MonoBehaviour, IInteractable
         if(playerData.PlayerKeys[neededKey] == true)
         {
             animator?.Play(AnimationName);
-            animatorCamera?.Play(AnimationCameraName);
         }
         else
         {
@@ -42,6 +38,5 @@ public class DoorController : MonoBehaviour, IInteractable
     {
         SceneManager.LoadScene(sceneToLoadIndex);
     }
-
 
 }

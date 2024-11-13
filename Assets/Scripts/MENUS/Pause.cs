@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Pause : MonoBehaviour
 {
@@ -17,16 +18,24 @@ public class Pause : MonoBehaviour
 
     public string menuSceneName;
 
+    public PlayerSO keyData;
+
+    public Image k0, k1, k2, k3, k4, k5;
+
     private void Start()
     {
        paused = false;
        inventaryOpen = false;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape)) 
+
+        UpdateInventory();
+
+        if (Input.GetKeyDown(KeyCode.Escape)) 
         {
             paused = !paused;
             if(inventaryOpen == true)
@@ -121,5 +130,15 @@ public class Pause : MonoBehaviour
     {
         Application.Quit();
         Debug.Log("Pause Quitting...");
+    }
+
+    public void UpdateInventory()
+    {
+        k0.enabled = keyData.PlayerKeys[0];
+        k0.enabled = keyData.PlayerKeys[1];
+        k0.enabled = keyData.PlayerKeys[2];
+        k0.enabled = keyData.PlayerKeys[3];
+        k0.enabled = keyData.PlayerKeys[4];
+        k0.enabled = keyData.PlayerKeys[5];
     }
 }

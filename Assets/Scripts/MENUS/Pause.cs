@@ -9,9 +9,12 @@ public class Pause : MonoBehaviour
     public GameObject PauseSettings;
     public GameObject PauseVHS;
     public GameObject Inventory;
+
     public PlayerController player; 
+
     public bool paused;
     public bool inventaryOpen;
+
     public string menuSceneName;
 
     private void Start()

@@ -3920,7 +3920,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &359683664
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5833,7 +5833,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &599196683
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7375,12 +7375,12 @@ MonoBehaviour:
   inventaryOpen: 0
   menuSceneName: MenuBLOCKOUT
   keyData: {fileID: 11400000, guid: d1a095b37d3d3b549880142d542f7fb1, type: 2}
-  k0: {fileID: 1485099391}
-  k1: {fileID: 1662668935}
-  k2: {fileID: 1959768703}
-  k3: {fileID: 359683665}
-  k4: {fileID: 1287880094}
-  k5: {fileID: 599196684}
+  k0: {fileID: 1485099389}
+  k1: {fileID: 1662668933}
+  k2: {fileID: 1959768701}
+  k3: {fileID: 359683663}
+  k4: {fileID: 1287880092}
+  k5: {fileID: 599196682}
 --- !u!43 &937518257
 Mesh:
   m_ObjectHideFlags: 0
@@ -9925,7 +9925,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1287880093
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13378,7 +13378,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1485099390
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14419,7 +14419,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1662668934
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15647,7 +15647,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1959768702
 RectTransform:
   m_ObjectHideFlags: 0

@@ -2429,10 +2429,7 @@ MonoBehaviour:
   playerData: {fileID: 11400000, guid: d1a095b37d3d3b549880142d542f7fb1, type: 2}
   neededKey: 0
   sceneToLoadIndex: 3
-  InTriggerRange: 0
-  animatorCamera: {fileID: 0}
   AnimationName: 
-  AnimationCameraName: 
 --- !u!1 &1037710155
 GameObject:
   m_ObjectHideFlags: 0

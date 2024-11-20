@@ -10,6 +10,8 @@ public class Pause : MonoBehaviour
     public GameObject PauseVHS;
     public GameObject Inventory;
 
+    public GameObject PControls, PSettings, PQuit;
+
     public PlayerController player; 
 
     public bool paused;
@@ -60,6 +62,9 @@ public class Pause : MonoBehaviour
                     PauseMenu.SetActive(false);
                     Time.timeScale = 1;
                     Inventory.SetActive(false);
+                    PControls.SetActive(false);
+                    PSettings.SetActive(false);
+                    PQuit.SetActive(false);
                     //Cursor.visible = false;
                     //Cursor.lockState = CursorLockMode.Locked;
                     //AudioListener.pause = false;

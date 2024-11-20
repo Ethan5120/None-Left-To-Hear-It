@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class DoorController : MonoBehaviour, IInteractable
 {
@@ -7,25 +6,25 @@ public class DoorController : MonoBehaviour, IInteractable
     [SerializeField] PlayerSO playerData;
     [SerializeField] int neededKey;
     [SerializeField] int sceneToLoadIndex;
-    Animator animator;
+    [SerializeField] Animator animator;
     [SerializeField] string AnimationName;
-
-    private void Awake()
-    {
-        animator = GetComponent<Animator>();
-    }
+    [SerializeField] GameObject changeCamera;
+    [SerializeField] GameEvent setDestination;
 
 
     public void Interact()
     {
+        Debug.Log("Interact");
         StartAnim();
     }
 
 
     public void StartAnim()
     {
-        if(playerData.PlayerKeys[neededKey] == true)
+        if(playerData.PlayerKeys[neededKey] == true && changeCamera != null)
         {
+            changeCamera.SetActive(true);
+            setDestination.Raise(this, sceneToLoadIndex);
             animator?.Play(AnimationName);
         }
         else
@@ -34,9 +33,6 @@ public class DoorController : MonoBehaviour, IInteractable
         }
     }
 
-    public void ChangeScene()
-    {
-        SceneManager.LoadScene(sceneToLoadIndex);
-    }
+
 
 }

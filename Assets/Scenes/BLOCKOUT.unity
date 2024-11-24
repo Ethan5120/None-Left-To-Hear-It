@@ -15,11 +15,11 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
   m_Fog: 1
-  m_FogColor: {r: 0.509434, g: 0.4781951, b: 0.5047139, a: 1}
+  m_FogColor: {r: 0.3490566, g: 0.3243592, b: 0.34596944, a: 1}
   m_FogMode: 1
   m_FogDensity: 0.05
-  m_LinearFogStart: 2
-  m_LinearFogEnd: 24
+  m_LinearFogStart: 0
+  m_LinearFogEnd: 19
   m_AmbientSkyColor: {r: 0, g: 0, b: 0, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
@@ -4090,7 +4090,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &355450476
 Transform:
   m_ObjectHideFlags: 0
@@ -4950,7 +4950,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &491670997
 Transform:
   m_ObjectHideFlags: 0
@@ -6784,7 +6784,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &829993968
 Transform:
   m_ObjectHideFlags: 0
@@ -9380,6 +9380,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1762542748757397623, guid: fbbe59cab116a7641a21a98c9e16a0c9,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2e5bc854d3413444aaf185ceb033aaf6, type: 2}
     - target: {fileID: 5053979364924263645, guid: fbbe59cab116a7641a21a98c9e16a0c9,
         type: 3}
       propertyPath: cameraManager
@@ -9442,9 +9447,34 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8817641986422983774, guid: fbbe59cab116a7641a21a98c9e16a0c9,
         type: 3}
+      propertyPath: UVModule.mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8817641986422983774, guid: fbbe59cab116a7641a21a98c9e16a0c9,
+        type: 3}
+      propertyPath: UVModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8817641986422983774, guid: fbbe59cab116a7641a21a98c9e16a0c9,
+        type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8817641986422983774, guid: fbbe59cab116a7641a21a98c9e16a0c9,
+        type: 3}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 8817641986422983774, guid: fbbe59cab116a7641a21a98c9e16a0c9,
+        type: 3}
       propertyPath: InitialModule.startColor.maxColor.a
       value: 0.6862745
       objectReference: {fileID: 0}
+    - target: {fileID: 8817641986422983774, guid: fbbe59cab116a7641a21a98c9e16a0c9,
+        type: 3}
+      propertyPath: UVModule.sprites.Array.data[0].sprite
+      value: 
+      objectReference: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 8817641986422983774, guid: fbbe59cab116a7641a21a98c9e16a0c9,
         type: 3}
       propertyPath: ColorModule.gradient.maxGradient.key0.b

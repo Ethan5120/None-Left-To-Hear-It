@@ -53,7 +53,7 @@ public class Pause : MonoBehaviour
                     Inventory.SetActive(false);
                     //Cursor.visible = true;
                     //Cursor.lockState = CursorLockMode.None;
-                    //AudioListener.pause = false;
+                    AudioListener.pause = false;
                     PauseVHS.SetActive(true);
                 }
                 if(paused == false)
@@ -67,7 +67,7 @@ public class Pause : MonoBehaviour
                     PQuit.SetActive(false);
                     //Cursor.visible = false;
                     //Cursor.lockState = CursorLockMode.Locked;
-                    //AudioListener.pause = false;
+                    AudioListener.pause = false;
                     PauseVHS.SetActive(false);
                 }
             }
@@ -90,7 +90,7 @@ public class Pause : MonoBehaviour
                     Inventory.SetActive(true);
                     //Cursor.visible = true;
                     //Cursor.lockState = CursorLockMode.None;
-                    //AudioListener.pause = false;
+                    AudioListener.pause = true;
                  }
                  if(inventaryOpen == false)
                 {
@@ -100,7 +100,7 @@ public class Pause : MonoBehaviour
                     Inventory.SetActive(false);
                     //Cursor.visible = false;
                     //Cursor.lockState = CursorLockMode.Locked;
-                    //AudioListener.pause = false;
+                    AudioListener.pause = true;
                 }
             }
         }
@@ -116,7 +116,7 @@ public class Pause : MonoBehaviour
         Time.timeScale=1;
         //Cursor.visible = false;
         //Cursor.lockState= CursorLockMode.Locked;
-        //AudioListener.pause= false;
+        AudioListener.pause= false;
         PauseVHS.SetActive(false);
     }
     public void backToMenu()
@@ -124,7 +124,7 @@ public class Pause : MonoBehaviour
         Time.timeScale = 1;
         //Cursor.visible = true;
         //Cursor.lockState = CursorLockMode.None;
-        //AudioListener.pause = false;
+        AudioListener.pause = false;
         SceneManager.LoadScene(menuSceneName);
         Debug.Log("Yendo A Menu");
 

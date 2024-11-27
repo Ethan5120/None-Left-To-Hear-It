@@ -389,7 +389,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: d21aafccc20035c4db76cf2505dc9e8e,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 0f172211f443f9141a2986576c770bc8, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 4a43784219a20c04b8b743b6fdc129a6, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -500,9 +500,24 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1065180768057325884, guid: 2e0aa15acb1e3f744a515d2abb4bbb55,
         type: 3}
+      propertyPath: m_Colors.m_FadeDuration
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1065180768057325884, guid: 2e0aa15acb1e3f744a515d2abb4bbb55,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 256122161}
+    - target: {fileID: 3207553051667316155, guid: 2e0aa15acb1e3f744a515d2abb4bbb55,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3390436889670203111, guid: 2e0aa15acb1e3f744a515d2abb4bbb55,
+        type: 3}
+      propertyPath: m_Colors.m_FadeDuration
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3643429897385884729, guid: 2e0aa15acb1e3f744a515d2abb4bbb55,
         type: 3}
       propertyPath: m_Pivot.x
@@ -603,10 +618,45 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3718103590016266450, guid: 2e0aa15acb1e3f744a515d2abb4bbb55,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4335033868143302597, guid: 2e0aa15acb1e3f744a515d2abb4bbb55,
         type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 5150489070295214573, guid: 2e0aa15acb1e3f744a515d2abb4bbb55,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5333454654450744374, guid: 2e0aa15acb1e3f744a515d2abb4bbb55,
+        type: 3}
+      propertyPath: m_Colors.m_FadeDuration
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6708213636518532862, guid: 2e0aa15acb1e3f744a515d2abb4bbb55,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8059855506212142840, guid: 2e0aa15acb1e3f744a515d2abb4bbb55,
+        type: 3}
+      propertyPath: m_Colors.m_FadeDuration
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8596994117555294648, guid: 2e0aa15acb1e3f744a515d2abb4bbb55,
+        type: 3}
+      propertyPath: m_Colors.m_FadeDuration
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9004038631206034235, guid: 2e0aa15acb1e3f744a515d2abb4bbb55,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -855,6 +905,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5271149660470458869, guid: 320f2741bf1cf084090086dd4c7499e9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6676806954991819460, guid: 320f2741bf1cf084090086dd4c7499e9,
         type: 3}

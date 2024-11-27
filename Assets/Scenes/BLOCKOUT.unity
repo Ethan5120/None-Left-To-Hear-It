@@ -4216,8 +4216,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundEffect: {fileID: 8300000, guid: e0e092ba6ec83a94da231fb616387479, type: 3}
-  minInterval: 10
-  maxInterval: 10
+  minInterval: 20
+  maxInterval: 20
 --- !u!1 &366272771
 GameObject:
   m_ObjectHideFlags: 0

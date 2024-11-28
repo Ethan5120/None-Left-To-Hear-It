@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -36,6 +37,10 @@ public class PlayerController : MonoBehaviour
     [Header("PlayeStatus")]
     [SerializeField] bool isAim = false; //Checa si el jugador esta apuntando
 
+    [Header("AnimationData")]
+    Animator pAnimator;
+    [SerializeField] List<string> pAnims =  new List<string>(); //En esta lista vamos a meter las animaciones del jugador
+
 
     private void OnEnable()
     {
@@ -43,6 +48,7 @@ public class PlayerController : MonoBehaviour
         Shoot.action.performed += PlayerShoot;
         Interact.action.performed += InteractCall;
         cameraManager = GameObject.Find(cameraObjectName).GetComponent<CameraChanger>();
+        pAnimator = GetComponent<Animator>();
     }
 
     private void OnDisable()
@@ -61,7 +67,7 @@ public class PlayerController : MonoBehaviour
             cameraManager.TriggerThirdPerson();
             isAim = true;
         }
-        else
+        else if(shootTimer == 0)
         {
             cameraManager.TriggerThirdPerson();
             isAim = false;
@@ -72,6 +78,7 @@ public class PlayerController : MonoBehaviour
     {
         if(isAim && shootTimer <= 0)
         {
+            pAnimator.Play(pAnims[5]);
             var bull = Instantiate(bullet, spawnPoint.transform.position, transform.rotation);
             bull.GetComponent<bulletScript>().bulletLife = 5f;
             shootTimer = shootCooldown;
@@ -95,19 +102,40 @@ public class PlayerController : MonoBehaviour
         //Use the move method to move the player to the front and back
         if(!isAim)
         {
+            if(playerInput.y == 0 && playerInput.x != 0)
+            {
+                pAnimator.Play(pAnims[3]);
+            }
+
+
+
             if(playerInput.y > 0)
             {   
                 controller.Move(transform.forward * playerInput.y * playerSpeed * Time.deltaTime);
+                pAnimator.Play(pAnims[1]);
             }
-            else
+            else if(playerInput.y < 0)
             {
                 controller.Move(transform.forward * playerInput.y * (playerSpeed/2) * Time.deltaTime);
+                pAnimator.Play(pAnims[2]);
             }
+
+
+            if(playerInput.y == 0 && playerInput.x == 0 && !isAim)
+            {
+                pAnimator.Play(pAnims[0]);
+            }
+            
+            
 
             transform.Rotate(transform.up, playerRotation * playerInput.x * Time.deltaTime);
         }
         else
         {
+            if(isAim && shootTimer == 0)
+            {
+                pAnimator.Play(pAnims[4]);
+            }
             //transform.Rotate(transform.right, playerAimSpeed * -playerInput.y * Time.deltaTime); //<----Encender a su propio riesgo
             transform.Rotate(transform.up, playerAimSpeed * playerInput.x * Time.deltaTime);
         }
@@ -118,14 +146,13 @@ public class PlayerController : MonoBehaviour
     
     void Update()
     {
-        if(shootTimer > 0)
-        {
-            shootTimer -= 1*Time.deltaTime;
-        }
         playerInput = Move.action.ReadValue<Vector2>();
         PlayerMovement();
     }
 
 
-    
+    void Reload()
+    {
+        shootTimer = 0;
+    }
 }

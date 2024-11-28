@@ -110,12 +110,15 @@ public class EnemyAI : MonoBehaviour
 
     public void TakeDamage()
     {
-        enemyData.enemyHealth = 0;
-        if(enemyData.enemyHealth <= 0)
+        if(enemyData.deadTime <= 0)
         {
-            Debug.Log("DamageTaken");
-            enemyData.currentState = EnemyData.EnemyState.deadState;
-            enemyData.deadTime = 30f;
+            enemyData.enemyHealth = 0;
+            if(enemyData.enemyHealth <= 0)
+            {
+                Debug.Log("DamageTaken");
+                enemyData.currentState = EnemyData.EnemyState.deadState;
+                enemyData.deadTime = 30f;
+            }
         }
     }
 
@@ -137,6 +140,7 @@ public class EnemyAI : MonoBehaviour
     public void Resurrect()
     {
         enemyData.currentState = EnemyData.EnemyState.aliveState;
+        enemyData.enemyHealth = 1;
     }
 
     public void SaveData(Component sender, object data)

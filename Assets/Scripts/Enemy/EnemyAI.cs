@@ -14,8 +14,12 @@ public class EnemyAI : MonoBehaviour
     [Header("AnimationSettings")]
     [SerializeField] private Animator animator;
     [SerializeField] List<string> animations =  new List<string>();
-    
 
+    ////////////////////////AUDIO
+
+    public AudioClip FootstepSound, Deathsound, BiteSound, RiseSound;
+    public AudioSource FootstepSource, DeathSource, BiteSource, RiseSource;
+    
 
     void Awake()
     {
@@ -147,5 +151,27 @@ public class EnemyAI : MonoBehaviour
     {
         enemyData.newPosition = transform.position;
         enemyData.newRotation = transform.rotation;
+    }
+
+    /////
+    
+    public void PlayFootstepSounds()
+    {
+        FootstepSource.PlayOneShot(FootstepSound);
+    }
+
+    public void PlayDeathSound()
+    {
+        FootstepSource.PlayOneShot(Deathsound);
+    }
+
+    public void PlayAttackBite()
+    {
+        BiteSource.PlayOneShot(BiteSound);
+    }
+
+    public void PlayRise()
+    {
+        RiseSource.PlayOneShot(RiseSound);
     }
 }

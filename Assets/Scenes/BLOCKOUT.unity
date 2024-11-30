@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 76a88ec1c9ace4a4f83f5fda86307028, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -14143,6 +14143,11 @@ PrefabInstance:
       propertyPath: CollisionModule.minKillSpeed
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 721827030012352050, guid: ca17e68da8b2fd946b33ca087f645deb,
+        type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 3512689987592439339, guid: ca17e68da8b2fd946b33ca087f645deb,
         type: 3}
       propertyPath: m_Name
@@ -14152,6 +14157,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3775422874737483281, guid: ca17e68da8b2fd946b33ca087f645deb,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.1874
+      objectReference: {fileID: 0}
+    - target: {fileID: 3775422874737483281, guid: ca17e68da8b2fd946b33ca087f645deb,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.70693624
       objectReference: {fileID: 0}
     - target: {fileID: 3775422874737483281, guid: ca17e68da8b2fd946b33ca087f645deb,
         type: 3}

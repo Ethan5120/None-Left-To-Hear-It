@@ -153,7 +153,7 @@ public class EnemyAI : MonoBehaviour
         enemyData.newRotation = transform.rotation;
     }
 
-    /////
+    /////Animation Events (AUDIO)
     
     public void PlayFootstepSounds()
     {

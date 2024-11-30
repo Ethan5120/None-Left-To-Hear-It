@@ -53,7 +53,7 @@ public class Pause : MonoBehaviour
                     Inventory.SetActive(false);
                     //Cursor.visible = true;
                     //Cursor.lockState = CursorLockMode.None;
-                    AudioListener.pause = false;
+                    AudioListener.pause = true;
                     PauseVHS.SetActive(true);
                 }
                 if(paused == false)

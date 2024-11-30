@@ -17,8 +17,8 @@ public class EnemyAI : MonoBehaviour
 
     ////////////////////////AUDIO
 
-    public AudioClip FootstepSound, Deathsound, BiteSound, RiseSound;
-    public AudioSource FootstepSource, DeathSource, BiteSource, RiseSource;
+    public AudioClip FootstepSound, Deathsound, BiteSound, RiseSound, ArmSwingSound;
+    public AudioSource FootstepSource, DeathSource, BiteSource, RiseSource, ArmSwingSource;
     
 
     void Awake()
@@ -173,5 +173,10 @@ public class EnemyAI : MonoBehaviour
     public void PlayRise()
     {
         RiseSource.PlayOneShot(RiseSound);
+    }
+
+    public void PlayArmAttack()
+    {
+        ArmSwingSource.PlayOneShot(ArmSwingSound);
     }
 }

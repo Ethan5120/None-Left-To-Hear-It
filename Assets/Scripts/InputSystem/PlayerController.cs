@@ -42,6 +42,13 @@ public class PlayerController : MonoBehaviour
     Animator pAnimator;
     [SerializeField] List<string> pAnims =  new List<string>(); //En esta lista vamos a meter las animaciones del jugador
 
+    ////Audio////
+
+    public AudioClip FootstepsSound, CockingSound, PickUpSound;
+    public AudioSource FootstepsSource, CockingSource, PickUpSource;
+
+    ////////////
+    
 
     private void OnEnable()
     {
@@ -158,10 +165,25 @@ public class PlayerController : MonoBehaviour
     }
 
  
-    ////////////////Animation Event Muerte///////////////////// 
+    ////////////////Animation Event Audios///////////////////// 
    
     public void DeathAnimEvent(string DeathScene)
     {
         SceneManager.LoadScene(DeathScene);
+    }
+
+    public void PlayFootstepsAudio()
+    {
+        FootstepsSource.PlayOneShot(FootstepsSound);
+    }
+
+    public void PlayCockingAudio()
+    {
+        CockingSource.PlayOneShot(CockingSound);
+    }
+
+    public void PlayPickupAudio()
+    {
+        PickUpSource.PlayOneShot(PickUpSound);
     }
 }

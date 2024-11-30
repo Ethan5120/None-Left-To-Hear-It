@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 interface IInteractable
 {
@@ -154,5 +155,13 @@ public class PlayerController : MonoBehaviour
     void Reload()
     {
         shootTimer = 0;
+    }
+
+ 
+    ////////////////Animation Event Muerte///////////////////// 
+   
+    public void DeathAnimEvent(string DeathScene)
+    {
+        SceneManager.LoadScene(DeathScene);
     }
 }

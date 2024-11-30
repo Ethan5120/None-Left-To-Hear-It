@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Debug Scene/TestChange.unity
     guid: 146b79942d2cfc54687351f1e1156443
+  - enabled: 1
+    path: Assets/Scenes/DeathScene.unity
+    guid: fc88179c356613e499e066427f5c5b09
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 8d761e5d13bd57b4abb4eddb8cf6f562,
       type: 2}

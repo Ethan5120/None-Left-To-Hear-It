@@ -44,8 +44,8 @@ public class PlayerController : MonoBehaviour
 
     ////Audio////
 
-    public AudioClip FootstepsSound, CockingSound, PickUpSound, DeathPSound, ShotAudio;
-    public AudioSource FootstepsSource, CockingSource, PickUpSource, DeathPSource, ShotSource;
+    public AudioClip FootstepsSound, CockingSound, PickUpSound, DeathPSound, ShotAudio, DamageSound;
+    public AudioSource FootstepsSource, CockingSource, PickUpSource, DeathPSource, ShotSource, DamageSource;
 
     ////////////
     
@@ -195,5 +195,10 @@ public class PlayerController : MonoBehaviour
     public void PlayShotgunAudio()
     {
         ShotSource.PlayOneShot(ShotAudio);
+    }
+
+    public void PlayDamageAudio()
+    {
+        DamageSource.PlayOneShot(DamageSound);
     }
 }

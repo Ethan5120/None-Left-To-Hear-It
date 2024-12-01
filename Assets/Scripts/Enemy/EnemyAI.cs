@@ -19,6 +19,9 @@ public class EnemyAI : MonoBehaviour
 
     public AudioClip FootstepSound, Deathsound, BiteSound, RiseSound, ArmSwingSound;
     public AudioSource FootstepSource, DeathSource, BiteSource, RiseSource, ArmSwingSource;
+
+    public AudioSource RadioSource;
+    public AudioClip RadioSound;
     
 
     void Awake()

@@ -92,7 +92,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _AtmosphereThickness: 4.29
-    - _Blend: 777297
+    - _Blend: 205385
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
@@ -101,11 +101,11 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _Height: 499276.16
+    - _Height: 500000
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
-    - _Opacity: 0.636
+    - _Opacity: 0.739
     - _Parallax: 0.02
     - _Rotation: 175
     - _SmoothnessTextureChannel: 0
@@ -117,7 +117,7 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _ColorB: {r: 0.34901962, g: 0.3254902, b: 0.34509805, a: 1}
+    - _ColorB: {r: 0, g: 0, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _GroundColor: {r: 0.66176474, g: 0.6200569, b: 0.6033737, a: 1}
     - _SkyTint: {r: 0.6544118, g: 0.6544118, b: 0.6544118, a: 1}

@@ -38,7 +38,8 @@ public class PlayerController : MonoBehaviour
 
     [Header("PlayeStatus")]
     [SerializeField] bool isAim = false; //Checa si el jugador esta apuntando
-    [SerializeField] bool isInteracting = false; //Checa si el jugador esta apuntando
+    [SerializeField] bool isInteracting = false; //Checa si el jugador esta interactuando
+    [SerializeField] bool isTakingDamage = false; //Checa si el jugador esta recibiendo daño
 
     [Header("AnimationData")]
     Animator pAnimator;
@@ -74,7 +75,7 @@ public class PlayerController : MonoBehaviour
 
     private void EnterThirdPerson(InputAction.CallbackContext context)
     {
-        if(!isAim && !isInteracting)
+        if(!isAim && !isInteracting && !isTakingDamage)
         {
             cameraManager.TriggerThirdPerson();
             isAim = true;
@@ -127,26 +128,26 @@ public class PlayerController : MonoBehaviour
         if(!isAim)
         {
             gunAnimator.Play(gunAnims[0]);
-            if(playerInput.y == 0 && playerInput.x != 0 && !isInteracting)
+            if(playerInput.y == 0 && playerInput.x != 0 && !isInteracting && !isTakingDamage)
             {
                 pAnimator.Play(pAnims[3]);
             }
 
 
 
-            if(playerInput.y > 0 && !isInteracting)
+            if(playerInput.y > 0 && !isInteracting && !isTakingDamage)
             {   
                 controller.Move(transform.forward * playerInput.y * playerSpeed * Time.deltaTime);
                 pAnimator.Play(pAnims[1]);
             }
-            else if(playerInput.y < 0 && !isInteracting)
+            else if(playerInput.y < 0 && !isInteracting && !isTakingDamage)
             {
                 controller.Move(transform.forward * playerInput.y * (playerSpeed/2) * Time.deltaTime);
                 pAnimator.Play(pAnims[2]);
             }
 
 
-            if(playerInput.y == 0 && playerInput.x == 0 && !isAim && !isInteracting)
+            if(playerInput.y == 0 && playerInput.x == 0 && !isAim && !isInteracting && !isTakingDamage)
             {
                 pAnimator.Play(pAnims[0]);
             }
@@ -178,6 +179,7 @@ public class PlayerController : MonoBehaviour
 
     public void TakeDamage()
     {
+        isTakingDamage = true;
         playerData.playerHP--;
         if(playerData.playerHP > 0)
         {
@@ -207,6 +209,11 @@ public class PlayerController : MonoBehaviour
     void StopInteract()
     {
         isInteracting = false;
+    }
+
+    void StopDamage()
+    {
+        isTakingDamage = false;
     }
 #endregion
  

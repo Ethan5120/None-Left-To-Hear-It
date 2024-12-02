@@ -7,7 +7,7 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] EnemyData enemyData;
     public EnemyData.EnemyState newState;
     private Transform player;
-    private NavMeshAgent agent;
+    [SerializeField] NavMeshAgent agent;
     [SerializeField] private float distance;
     bool isAttacking;
 
@@ -64,6 +64,9 @@ public class EnemyAI : MonoBehaviour
     {
         player = FindObjectOfType<PlayerController>().transform;
         agent = GetComponent<NavMeshAgent>();
+
+        attackCollider = GetComponent<SphereCollider>();
+        attackCollider.enabled = false;
     }
 
 
@@ -177,7 +180,15 @@ public class EnemyAI : MonoBehaviour
 
     void DisableAttack()
     {
-        attackCollider.enabled = true;
+        attackCollider.enabled = false;
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.GetComponent<PlayerController>())
+        {
+            other.gameObject.GetComponent<PlayerController>().TakeDamage();
+        }
     }
 
 

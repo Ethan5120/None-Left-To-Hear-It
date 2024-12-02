@@ -88,12 +88,18 @@ public class PlayerController : MonoBehaviour
 
     private void PlayerShoot(InputAction.CallbackContext context)
     {
-        if(isAim && shootTimer <= 0)
+        if(isAim && shootTimer <= 0 && playerData.playerAmmo > 0)
         {
             pAnimator.Play(pAnims[5]);
             gunAnimator.Play(gunAnims[2]);
             var bull = Instantiate(bullet, spawnPoint.transform.position, transform.rotation);
             bull.GetComponent<bulletScript>().bulletLife = 5f;
+            shootTimer = shootCooldown;
+            playerData.playerAmmo--;
+        }
+        else if (isAim && shootTimer <= 0)
+        {
+            pAnimator.Play(pAnims[6]);
             shootTimer = shootCooldown;
         }
     }

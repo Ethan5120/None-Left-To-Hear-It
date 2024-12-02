@@ -758,8 +758,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0.9969106, z: 0, w: 0.0785461}
-  m_LocalPosition: {x: -11.161106, y: 3.4183118, z: 5.8053465}
+  m_LocalRotation: {x: 0.19929233, y: 0.48788607, z: -0.11548154, w: 0.8419702}
+  m_LocalPosition: {x: -28.04, y: 6.6800003, z: 3.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1955,7 +1955,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerData: {fileID: 11400000, guid: d1a095b37d3d3b549880142d542f7fb1, type: 2}
   neededKey: 0
-  sceneToLoadIndex: 3
+  sceneToLoadIndex: 6
   animator: {fileID: 1984713629}
   AnimationName: CompleteDoorANIM
   changeCamera: {fileID: 258032398}
@@ -2414,6 +2414,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerData: {fileID: 0}
+  memory: {fileID: 0}
   objectSelected: 1
   keyIndex: 0
   pillsAmmount: 0
@@ -3177,6 +3178,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5271149660470458869, guid: 320f2741bf1cf084090086dd4c7499e9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6676806954991819460, guid: 320f2741bf1cf084090086dd4c7499e9,
         type: 3}
       propertyPath: m_Mesh
@@ -3554,14 +3560,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2124650565}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0.55156523, z: -0, w: 0.8341318}
   m_LocalPosition: {x: -28.04, y: 3.68, z: 3.3}
   m_LocalScale: {x: 1, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 205779964}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -66.949, z: 0}
 --- !u!1001 &5537233337390399006
 PrefabInstance:
   m_ObjectHideFlags: 0

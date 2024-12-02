@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHP: 0
   playerPills: 1
-  playerAmmo: 1
+  playerAmmo: 0
   PlayerKeys: 010000000000

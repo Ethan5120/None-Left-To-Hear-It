@@ -10,6 +10,7 @@ public class DoorController : MonoBehaviour, IInteractable
     [SerializeField] string AnimationName;
     [SerializeField] GameObject changeCamera;
     [SerializeField] GameEvent setDestination;
+    [SerializeField] GameEvent saveData;
 
     [Header("HubSettings")]
     [SerializeField] Vector3 positionToSpawn;
@@ -30,6 +31,7 @@ public class DoorController : MonoBehaviour, IInteractable
         {
             changeCamera.SetActive(true);
             setDestination.Raise(this, sceneToLoadIndex);
+            saveData.Raise(this, null);
             animator?.Play(AnimationName);
         }
         else

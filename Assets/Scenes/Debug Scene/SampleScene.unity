@@ -2034,6 +2034,7 @@ MonoBehaviour:
   AnimationName: CompleteDoorANIM
   changeCamera: {fileID: 258032398}
   setDestination: {fileID: 11400000, guid: 852c2f95b91f5624b94c8be1e7fedce2, type: 2}
+  saveData: {fileID: 11400000, guid: b2d310bacfd661f4595103f73f861525, type: 2}
   positionToSpawn: {x: -17, y: 0.6308119, z: 11.88}
   rotationToSpawn: {x: 0, y: -0.9961947, z: 0, w: 0.087155804}
 --- !u!1 &1037710155

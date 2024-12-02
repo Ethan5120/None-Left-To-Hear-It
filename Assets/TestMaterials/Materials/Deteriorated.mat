@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-2769986162997983620
+--- !u!114 &-6120081815845989684
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: silla
+  m_Name: Deteriorated
   m_Shader: {fileID: -6465566751694194690, guid: 2b3b7d0b179748b449e12721ea4fcfa6,
     type: 3}
   m_Parent: {fileID: 0}
@@ -38,7 +38,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - Texture2D_4450AB74:
-        m_Texture: {fileID: 2800000, guid: 30f28fa201eddf44bad3cf25f0238229, type: 3}
+        m_Texture: {fileID: 2800000, guid: 8e994d9ef67263b458acb2a619bb9b47, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
@@ -106,11 +106,11 @@ Material:
     - Boolean_85059BBE: 1
     - Boolean_8BBF99CD: 1
     - Boolean_D258FF8E: 1
-    - Vector1_21C41D02: 256
+    - Vector1_21C41D02: 186.2
     - Vector1_6F288C5B: 0.5
-    - Vector1_B2CC132F: 21.6
+    - Vector1_B2CC132F: 12
     - Vector1_B9994903: 11
-    - Vector1_E8746023: 32.4
+    - Vector1_E8746023: 8.1
     - _AlphaClip: 0
     - _AlphaToMask: 0
     - _Blend: 0
@@ -143,8 +143,8 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_2E5415DE: {r: 1, g: 1, b: 1, a: 0}
-    - Vector2_8044833E: {r: 1, g: 1, b: 0, a: 0}
+    - Color_2E5415DE: {r: 0, g: 0, b: 0, a: 0}
+    - Vector2_8044833E: {r: 0.34, g: 0.34, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

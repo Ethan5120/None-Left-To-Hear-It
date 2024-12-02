@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     [Header("GameManagerVariables")]
     [SerializeField] CameraChanger cameraManager;
     [SerializeField] string cameraObjectName;
+    [SerializeField] PlayerSO playerData;
 
     [Header("PlayerVariables")]
     [SerializeField] float playerSpeed = 3;
@@ -41,6 +42,8 @@ public class PlayerController : MonoBehaviour
     [Header("AnimationData")]
     Animator pAnimator;
     [SerializeField] List<string> pAnims =  new List<string>(); //En esta lista vamos a meter las animaciones del jugador
+    [SerializeField] Animator gunAnimator;
+     [SerializeField] List<string> gunAnims =  new List<string>();
 
     ////Audio////
 
@@ -87,6 +90,7 @@ public class PlayerController : MonoBehaviour
         if(isAim && shootTimer <= 0)
         {
             pAnimator.Play(pAnims[5]);
+            gunAnimator.Play(gunAnims[2]);
             var bull = Instantiate(bullet, spawnPoint.transform.position, transform.rotation);
             bull.GetComponent<bulletScript>().bulletLife = 5f;
             shootTimer = shootCooldown;
@@ -100,6 +104,10 @@ public class PlayerController : MonoBehaviour
         {
             if(hitInfo.collider.gameObject.TryGetComponent(out IInteractable interactObject))
             {
+                if(hitInfo.collider.gameObject.TryGetComponent(out playerPickUps pickUps))
+                {
+                    pAnimator.Play(pAnims[7]);
+                }
                 interactObject.Interact();
             }
         }
@@ -110,6 +118,7 @@ public class PlayerController : MonoBehaviour
         //Use the move method to move the player to the front and back
         if(!isAim)
         {
+            gunAnimator.Play(gunAnims[0]);
             if(playerInput.y == 0 && playerInput.x != 0)
             {
                 pAnimator.Play(pAnims[3]);
@@ -143,6 +152,7 @@ public class PlayerController : MonoBehaviour
             if(isAim && shootTimer == 0)
             {
                 pAnimator.Play(pAnims[4]);
+                gunAnimator.Play(gunAnims[1]);
             }
             //transform.Rotate(transform.right, playerAimSpeed * -playerInput.y * Time.deltaTime); //<----Encender a su propio riesgo
             transform.Rotate(transform.up, playerAimSpeed * playerInput.x * Time.deltaTime);
@@ -172,6 +182,10 @@ public class PlayerController : MonoBehaviour
         SceneManager.LoadScene(DeathScene);
     }
 
+
+
+
+#region AudioControl
     public void PlayFootstepsAudio()
     {
         FootstepsSource.PlayOneShot(FootstepsSound);
@@ -201,4 +215,6 @@ public class PlayerController : MonoBehaviour
     {
         DamageSource.PlayOneShot(DamageSound);
     }
+#endregion
+
 }

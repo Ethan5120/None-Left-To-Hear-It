@@ -176,7 +176,29 @@ public class PlayerController : MonoBehaviour
         PlayerMovement();
     }
 
+    public void TakeDamage()
+    {
+        playerData.playerHP--;
+        if(playerData.playerHP > 0)
+        {
+            pAnimator.Play(pAnims[8]);
+        }
+        else
+        {
+            pAnimator.Play(pAnims[9]);
+        }
+    }
 
+    public void Heal()
+    {
+        if(playerData.playerPills > 0)
+        {
+            playerData.playerPills--;
+            playerData.playerHP++;
+        }
+    }
+
+#region AnimationEvents
     void Reload()
     {
         shootTimer = 0;
@@ -186,7 +208,7 @@ public class PlayerController : MonoBehaviour
     {
         isInteracting = false;
     }
-
+#endregion
  
     ////////////////Animation Event Audios///////////////////// 
    

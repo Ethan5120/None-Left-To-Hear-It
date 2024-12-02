@@ -14,15 +14,27 @@ public class EnemyAI : MonoBehaviour
     [Header("AnimationSettings")]
     [SerializeField] private Animator animator;
     [SerializeField] List<string> animations =  new List<string>();
+    [Space(5)]
 
-    ////////////////////////AUDIO
-
-    public AudioClip FootstepSound, Deathsound, BiteSound, RiseSound, ArmSwingSound;
-    public AudioSource FootstepSource, DeathSource, BiteSource, RiseSource, ArmSwingSource;
-
-    public AudioSource RadioSource;
+    [Header("AudioSettings")]
+    public AudioClip FootstepSound;
+    public AudioClip Deathsound;
+    public AudioClip BiteSound;
+    public AudioClip RiseSound;
+    public AudioClip ArmSwingSound;
     public AudioClip RadioSound;
+
+    public AudioSource FootstepSource;
+    public AudioSource DeathSource;
+    public AudioSource BiteSource;
+    public AudioSource RiseSource;
+    public AudioSource ArmSwingSource;
+    public AudioSource RadioSource;
     
+    [Space(5)]
+
+    [Header("AttackData")]
+    private SphereCollider attackCollider;
 
     void Awake()
     {
@@ -156,8 +168,21 @@ public class EnemyAI : MonoBehaviour
         enemyData.newRotation = transform.rotation;
     }
 
+
+
+    void EnableAttack()
+    {
+        attackCollider.enabled = true;
+    }
+
+    void DisableAttack()
+    {
+        attackCollider.enabled = true;
+    }
+
+
     /////Animation Events (AUDIO)
-    
+#region AudioEvents
     public void PlayFootstepSounds()
     {
         FootstepSource.PlayOneShot(FootstepSound);
@@ -182,4 +207,5 @@ public class EnemyAI : MonoBehaviour
     {
         ArmSwingSource.PlayOneShot(ArmSwingSound);
     }
+#endregion
 }

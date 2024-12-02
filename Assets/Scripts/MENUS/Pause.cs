@@ -23,10 +23,13 @@ public class Pause : MonoBehaviour
 
     public GameObject k0, k1, k2, k3, k4, k5;
 
+    private Animator animatorCanvas;
+
     private void Start()
     {
        paused = false;
        inventaryOpen = false;
+       animatorCanvas = GetComponent<Animator>();
 
     }
 
@@ -90,9 +93,9 @@ public class Pause : MonoBehaviour
                     Inventory.SetActive(true);
                     //Cursor.visible = true;
                     //Cursor.lockState = CursorLockMode.None;
-                    AudioListener.pause = true;
-                 }
-                 if(inventaryOpen == false)
+                    AudioListener.pause = false;
+                }
+                if(inventaryOpen == false)
                 {
                     player.enabled=true;
                     PauseMenu.SetActive(false);
@@ -100,9 +103,15 @@ public class Pause : MonoBehaviour
                     Inventory.SetActive(false);
                     //Cursor.visible = false;
                     //Cursor.lockState = CursorLockMode.Locked;
-                    AudioListener.pause = true;
+                    AudioListener.pause = false;
                 }
             }
+        }
+
+        if(Time.timeScale == 0) //ESTO PERMITE LAS ANIMACIONES UNICAMENTE DEL CANVAS REPRODUCIRSE
+        {
+            float deltaTime = Time.unscaledDeltaTime;
+            animatorCanvas.Update(deltaTime);
         }
     }
 

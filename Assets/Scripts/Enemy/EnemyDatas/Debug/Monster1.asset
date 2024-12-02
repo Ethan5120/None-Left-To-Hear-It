@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Monster1
   m_EditorClassIdentifier: 
   firstLoad: 0
-  enemyHealth: 0
-  deadTime: 14.599745
+  enemyHealth: 1
+  deadTime: -1.4212713
   startAmbush: 0
   startingState: 0
-  currentState: 1
+  currentState: 0
   startingPosition: {x: 44, y: 0.7, z: 15}
   startingRotation: {x: 0, y: 0, z: 0, w: 0}
   newPosition: {x: 44, y: 0.7, z: 15}

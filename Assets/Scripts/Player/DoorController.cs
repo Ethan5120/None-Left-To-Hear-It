@@ -11,10 +11,15 @@ public class DoorController : MonoBehaviour, IInteractable
     [SerializeField] GameObject changeCamera;
     [SerializeField] GameEvent setDestination;
 
+    [Header("HubSettings")]
+    [SerializeField] Vector3 positionToSpawn;
+    [SerializeField] Quaternion rotationToSpawn;
+
 
     public void Interact()
     {
         Debug.Log("Interact");
+        SetSpawn();
         StartAnim();
     }
 
@@ -33,6 +38,13 @@ public class DoorController : MonoBehaviour, IInteractable
         }
     }
 
-
+    void SetSpawn()
+    {
+        if(playerData.isInHub)
+        {
+            playerData.spawnPosition = positionToSpawn;
+            playerData.spawnRotation = rotationToSpawn;
+        }
+    }
 
 }

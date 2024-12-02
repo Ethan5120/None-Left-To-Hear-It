@@ -4,7 +4,7 @@ using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
-    [SerializeField] EnemyData enemyData;
+    public EnemyData enemyData;
     public EnemyData.EnemyState newState;
     private Transform player;
     [SerializeField] NavMeshAgent agent;

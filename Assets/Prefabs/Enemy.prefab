@@ -8943,17 +8943,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 6ff03ecb5686a564cb80c5a01ce0a8b0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 47.318954
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6ff03ecb5686a564cb80c5a01ce0a8b0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5359554
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6ff03ecb5686a564cb80c5a01ce0a8b0,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 15.188141
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6ff03ecb5686a564cb80c5a01ce0a8b0,
         type: 3}
@@ -10460,6 +10460,8 @@ MonoBehaviour:
   BiteSource: {fileID: 2992108312124560332}
   RiseSource: {fileID: 7518586862707347466}
   ArmSwingSource: {fileID: 6311447935034917816}
+  RadioSource: {fileID: 0}
+  RadioSound: {fileID: 0}
 --- !u!114 &5492767668606451659
 MonoBehaviour:
   m_ObjectHideFlags: 0

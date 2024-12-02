@@ -3,6 +3,7 @@ using UnityEngine;
 public class playerPickUps : MonoBehaviour, IInteractable
 {
     [SerializeField] PlayerSO playerData;
+    [SerializeField] pickUp_SO memory;
     public enum objectType 
     {
         Key,
@@ -15,34 +16,51 @@ public class playerPickUps : MonoBehaviour, IInteractable
     [SerializeField]int pillsAmmount;
     [SerializeField]int ammoAmmount;
 
-
+    void  Awake()
+    {
+        if(memory == null)
+        {
+            memory = ScriptableObject.CreateInstance<pickUp_SO>();
+        }
+        else
+        {
+            if(memory.hasBeenCollected)
+            {
+                gameObject.SetActive(false);
+            }
+        } 
+    }
 
 
     public void Interact()
     {
+        Debug.Log("Interact");
         switch (objectSelected)
         {
             case objectType.Key:
             {
                 playerData.PlayerKeys[keyIndex] = true;
+                memory.hasBeenCollected = true;
+                gameObject.SetActive(false);
 
-                Destroy(gameObject);
                 break;
             }
 
             case objectType.Pills:
             {
                 playerData.playerPills += pillsAmmount;
+                memory.hasBeenCollected = true;
+                gameObject.SetActive(false);
 
-                Destroy(gameObject);
                 break;
             }
 
             case objectType.Ammo:
             {
                 playerData.playerAmmo += ammoAmmount;
+                memory.hasBeenCollected = true;
+                gameObject.SetActive(false);
 
-                Destroy(gameObject);
                 break;
             }
 

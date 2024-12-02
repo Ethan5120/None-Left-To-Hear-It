@@ -38,6 +38,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("PlayeStatus")]
     [SerializeField] bool isAim = false; //Checa si el jugador esta apuntando
+    [SerializeField] bool isInteracting = false; //Checa si el jugador esta apuntando
 
     [Header("AnimationData")]
     Animator pAnimator;
@@ -73,7 +74,7 @@ public class PlayerController : MonoBehaviour
 
     private void EnterThirdPerson(InputAction.CallbackContext context)
     {
-        if(!isAim)
+        if(!isAim && !isInteracting)
         {
             cameraManager.TriggerThirdPerson();
             isAim = true;
@@ -106,6 +107,7 @@ public class PlayerController : MonoBehaviour
             {
                 if(hitInfo.collider.gameObject.TryGetComponent(out playerPickUps pickUps))
                 {
+                    isInteracting = true;
                     pAnimator.Play(pAnims[7]);
                 }
                 interactObject.Interact();
@@ -119,26 +121,26 @@ public class PlayerController : MonoBehaviour
         if(!isAim)
         {
             gunAnimator.Play(gunAnims[0]);
-            if(playerInput.y == 0 && playerInput.x != 0)
+            if(playerInput.y == 0 && playerInput.x != 0 && !isInteracting)
             {
                 pAnimator.Play(pAnims[3]);
             }
 
 
 
-            if(playerInput.y > 0)
+            if(playerInput.y > 0 && !isInteracting)
             {   
                 controller.Move(transform.forward * playerInput.y * playerSpeed * Time.deltaTime);
                 pAnimator.Play(pAnims[1]);
             }
-            else if(playerInput.y < 0)
+            else if(playerInput.y < 0 && !isInteracting)
             {
                 controller.Move(transform.forward * playerInput.y * (playerSpeed/2) * Time.deltaTime);
                 pAnimator.Play(pAnims[2]);
             }
 
 
-            if(playerInput.y == 0 && playerInput.x == 0 && !isAim)
+            if(playerInput.y == 0 && playerInput.x == 0 && !isAim && !isInteracting)
             {
                 pAnimator.Play(pAnims[0]);
             }
@@ -172,6 +174,11 @@ public class PlayerController : MonoBehaviour
     void Reload()
     {
         shootTimer = 0;
+    }
+
+    void StopInteract()
+    {
+        isInteracting = false;
     }
 
  

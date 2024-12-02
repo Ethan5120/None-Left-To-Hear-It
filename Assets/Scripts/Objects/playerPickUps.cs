@@ -16,7 +16,7 @@ public class playerPickUps : MonoBehaviour, IInteractable
     [SerializeField]int pillsAmmount;
     [SerializeField]int ammoAmmount;
 
-    void  Awake()
+    void  Start()
     {
         if(memory == null)
         {

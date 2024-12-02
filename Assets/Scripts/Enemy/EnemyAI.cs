@@ -9,7 +9,8 @@ public class EnemyAI : MonoBehaviour
     private Transform player;
     [SerializeField] NavMeshAgent agent;
     [SerializeField] private float distance;
-    bool isAttacking;
+    [SerializeField] bool isAttacking;
+    [SerializeField] float unstuckTime;
 
     [Header("AnimationSettings")]
     [SerializeField] private Animator animator;
@@ -36,7 +37,7 @@ public class EnemyAI : MonoBehaviour
     [Header("AttackData")]
     private SphereCollider attackCollider;
 
-    void Awake()
+    void Start()
     {
         animator = GetComponent<Animator>();
         if(enemyData == null)
@@ -49,19 +50,18 @@ public class EnemyAI : MonoBehaviour
 
         if(enemyData.firstLoad)
         {
+            enemyData.startAmbush = false;
             enemyData.currentState = enemyData.startingState;
             transform.SetPositionAndRotation(enemyData.startingPosition, enemyData.startingRotation);
             enemyData.enemyHealth = 1;
-            enemyData.firstLoad = false;
+            enemyData.firstLoad = false;     
         }
         else
         {
             transform.SetPositionAndRotation(enemyData.newPosition, enemyData.newRotation);
         }
-    }
-    
-    void Start()
-    {
+
+
         player = FindObjectOfType<PlayerController>().transform;
         agent = GetComponent<NavMeshAgent>();
 
@@ -76,16 +76,17 @@ public class EnemyAI : MonoBehaviour
         {
             case EnemyData.EnemyState.aliveState:
             {
-                if(animations != null && !isAttacking)
+                distance = Vector3.Distance(transform.position, player.position);
+
+                if(animations != null && !isAttacking && distance > 2f)
                 {
                     animator.Play(animations[0]);
                     agent.destination = player.position;
                     agent.isStopped = false;
+
                 }
                
-
-                distance = Vector3.Distance(transform.position, player.position);
-                if(distance <= 1f)
+                if(distance <= 2f)
                 {
                     Debug.Log("StartAttack");
                     StartAttack();
@@ -113,7 +114,7 @@ public class EnemyAI : MonoBehaviour
 
             case EnemyData.EnemyState.ambushState:
             {
-                if(animations != null)
+                if(animations != null && !enemyData.startAmbush)
                 {
                     animator.Play(animations[3]);
                 }
@@ -126,6 +127,15 @@ public class EnemyAI : MonoBehaviour
                     }
                 }
                 break;
+            }
+        }
+
+        if(isAttacking)
+        {
+            unstuckTime-= Time.deltaTime;
+            if(unstuckTime <= 0)
+            {
+                isAttacking = false;
             }
         }
     }
@@ -149,14 +159,13 @@ public class EnemyAI : MonoBehaviour
         if(animations != null && !isAttacking)
         {
             animator.Play(animations[Random.Range(1, 3)]);
-            agent.isStopped = true;
             isAttacking = true;
+            unstuckTime = 3f;
         }
     }
 
     public void EndAttack()
-    {
-        agent.isStopped = false;
+    { 
         isAttacking = false;
     }
     public void Resurrect()

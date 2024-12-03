@@ -20,6 +20,9 @@ public class playerPickUps : MonoBehaviour, IInteractable
     [SerializeField] bool isAmbushTrigger;
     [SerializeField] List<EnemyData> enemies = new List<EnemyData>();
 
+    [Header("UI Data")]
+    [SerializeField] GameEvent turnOnPanel;
+
 
     void  Start()
     {
@@ -47,7 +50,7 @@ public class playerPickUps : MonoBehaviour, IInteractable
                 playerData.PlayerKeys[keyIndex] = true;
                 memory.hasBeenCollected = true;
                 gameObject.SetActive(false);
-
+                turnOnPanel.Raise(this, $"Key Number {keyIndex + 1}");
                 break;
             }
 
@@ -56,7 +59,7 @@ public class playerPickUps : MonoBehaviour, IInteractable
                 playerData.playerPills += pillsAmmount;
                 memory.hasBeenCollected = true;
                 gameObject.SetActive(false);
-
+                turnOnPanel.Raise(this, $"{pillsAmmount}x Pill(s)");
                 break;
             }
 
@@ -65,7 +68,7 @@ public class playerPickUps : MonoBehaviour, IInteractable
                 playerData.playerAmmo += ammoAmmount;
                 memory.hasBeenCollected = true;
                 gameObject.SetActive(false);
-
+                turnOnPanel.Raise(this, $"{ammoAmmount}x Bullet(s)");
                 break;
             }
 

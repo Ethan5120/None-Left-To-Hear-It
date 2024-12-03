@@ -80,7 +80,7 @@ public class PlayerController : MonoBehaviour
             cameraManager.TriggerThirdPerson();
             isAim = true;
         }
-        else if(shootTimer == 0)
+        else if(shootTimer == 0 && !isTakingDamage && !isInteracting)
         {
             cameraManager.TriggerThirdPerson();
             isAim = false;
@@ -110,7 +110,7 @@ public class PlayerController : MonoBehaviour
         Ray r = new Ray (transform.position, transform.forward);
         if(Physics.Raycast(r, out RaycastHit hitInfo, interactRange, interactLayer))
         {
-            if(hitInfo.collider.gameObject.TryGetComponent(out IInteractable interactObject))
+            if(hitInfo.collider.gameObject.TryGetComponent(out IInteractable interactObject) && !isAim && !isTakingDamage)
             {
                 if(hitInfo.collider.gameObject.TryGetComponent(out playerPickUps pickUps))
                 {

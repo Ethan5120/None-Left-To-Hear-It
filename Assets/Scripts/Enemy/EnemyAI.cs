@@ -30,7 +30,7 @@ public class EnemyAI : MonoBehaviour
     public AudioSource BiteSource;
     public AudioSource RiseSource;
     public AudioSource ArmSwingSource;
-    public AudioSource RadioSource;
+    public AudioSource VoicesSource;
     
     [Space(5)]
 
@@ -76,6 +76,10 @@ public class EnemyAI : MonoBehaviour
         {
             case EnemyData.EnemyState.aliveState:
             {
+                if(!VoicesSource.isPlaying)
+                {
+                    StartAudioHell();
+                }
                 distance = Vector3.Distance(transform.position, player.position);
 
                 if(animations != null && !isAttacking && distance > 2f)
@@ -96,6 +100,10 @@ public class EnemyAI : MonoBehaviour
 
             case EnemyData.EnemyState.deadState:
             {
+                if(VoicesSource.isPlaying)
+                {
+                    StopAudioHell();
+                }
                 if(animations != null && enemyData.deadTime >=0)
                 {
                     animator.Play(animations[3]);
@@ -172,6 +180,7 @@ public class EnemyAI : MonoBehaviour
     {
         enemyData.currentState = EnemyData.EnemyState.aliveState;
         enemyData.enemyHealth = 1;
+        enemyData.deadTime = 0;
     }
 
     public void SaveData(Component sender, object data)
@@ -226,6 +235,15 @@ public class EnemyAI : MonoBehaviour
     public void PlayArmAttack()
     {
         ArmSwingSource.PlayOneShot(ArmSwingSound);
+    }
+
+    void StartAudioHell()
+    {
+        VoicesSource.Play();
+    }
+    void StopAudioHell()
+    {
+        VoicesSource.Stop();
     }
 #endregion
 }

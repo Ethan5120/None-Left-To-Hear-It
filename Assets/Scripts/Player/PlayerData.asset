@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PlayerData
   m_EditorClassIdentifier: 
   playerHP: 3
-  playerPills: 1
+  playerPills: 3
   playerAmmo: 3
   PlayerKeys: 010000000000
   isInHub: 1

@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class playerPickUps : MonoBehaviour, IInteractable
 {
@@ -15,6 +16,10 @@ public class playerPickUps : MonoBehaviour, IInteractable
     [SerializeField]int keyIndex;
     [SerializeField]int pillsAmmount;
     [SerializeField]int ammoAmmount;
+
+    [SerializeField] bool isAmbushTrigger;
+    [SerializeField] List<EnemyData> enemies = new List<EnemyData>();
+
 
     void  Start()
     {
@@ -65,6 +70,13 @@ public class playerPickUps : MonoBehaviour, IInteractable
             }
 
 
+        }
+        if(isAmbushTrigger)
+        {
+            foreach(EnemyData enemy in enemies)
+            {
+                enemy.startAmbush = true;
+            }
         }
     }
 

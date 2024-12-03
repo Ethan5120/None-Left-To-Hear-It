@@ -2020,10 +2020,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 8339797867363741791}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -4.5, y: 155.8}
-  m_SizeDelta: {x: 838.7177, y: 118.4679}
+  m_SizeDelta: {x: 738.7177, y: 18.467903}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3972109064153443132
 CanvasRenderer:
@@ -2644,7 +2644,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8339797867363741791
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3370,6 +3370,7 @@ GameObject:
   - component: {fileID: 6502919628126098348}
   - component: {fileID: 8598155224482841094}
   - component: {fileID: 1944732092960517385}
+  - component: {fileID: 1357584901367017224}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -3500,9 +3501,9 @@ MonoBehaviour:
   startPauseButton: {fileID: 1629943297259700988}
   startInventoryButton: {fileID: 172115779224148382}
   PickUpPanel: {fileID: 6877318915026225495}
-  pickedUpText: {fileID: 5572056049107815765}
+  pickedUpText: {fileID: 5975029112119425910}
   timeTurnedOn: 1.5
-  timer: 0
+  pick_timer: 0
   hpDisplay: {fileID: 3436996554907052806}
 --- !u!114 &8598155224482841094
 MonoBehaviour:
@@ -3539,6 +3540,34 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1357584901367017224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4870497450122529253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35fa3c77d82a5764fb8c3b6e1b732688, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 5aeb7b66046780548a25daa09bc78cf8, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6502919628126098348}
+        m_TargetAssemblyTypeName: Pause, Assembly-CSharp
+        m_MethodName: SetTextAndTime
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4996599410519229941
 GameObject:
   m_ObjectHideFlags: 0
@@ -3732,7 +3761,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 8541674909616925620}
+  m_TargetGraphic: {fileID: 3609093138482076277}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -5195,7 +5224,7 @@ GameObject:
   - component: {fileID: 4015554395816806115}
   - component: {fileID: 2437494869728891056}
   m_Layer: 5
-  m_Name: MessagePanel
+  m_Name: PickUpMessagePanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5277,7 +5306,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6799428178911457558
 RectTransform:
   m_ObjectHideFlags: 0

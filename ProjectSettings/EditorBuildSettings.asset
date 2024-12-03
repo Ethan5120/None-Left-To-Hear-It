@@ -21,12 +21,6 @@ EditorBuildSettings:
     path: Assets/Scenes/DeathScene.unity
     guid: fc88179c356613e499e066427f5c5b09
   - enabled: 1
-    path: Assets/Scenes/Debug Scene/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 1
-    path: Assets/Scenes/Debug Scene/TestChange.unity
-    guid: 146b79942d2cfc54687351f1e1156443
-  - enabled: 1
     path: Assets/Scenes/RoomScenes/Room1.unity
     guid: b09dd2a1c324a0445a43b6ec9c1e391a
   - enabled: 1

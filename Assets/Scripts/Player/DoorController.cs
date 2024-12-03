@@ -45,7 +45,7 @@ public class DoorController : MonoBehaviour, IInteractable
     void Update()
     {
         float deltaTime = Time.unscaledDeltaTime;
-        animator.Update(deltaTime);
+        animator.Update(deltaTime / 2);
     }
 
     void SetSpawn()

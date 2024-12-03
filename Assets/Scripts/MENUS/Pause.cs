@@ -37,7 +37,7 @@ public class Pause : MonoBehaviour
     [SerializeField] GameObject PickUpPanel;
     [SerializeField] TextMeshProUGUI pickedUpText;
     [SerializeField] float timeTurnedOn;
-    [SerializeField] float timer;
+    [SerializeField] float pick_timer;
 
     [Header("HealthUI")]
     [SerializeField] Image hpDisplay;
@@ -68,10 +68,10 @@ public class Pause : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(timer > 0)
+        if(pick_timer > 0)
         {
             PickUpPanel.SetActive(true);
-            timer -= Time.deltaTime;
+            pick_timer -= Time.deltaTime;
         }
         else
         {
@@ -216,7 +216,7 @@ public class Pause : MonoBehaviour
             }
             default:
             {
-                hpDisplay.color = Color.green;
+                hpDisplay.color = Color.red;
                 break;
             }
         }
@@ -229,6 +229,6 @@ public class Pause : MonoBehaviour
         {
             pickedUpText.text = (string) data;
         }
-        timer = timeTurnedOn;
+        pick_timer = timeTurnedOn;
     }
 }

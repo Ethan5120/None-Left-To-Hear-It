@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class DoorController : MonoBehaviour, IInteractable
@@ -29,15 +30,22 @@ public class DoorController : MonoBehaviour, IInteractable
     {
         if(playerData.PlayerKeys[neededKey] == true && changeCamera != null)
         {
+            Time.timeScale = 0f;
             changeCamera.SetActive(true);
             setDestination.Raise(this, sceneToLoadIndex);
             saveData.Raise(this, null);
             animator?.Play(AnimationName);
+            
         }
         else
         {
             Debug.Log("This Door is Close");
         }
+    }
+    void Update()
+    {
+        float deltaTime = Time.unscaledDeltaTime;
+        animator.Update(deltaTime);
     }
 
     void SetSpawn()

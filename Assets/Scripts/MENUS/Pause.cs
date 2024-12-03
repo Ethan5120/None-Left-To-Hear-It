@@ -27,6 +27,8 @@ public class Pause : MonoBehaviour
 
     private Animator animatorCanvas;
 
+    [SerializeField] Button startButton;
+
     [Header("PickUpUI")]
     [SerializeField] GameObject PickUpPanel;
     [SerializeField] TextMeshProUGUI pickedUpText;
@@ -36,10 +38,10 @@ public class Pause : MonoBehaviour
 
     private void Start()
     {
-       paused = false;
-       inventaryOpen = false;
-       animatorCanvas = GetComponent<Animator>();
-
+        paused = false;
+        inventaryOpen = false;
+        animatorCanvas = GetComponent<Animator>();
+        Time.timeScale = 1;
     }
 
     private void OnEnable()
@@ -109,6 +111,7 @@ public class Pause : MonoBehaviour
                 //Cursor.lockState = CursorLockMode.Locked;
                 AudioListener.pause = false;
                 PauseVHS.SetActive(false);
+                startButton.Select();
             }
         }
     }
@@ -176,11 +179,11 @@ public class Pause : MonoBehaviour
     }
 
     public void UpdateInventory()
-    {/*
+    {
         k0.SetActive(keyData.PlayerKeys[0]);
         k1.SetActive(keyData.PlayerKeys[1]);
         k2.SetActive(keyData.PlayerKeys[2]);
-        k3.SetActive(keyData.PlayerKeys[3]);*/
+        k3.SetActive(keyData.PlayerKeys[3]);
     }
 
     public void SetTextAndTime(Component sender, object data)

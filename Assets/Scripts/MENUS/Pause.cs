@@ -24,16 +24,24 @@ public class Pause : MonoBehaviour
     public PlayerSO keyData;
 
     public GameObject k0, k1, k2, k3;
+    [SerializeField] TextMeshProUGUI AmmoText;
+    [SerializeField] TextMeshProUGUI PillsText;
+
 
     private Animator animatorCanvas;
 
-    [SerializeField] Button startButton;
+    [SerializeField] Button startPauseButton;
+    [SerializeField] Button startInventoryButton;
 
     [Header("PickUpUI")]
     [SerializeField] GameObject PickUpPanel;
     [SerializeField] TextMeshProUGUI pickedUpText;
     [SerializeField] float timeTurnedOn;
     [SerializeField] float timer;
+
+    [Header("HealthUI")]
+    [SerializeField] Image hpDisplay;
+
 
 
     private void Start()
@@ -97,6 +105,7 @@ public class Pause : MonoBehaviour
                 //Cursor.lockState = CursorLockMode.None;
                 AudioListener.pause = true;
                 PauseVHS.SetActive(true);
+                startPauseButton.Select();
             }
             if(paused == false)
             {
@@ -111,7 +120,6 @@ public class Pause : MonoBehaviour
                 //Cursor.lockState = CursorLockMode.Locked;
                 AudioListener.pause = false;
                 PauseVHS.SetActive(false);
-                startButton.Select();
             }
         }
     }
@@ -134,6 +142,7 @@ public class Pause : MonoBehaviour
                 //Cursor.visible = true;
                 //Cursor.lockState = CursorLockMode.None;
                 AudioListener.pause = false;
+                startInventoryButton.Select();
             }
             if(inventaryOpen == false)
             {
@@ -184,6 +193,33 @@ public class Pause : MonoBehaviour
         k1.SetActive(keyData.PlayerKeys[1]);
         k2.SetActive(keyData.PlayerKeys[2]);
         k3.SetActive(keyData.PlayerKeys[3]);
+        
+        AmmoText.text = $"x{keyData.playerAmmo}";
+        PillsText.text = $"x{keyData.playerPills}";
+
+        switch (keyData.playerHP)
+        {
+            case 1:
+            {
+                hpDisplay.color = Color.red;
+                break;
+            }
+            case 2:
+            {
+                hpDisplay.color = Color.yellow;
+                break;
+            }
+            case 3:
+            {
+                hpDisplay.color = Color.green;
+                break;
+            }
+            default:
+            {
+                hpDisplay.color = Color.green;
+                break;
+            }
+        }
     }
 
     public void SetTextAndTime(Component sender, object data)

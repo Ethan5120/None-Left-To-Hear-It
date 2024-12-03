@@ -89,7 +89,7 @@ public class PlayerController : MonoBehaviour
 
     private void PlayerShoot(InputAction.CallbackContext context)
     {
-        if(isAim && shootTimer <= 0 && playerData.playerAmmo > 0)
+        if(isAim && shootTimer <= 0 && playerData.playerAmmo > 0 && !isTakingDamage)
         {
             pAnimator.Play(pAnims[5]);
             gunAnimator.Play(gunAnims[2]);
@@ -98,7 +98,7 @@ public class PlayerController : MonoBehaviour
             shootTimer = shootCooldown;
             playerData.playerAmmo--;
         }
-        else if (isAim && shootTimer <= 0)
+        else if (isAim && shootTimer <= 0 && !isTakingDamage)
         {
             pAnimator.Play(pAnims[6]);
             shootTimer = shootCooldown;
@@ -158,7 +158,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            if(isAim && shootTimer == 0)
+            if(isAim && shootTimer == 0 && !isTakingDamage)
             {
                 pAnimator.Play(pAnims[4]);
                 gunAnimator.Play(gunAnims[1]);
@@ -193,7 +193,7 @@ public class PlayerController : MonoBehaviour
 
     public void Heal()
     {
-        if(playerData.playerPills > 0)
+        if(playerData.playerPills > 0 && playerData.playerHP < 3)
         {
             playerData.playerPills--;
             playerData.playerHP++;

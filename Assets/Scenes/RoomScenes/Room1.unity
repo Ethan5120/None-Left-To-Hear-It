@@ -1303,7 +1303,7 @@ PrefabInstance:
         type: 3}
       propertyPath: agent
       value: 
-      objectReference: {fileID: 20447818}
+      objectReference: {fileID: 0}
     - target: {fileID: 5438743793941750200, guid: 25e956bce8f37104183888829aade962,
         type: 3}
       propertyPath: newState
@@ -1438,7 +1438,7 @@ PrefabInstance:
     - target: {fileID: 5889343171845869174, guid: 25e956bce8f37104183888829aade962,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 32.66892
+      value: 4.61
       objectReference: {fileID: 0}
     - target: {fileID: 5889343171845869174, guid: 25e956bce8f37104183888829aade962,
         type: 3}
@@ -1448,7 +1448,7 @@ PrefabInstance:
     - target: {fileID: 5889343171845869174, guid: 25e956bce8f37104183888829aade962,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -31.902699
+      value: -30.93
       objectReference: {fileID: 0}
     - target: {fileID: 5889343171845869174, guid: 25e956bce8f37104183888829aade962,
         type: 3}
@@ -1955,12 +1955,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25e956bce8f37104183888829aade962, type: 3}
---- !u!195 &20447818 stripped
-NavMeshAgent:
-  m_CorrespondingSourceObject: {fileID: 8408737794517551888, guid: 25e956bce8f37104183888829aade962,
-    type: 3}
-  m_PrefabInstance: {fileID: 20447817}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &24932443
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,8 +7,15 @@ using UnityEngine.SceneManagement;
 public class DeathGoMenu : MonoBehaviour
 {
     public string MenuName;
+    public AudioSource ButtonAudio;
+
     void GoToMenu(string MenuName)
     {
         SceneManager.LoadScene(MenuName);
+    }
+
+    private void AudioPlay()
+    {
+        ButtonAudio.Play();
     }
 }

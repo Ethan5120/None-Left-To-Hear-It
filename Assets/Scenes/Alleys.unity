@@ -22740,11 +22740,6 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1756735667}
-    - target: {fileID: 6502919628126098348, guid: 9c842af545cc17944931bf9dfca32c52,
-        type: 3}
-      propertyPath: endingSceneName
-      value: PostGame
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

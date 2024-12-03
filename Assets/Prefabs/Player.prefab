@@ -7610,6 +7610,9 @@ MonoBehaviour:
   Shoot: {fileID: -1312178788781955072, guid: 65476d7987a9a714abb9f737564d18ea, type: 3}
   Interact: {fileID: -3107922652662247150, guid: 65476d7987a9a714abb9f737564d18ea,
     type: 3}
+  Pause: {fileID: 2204408275470165428, guid: 65476d7987a9a714abb9f737564d18ea, type: 3}
+  Inventory: {fileID: -9162308333277279462, guid: 65476d7987a9a714abb9f737564d18ea,
+    type: 3}
   cameraManager: {fileID: 0}
   cameraObjectName: GameManager
   playerData: {fileID: 11400000, guid: d1a095b37d3d3b549880142d542f7fb1, type: 2}

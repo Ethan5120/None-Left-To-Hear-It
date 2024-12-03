@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     [Header("InputSystemDeclarations")]
     private Vector2 playerInput;
     [SerializeField] CharacterController controller;
-    [SerializeField] InputActionReference Move, Aim, Shoot, Interact;
+    [SerializeField] public InputActionReference Move, Aim, Shoot, Interact, Pause, Inventory;
 
     [Header("GameManagerVariables")]
     [SerializeField] CameraChanger cameraManager;

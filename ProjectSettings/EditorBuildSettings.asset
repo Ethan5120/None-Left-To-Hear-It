@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/PreGame.unity
     guid: d28a57603db4f2f43baa74c8af74a1bf
   - enabled: 1
-    path: Assets/Scenes/BLOCKOUT.unity
+    path: Assets/Scenes/Alleys.unity
     guid: e8a3ec081c0a1fc4cbd9504cf79f8375
   - enabled: 1
     path: Assets/Scenes/DeathScene.unity

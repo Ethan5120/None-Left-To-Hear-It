@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using TMPro;
 
 public class Pause : MonoBehaviour
 {
@@ -25,6 +26,13 @@ public class Pause : MonoBehaviour
     public GameObject k0, k1, k2, k3;
 
     private Animator animatorCanvas;
+
+    [Header("PickUpUI")]
+    [SerializeField] GameObject PickUpPanel;
+    [SerializeField] TextMeshProUGUI pickedUpText;
+    [SerializeField] float timeTurnedOn;
+    [SerializeField] float timer;
+
 
     private void Start()
     {
@@ -50,6 +58,16 @@ public class Pause : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(timer > 0)
+        {
+            PickUpPanel.SetActive(true);
+            timer -= Time.deltaTime;
+        }
+        else
+        {
+            PickUpPanel.SetActive(false);
+        }
+
         UpdateInventory();
         if(Time.timeScale == 0) //ESTO PERMITE LAS ANIMACIONES UNICAMENTE DEL CANVAS REPRODUCIRSE
         {
@@ -158,10 +176,20 @@ public class Pause : MonoBehaviour
     }
 
     public void UpdateInventory()
-    {
+    {/*
         k0.SetActive(keyData.PlayerKeys[0]);
         k1.SetActive(keyData.PlayerKeys[1]);
         k2.SetActive(keyData.PlayerKeys[2]);
-        k3.SetActive(keyData.PlayerKeys[3]);
+        k3.SetActive(keyData.PlayerKeys[3]);*/
+    }
+
+    public void SetTextAndTime(Component sender, object data)
+    {
+        Debug.Log("Trigered");
+        if(data is string)
+        {
+            pickedUpText.text = (string) data;
+        }
+        timer = timeTurnedOn;
     }
 }

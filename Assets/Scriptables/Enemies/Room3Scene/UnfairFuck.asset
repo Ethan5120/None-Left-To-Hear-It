@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 024bd5f22f8033e48888ecc65e6cb70b, type: 3}
   m_Name: UnfairFuck
   m_EditorClassIdentifier: 
-  firstLoad: 1
+  firstLoad: 0
   enemyHealth: 1
   deadTime: 0
   startAmbush: 0
   startingState: 2
-  currentState: 0
+  currentState: 2
   startingPosition: {x: -2.804, y: 0.41825867, z: -30.185}
   startingRotation: {x: 0, y: 0.9175847, z: 0, w: 0.3975403}
   newPosition: {x: -2.804, y: 0.41825867, z: -30.185}

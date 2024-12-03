@@ -40,7 +40,25 @@ public class EnemyAI : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-        if(enemyData == null)
+        if(enemyData != null)
+        {
+            if(enemyData.firstLoad)
+            {
+                enemyData.startAmbush = false;
+                enemyData.currentState = enemyData.startingState;
+                transform.SetPositionAndRotation(enemyData.startingPosition, enemyData.startingRotation);
+                enemyData.enemyHealth = 1;
+                enemyData.newPosition = enemyData.startingPosition;
+                enemyData.newRotation = enemyData.startingRotation;
+                enemyData.deadTime = 0;
+                enemyData.firstLoad = false;     
+            }
+            else
+            {
+                transform.SetPositionAndRotation(enemyData.newPosition, enemyData.newRotation);
+            }
+        }
+        else
         {
             enemyData = ScriptableObject.CreateInstance<EnemyData>();
             enemyData.startingPosition = transform.position;
@@ -48,18 +66,7 @@ public class EnemyAI : MonoBehaviour
             enemyData.startingState = newState;
         }
 
-        if(enemyData.firstLoad)
-        {
-            enemyData.startAmbush = false;
-            enemyData.currentState = enemyData.startingState;
-            transform.SetPositionAndRotation(enemyData.startingPosition, enemyData.startingRotation);
-            enemyData.enemyHealth = 1;
-            enemyData.firstLoad = false;     
-        }
-        else
-        {
-            transform.SetPositionAndRotation(enemyData.newPosition, enemyData.newRotation);
-        }
+        
 
 
         player = FindObjectOfType<PlayerController>().transform;

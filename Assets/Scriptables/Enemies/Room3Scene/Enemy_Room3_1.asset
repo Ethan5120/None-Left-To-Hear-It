@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 024bd5f22f8033e48888ecc65e6cb70b, type: 3}
   m_Name: Enemy_Room3_1
   m_EditorClassIdentifier: 
-  firstLoad: 1
+  firstLoad: 0
   enemyHealth: 1
-  deadTime: 0
+  deadTime: 11.25335
   startAmbush: 0
   startingState: 0
-  currentState: 0
+  currentState: 1
   startingPosition: {x: 10.853, y: 0.5359535, z: -30.618}
   startingRotation: {x: 0, y: 0.9824813, z: 0, w: -0.18636118}
   newPosition: {x: 10.853, y: 0.5359535, z: -30.618}

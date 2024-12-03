@@ -20,6 +20,7 @@ public class Pause : MonoBehaviour
     public bool inventaryOpen;
 
     public string menuSceneName;
+    public string endingSceneName;
 
     public PlayerSO keyData;
 
@@ -181,6 +182,17 @@ public class Pause : MonoBehaviour
         Debug.Log("Yendo A Menu");
 
     }
+
+    public void EndGame()
+    {
+        Time.timeScale = 1;
+        //Cursor.visible = true;
+        //Cursor.lockState = CursorLockMode.None;
+        AudioListener.pause = false;
+        SceneManager.LoadScene(endingSceneName);
+        Debug.Log("Yendo Al Final");
+    }
+
     public void quitGamePause()
     {
         Application.Quit();

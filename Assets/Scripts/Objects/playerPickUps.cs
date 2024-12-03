@@ -26,16 +26,16 @@ public class playerPickUps : MonoBehaviour, IInteractable
 
     void  Start()
     {
-        if(memory == null)
-        {
-            memory = ScriptableObject.CreateInstance<pickUp_SO>();
-        }
-        else
+        if(memory != null)
         {
             if(memory.hasBeenCollected)
             {
                 gameObject.SetActive(false);
             }
+        }
+        else
+        {
+            memory = ScriptableObject.CreateInstance<pickUp_SO>();
         } 
     }
 

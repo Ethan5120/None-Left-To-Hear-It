@@ -6,19 +6,19 @@ using UnityEngine.SceneManagement;
 public class DoorPrefabController : MonoBehaviour
 {
     public AudioSource DoorOpenSound;
-    [SerializeField] int destination;
+    [SerializeField] Scene sceneToLoad;
     // Start is called before the first frame update
     public void ChangeScene()
     {
-        SceneManager.LoadScene(destination);
+        SceneManager.LoadScene(sceneToLoad.name);
     }
 
 
     public void SetScene(Component sender, object data)
     {
-        if(data is int)
+        if(data is Scene)
         {
-            destination = (int) data;
+            sceneToLoad = (Scene) data;
         }
     }
 

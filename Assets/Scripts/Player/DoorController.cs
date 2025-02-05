@@ -1,12 +1,14 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class DoorController : MonoBehaviour, IInteractable
 {
 
     [SerializeField] PlayerSO playerData;
     [SerializeField] int neededKey;
-    [SerializeField] int sceneToLoadIndex;
+    public Scene sceneToLoad;
     [SerializeField] Animator animator;
     [SerializeField] string AnimationName;
     [SerializeField] GameObject changeCamera;
@@ -32,7 +34,7 @@ public class DoorController : MonoBehaviour, IInteractable
         {
             Time.timeScale = 0f;
             changeCamera.SetActive(true);
-            setDestination.Raise(this, sceneToLoadIndex);
+            setDestination.Raise(this, sceneToLoad);
             saveData.Raise(this, null);
             animator?.Play(AnimationName);
             

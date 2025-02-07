@@ -9802,7 +9802,8 @@ MonoBehaviour:
   playerData: {fileID: 11400000, guid: d1a095b37d3d3b549880142d542f7fb1, type: 2}
   neededKey: 0
   sceneToLoad:
-    m_Handle: 0
+    _sceneAsset: {fileID: 102900000, guid: 83998b020cb91604d8a50bca1fc2353a, type: 3}
+    _sceneName: Room3
   animator: {fileID: 1813142771}
   AnimationName: CompleteDoorANIM
   changeCamera: {fileID: 1813142772}
@@ -15101,7 +15102,8 @@ MonoBehaviour:
   playerData: {fileID: 11400000, guid: d1a095b37d3d3b549880142d542f7fb1, type: 2}
   neededKey: 0
   sceneToLoad:
-    m_Handle: 0
+    _sceneAsset: {fileID: 102900000, guid: b09dd2a1c324a0445a43b6ec9c1e391a, type: 3}
+    _sceneName: Room1
   animator: {fileID: 1813142771}
   AnimationName: CompleteDoorANIM
   changeCamera: {fileID: 1813142772}
@@ -35962,7 +35964,8 @@ MonoBehaviour:
   playerData: {fileID: 11400000, guid: d1a095b37d3d3b549880142d542f7fb1, type: 2}
   neededKey: 0
   sceneToLoad:
-    m_Handle: 0
+    _sceneAsset: {fileID: 102900000, guid: 522dd44fa48a5eb44af99056c4c4764a, type: 3}
+    _sceneName: Room2
   animator: {fileID: 1813142771}
   AnimationName: CompleteDoorANIM
   changeCamera: {fileID: 1813142772}
@@ -43723,7 +43726,7 @@ PrefabInstance:
     - target: {fileID: 514608587819772951, guid: 320f2741bf1cf084090086dd4c7499e9,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 1917
+      value: 1920
       objectReference: {fileID: 0}
     - target: {fileID: 3033880310403930157, guid: 320f2741bf1cf084090086dd4c7499e9,
         type: 3}
@@ -43808,7 +43811,7 @@ PrefabInstance:
     - target: {fileID: 6767502938999953791, guid: 320f2741bf1cf084090086dd4c7499e9,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 2616
+      value: 2619
       objectReference: {fileID: 0}
     - target: {fileID: 8061669630779286071, guid: 320f2741bf1cf084090086dd4c7499e9,
         type: 3}

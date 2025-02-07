@@ -8,7 +8,7 @@ public class DoorController : MonoBehaviour, IInteractable
 
     [SerializeField] PlayerSO playerData;
     [SerializeField] int neededKey;
-    public Scene sceneToLoad;
+    public SceneField sceneToLoad;
     [SerializeField] Animator animator;
     [SerializeField] string AnimationName;
     [SerializeField] GameObject changeCamera;

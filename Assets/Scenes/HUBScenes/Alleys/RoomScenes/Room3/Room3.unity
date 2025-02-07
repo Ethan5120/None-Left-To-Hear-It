@@ -5667,7 +5667,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerData: {fileID: 11400000, guid: d1a095b37d3d3b549880142d542f7fb1, type: 2}
   neededKey: 0
-  sceneToLoadIndex: 3
+  sceneToLoad:
+    _sceneAsset: {fileID: 102900000, guid: e8a3ec081c0a1fc4cbd9504cf79f8375, type: 3}
+    _sceneName: Alleys
   animator: {fileID: 781732302}
   AnimationName: CompleteDoorANIM
   changeCamera: {fileID: 781732303}

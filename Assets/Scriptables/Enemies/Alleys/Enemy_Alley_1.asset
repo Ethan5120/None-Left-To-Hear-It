@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firstLoad: 0
   enemyHealth: 1
-  deadTime: -1.4191184
+  deadTime: 0
   startAmbush: 0
   startingState: 2
-  currentState: 0
+  currentState: 2
   startingPosition: {x: 32.66892, y: 0.5359535, z: -31.902699}
   startingRotation: {x: 0, y: 0, z: 0, w: 0}
-  newPosition: {x: 32.66892, y: 0.5359535, z: -31.902699}
-  newRotation: {x: 0, y: 0, z: 0, w: 0}
+  newPosition: {x: 32.66892, y: 0.62666655, z: -31.9027}
+  newRotation: {x: -0, y: -0, z: -0, w: 1}

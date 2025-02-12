@@ -37,7 +37,7 @@ public class EnemyAI : MonoBehaviour
     [Header("AttackData")]
     private SphereCollider attackCollider;
 
-    void Start()
+    void Awake()
     {
         animator = GetComponent<Animator>();
         if(enemyData != null)

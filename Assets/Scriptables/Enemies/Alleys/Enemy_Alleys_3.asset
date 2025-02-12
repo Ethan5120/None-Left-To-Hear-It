@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Enemy_Alleys_3
   m_EditorClassIdentifier: 
   firstLoad: 0
-  enemyHealth: 0
-  deadTime: 14.102127
-  startAmbush: 1
+  enemyHealth: 1
+  deadTime: 0
+  startAmbush: 0
   startingState: 2
-  currentState: 1
+  currentState: 2
   startingPosition: {x: 49.13, y: 0.689, z: -29.15}
   startingRotation: {x: 0, y: 0.9959309, z: 0, w: -0.090119876}
-  newPosition: {x: 0, y: 0, z: 0}
-  newRotation: {x: 0, y: 0, z: 0, w: 0}
+  newPosition: {x: 49.13, y: 0.62666655, z: -29.15}
+  newRotation: {x: -0, y: 0.9959309, z: -0, w: -0.090119876}

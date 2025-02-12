@@ -24,7 +24,7 @@ public class playerPickUps : MonoBehaviour, IInteractable
     [SerializeField] GameEvent turnOnPanel;
 
 
-    void  Start()
+    void  Awake()
     {
         if(memory != null)
         {

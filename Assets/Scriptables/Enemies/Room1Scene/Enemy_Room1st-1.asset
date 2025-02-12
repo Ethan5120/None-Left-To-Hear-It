@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Enemy_Room1st-1
   m_EditorClassIdentifier: 
   firstLoad: 0
-  enemyHealth: 0
-  deadTime: 21.462034
-  startAmbush: 1
+  enemyHealth: 1
+  deadTime: 0
+  startAmbush: 0
   startingState: 2
-  currentState: 1
+  currentState: 2
   startingPosition: {x: -1.704, y: 0.5359535, z: -30.93}
   startingRotation: {x: 0, y: -0.9848077, z: 0, w: 0.17364822}
-  newPosition: {x: -0.4758911, y: 0.50901157, z: -32.359577}
-  newRotation: {x: -0, y: -0.9763131, z: -0, w: -0.21636252}
+  newPosition: {x: -1.7039986, y: 0.6034498, z: -30.93}
+  newRotation: {x: -0, y: -0.9848078, z: -0, w: 0.17364824}

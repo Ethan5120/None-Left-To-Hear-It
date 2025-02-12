@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 024bd5f22f8033e48888ecc65e6cb70b, type: 3}
   m_Name: Enemy_Room2_2
   m_EditorClassIdentifier: 
-  firstLoad: 0
+  firstLoad: 1
   enemyHealth: 1
   deadTime: 0
   startAmbush: 0

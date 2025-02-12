@@ -15,7 +15,7 @@ public class HubManager : MonoBehaviour
         {
             if(playerData.isFirstLoad)
             {
-                foreach(EnemyData enemy in enemies)
+                /*foreach(EnemyData enemy in enemies)
                 {
                     enemy.firstLoad = true;
                 }
@@ -39,7 +39,7 @@ public class HubManager : MonoBehaviour
                     {
                         playerData.PlayerKeys[i] = false;
                     }
-                }
+                }*/
                 playerData.isFirstLoad = false;
             }
             else

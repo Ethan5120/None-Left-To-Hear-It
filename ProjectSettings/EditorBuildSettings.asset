@@ -6,19 +6,19 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/StartUpWARNING.unity
+    path: Assets/Scenes/Transitions/StartUpWARNING.unity
     guid: cdfe81c4a3ebb9844b1af86b124fe69f
   - enabled: 1
-    path: Assets/Scenes/MenuBLOCKOUT.unity
+    path: Assets/Scenes/Menus/MenuBLOCKOUT.unity
     guid: 499a5dcc2df088d449feffe6dd4aec17
   - enabled: 1
-    path: Assets/Scenes/PreGame.unity
+    path: Assets/Scenes/Transitions/PreGame.unity
     guid: d28a57603db4f2f43baa74c8af74a1bf
   - enabled: 1
     path: Assets/Scenes/HUBScenes/Alleys/Alleys.unity
     guid: e8a3ec081c0a1fc4cbd9504cf79f8375
   - enabled: 1
-    path: Assets/Scenes/DeathScene.unity
+    path: Assets/Scenes/Transitions/DeathScene.unity
     guid: fc88179c356613e499e066427f5c5b09
   - enabled: 1
     path: Assets/Scenes/HUBScenes/Alleys/RoomScenes/Room1/Room1.unity
@@ -30,7 +30,7 @@ EditorBuildSettings:
     path: Assets/Scenes/HUBScenes/Alleys/RoomScenes/Room3/Room3.unity
     guid: 83998b020cb91604d8a50bca1fc2353a
   - enabled: 1
-    path: Assets/Scenes/PostGame.unity
+    path: Assets/Scenes/Transitions/PostGame.unity
     guid: 9b66a3eb49d668347b04ec91303d1406
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 8d761e5d13bd57b4abb4eddb8cf6f562,

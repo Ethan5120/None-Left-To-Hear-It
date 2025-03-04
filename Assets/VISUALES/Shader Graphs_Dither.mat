@@ -38,7 +38,12 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+<<<<<<< HEAD
     - _ColorRes: 36
     - _DitherSpread: 0.01
+=======
+    - _ColorRes: 588.17
+    - _DitherSpread: 0.002
+>>>>>>> develop
     m_Colors: []
   m_BuildTextureStacks: []

@@ -6,14 +6,15 @@ TagManager:
   tags:
   - DoorUNLOCKED
   - Enemy
+  - Interactable
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Interactable
   - Water
   - UI
-  - 
+  - Ground
   - 
   - 
   - 

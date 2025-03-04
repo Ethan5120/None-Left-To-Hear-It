@@ -14,40 +14,53 @@ public class PlayerController : MonoBehaviour
     private Vector2 playerInput;
     [SerializeField] CharacterController controller;
     [SerializeField] public InputActionReference Move, Aim, Shoot, Interact, Pause, Inventory;
+    [Space(5)]
 
     [Header("GameManagerVariables")]
     [SerializeField] CameraChanger cameraManager;
     [SerializeField] string cameraObjectName;
     [SerializeField] PlayerSO playerData;
+    [Space(5)]
 
     [Header("PlayerVariables")]
     [SerializeField] float playerSpeed = 3;
     [SerializeField] float playerRotation = 40;
     [SerializeField] float playerAimSpeed = 20;
+    [Space(5)]
 
     [Header("ShootingSettings")]
     [SerializeField] GameObject bullet;
     [SerializeField] GameObject spawnPoint;
     [SerializeField] float shootCooldown;
     float shootTimer;
+    [Space(5)]
 
     [Header ("InteractSettings")]
     [SerializeField] float interactRange;
     [SerializeField] LayerMask interactLayer;
-    
+    [Space(5)]
 
     [Header("PlayeStatus")]
     [SerializeField] bool isAim = false; //Checa si el jugador esta apuntando
     [SerializeField] bool isInteracting = false; //Checa si el jugador esta interactuando
     [SerializeField] bool isTakingDamage = false; //Checa si el jugador esta recibiendo daño
+    [Space(5)]
 
     [Header("AnimationData")]
     Animator pAnimator;
     [SerializeField] List<string> pAnims =  new List<string>(); //En esta lista vamos a meter las animaciones del jugador
     [SerializeField] Animator gunAnimator;
-     [SerializeField] List<string> gunAnims =  new List<string>();
+    [SerializeField] List<string> gunAnims =  new List<string>();
+    [Space(5)]
+
+    [Header("GroundChecks")]
+    [SerializeField] bool isGrounded = true;
+    [SerializeField] LayerMask groundLayer;
+    [SerializeField] float groundCheckDistance = 2;
+    [Space(5)]
 
     ////Audio////
+    [Header("AudioClips")]
 
     public AudioClip FootstepsSound, CockingSound, PickUpSound, DeathPSound, ShotAudio, DamageSound;
     public AudioSource FootstepsSource, CockingSource, PickUpSource, DeathPSource, ShotSource, DamageSource;
@@ -122,8 +135,22 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+#region PlayerMovement
+
+    //Handle Player Movement
     private void PlayerMovement()
     {
+        //Check if Player is Grounded and apply gravity
+        if(!isGrounded)
+        {
+            controller.Move(new Vector3(0, -1, 0));
+        }
+        else
+        {
+            controller.Move(new Vector3(0, 0, 0));
+        }
+
+
         //Use the move method to move the player to the front and back
         if(!isAim)
         {
@@ -170,12 +197,21 @@ public class PlayerController : MonoBehaviour
         
     }
 
+    //Check if player is Grounded
+    void CheckGround()
+    {
+        isGrounded = Physics.Raycast(transform.position, Vector3.down, groundCheckDistance, groundLayer);
+    }
+#endregion
     
     void Update()
     {
         playerInput = Move.action.ReadValue<Vector2>();
+        CheckGround();
         PlayerMovement();
     }
+
+
 
     public void TakeDamage()
     {
@@ -200,7 +236,13 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void DeathAnimEvent(string DeathScene)
+    {
+        SceneManager.LoadScene(DeathScene);
+    }
+
 #region AnimationEvents
+//The following events are used in animation events.
     void Reload()
     {
         shootTimer = 0;
@@ -217,17 +259,14 @@ public class PlayerController : MonoBehaviour
     }
 #endregion
  
-    ////////////////Animation Event Audios///////////////////// 
    
-    public void DeathAnimEvent(string DeathScene)
-    {
-        SceneManager.LoadScene(DeathScene);
-    }
+
 
 
 
 
 #region AudioControl
+//The following events are used to call the SFXs.
     public void PlayFootstepsAudio()
     {
         FootstepsSource.PlayOneShot(FootstepsSound);

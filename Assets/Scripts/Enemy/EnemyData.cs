@@ -10,15 +10,15 @@ public class EnemyData : ScriptableObject
     public int enemyHealth = 1;
     public float deadTime; 
     public bool startAmbush = false;
-    public enum EnemyState{aliveState, deadState, ambushState}
-    public EnemyState startingState = EnemyState.aliveState;
+    public enum EnemyState{idleState, chaseState, deadState, ambushState}
+    public EnemyState startingState = EnemyState.idleState;
     public EnemyState currentState;
-    
+
     [Header("Original positions")]
     public Vector3 startingPosition;
     public Quaternion startingRotation;
 
     [Header("On Load Positions")]
-    public Vector3 newPosition;
+    public Vector3[] newPositions;
     public Quaternion newRotation;
 }

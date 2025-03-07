@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -7,10 +8,15 @@ public class EnemyAI : MonoBehaviour
     public EnemyData enemyData;
     public EnemyData.EnemyState newState;
     private Transform player;
+    [SerializeField] LayerMask playerLayer;
+    [SerializeField] Transform[] roamingTargets;
     [SerializeField] NavMeshAgent agent;
     [SerializeField] private float distance;
     [SerializeField] bool isAttacking;
+    [SerializeField] bool chasingTarget;
     [SerializeField] float unstuckTime;
+    [SerializeField] float detectionRange;
+    [SerializeField] float interestRange;
 
     [Header("AnimationSettings")]
     [SerializeField] private Animator animator;
@@ -48,14 +54,13 @@ public class EnemyAI : MonoBehaviour
                 enemyData.currentState = enemyData.startingState;
                 transform.SetPositionAndRotation(enemyData.startingPosition, enemyData.startingRotation);
                 enemyData.enemyHealth = 1;
-                enemyData.newPosition = enemyData.startingPosition;
                 enemyData.newRotation = enemyData.startingRotation;
                 enemyData.deadTime = 0;
                 enemyData.firstLoad = false;     
             }
             else
             {
-                transform.SetPositionAndRotation(enemyData.newPosition, enemyData.newRotation);
+                transform.SetPositionAndRotation(enemyData.newPositions[Random.Range(0,enemyData.newPositions.Length)], enemyData.newRotation);
             }
         }
         else
@@ -81,12 +86,18 @@ public class EnemyAI : MonoBehaviour
     {
         switch (enemyData.currentState)
         {
-            case EnemyData.EnemyState.aliveState:
+            case EnemyData.EnemyState.idleState:
             {
                 if(!VoicesSource.isPlaying)
                 {
                     StartAudioHell();
                 }
+                Roaming();    
+                break;
+            }
+
+            case EnemyData.EnemyState.chaseState:
+            {
                 distance = Vector3.Distance(transform.position, player.position);
 
                 if(animations != null && !isAttacking && distance > 2f)
@@ -94,14 +105,16 @@ public class EnemyAI : MonoBehaviour
                     animator.Play(animations[0]);
                     agent.destination = player.position;
                     agent.isStopped = false;
-
                 }
-               
+
                 if(distance <= 2f)
                 {
                     Debug.Log("StartAttack");
-                    StartAttack();
+                    //Aqui tenemos que checar si esta viendo al jugador NO LO OLVIDES
+                    AttackCheck();
                 }
+
+                CheckPlayerDistance();
                 break;
             }
 
@@ -155,6 +168,58 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
+#region IdleMethods
+    void GetNewTarget()
+    {
+        chasingTarget = false;
+        int currentTarget = 0;
+        int newTarget;
+        do
+        {
+        newTarget = Random.Range(0, roamingTargets.Length);
+        }
+        while(newTarget == currentTarget);
+        currentTarget = newTarget;
+        agent.destination = roamingTargets[currentTarget].position;
+    }
+
+    void Roaming()
+    {
+        agent.isStopped = false;
+        if(agent.destination == null || chasingTarget)
+        {
+            GetNewTarget();
+        }
+
+        CheckPlayerDistance();
+        distance = Vector3.Distance(transform.position, agent.destination);
+
+        if(distance <= 2f)
+        {
+            GetNewTarget();
+        }
+    }
+
+    void CheckPlayerDistance()
+    {
+        float pDistance = Vector3.Distance(transform.position, player.position);
+        if(pDistance <= detectionRange && !chasingTarget)
+        {
+            chasingTarget = true;
+            enemyData.currentState = EnemyData.EnemyState.chaseState;
+        }
+
+        if(pDistance >= interestRange && chasingTarget)
+        {
+            chasingTarget = false;
+            enemyData.currentState = EnemyData.EnemyState.idleState;
+        }
+    }
+
+#endregion
+
+
+
     public void TakeDamage()
     {
         if(enemyData.deadTime <= 0)
@@ -166,6 +231,23 @@ public class EnemyAI : MonoBehaviour
                 enemyData.currentState = EnemyData.EnemyState.deadState;
                 enemyData.deadTime = 30f;
             }
+        }
+    }
+
+#region AttacksMethods
+    void AttackCheck()
+    {
+        RaycastHit hit;
+        if(Physics.Raycast(transform.position, transform.forward, out hit, 10f, playerLayer))
+        {
+            Debug.DrawRay(transform.position, transform.forward * hit.distance);
+            Debug.Log("PlayerIsInFront");
+            StartAttack();
+        }
+        else
+        {
+            Debug.DrawRay(transform.position, transform.forward * hit.distance);
+            transform.LookAt(player);
         }
     }
 
@@ -185,18 +267,10 @@ public class EnemyAI : MonoBehaviour
     }
     public void Resurrect()
     {
-        enemyData.currentState = EnemyData.EnemyState.aliveState;
+        enemyData.currentState = EnemyData.EnemyState.idleState;
         enemyData.enemyHealth = 1;
         enemyData.deadTime = 0;
     }
-
-    public void SaveData(Component sender, object data)
-    {
-        enemyData.newPosition = transform.position;
-        enemyData.newRotation = transform.rotation;
-    }
-
-
 
     void EnableAttack()
     {
@@ -215,7 +289,7 @@ public class EnemyAI : MonoBehaviour
             other.gameObject.GetComponent<PlayerController>().TakeDamage();
         }
     }
-
+#endregion
 
     /////Animation Events (AUDIO)
 #region AudioEvents

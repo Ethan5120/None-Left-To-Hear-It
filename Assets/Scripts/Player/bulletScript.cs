@@ -17,7 +17,7 @@ public class bulletScript : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Enemy"))
         {
-            collision.gameObject.GetComponent<EnemyAI>().TakeDamage();
+            collision.gameObject.GetComponent<EnemyAI>().TakeDamage(1);
         }
         
         Destroy(gameObject);

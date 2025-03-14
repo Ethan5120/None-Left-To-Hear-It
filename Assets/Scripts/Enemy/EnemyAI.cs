@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
+    [Header("EnemySettings")]
     public EnemyData enemyData;
     public EnemyData.EnemyState newState;
     private Transform player;
@@ -14,14 +15,37 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private float distance;
     [SerializeField] bool isAttacking;
     [SerializeField] bool chasingTarget;
-    [SerializeField] float unstuckTime;
     [SerializeField] float detectionRange;
     [SerializeField] float interestRange;
+    [SerializeField] bool canRoam;
 
-    [Header("AnimationSettings")]
+
+    [Header("EnemyTimers")]
+    [SerializeField] float unstuckTime;
+    /// <summary>
+    /// Controla la frecuencia que el enemigo hara la animacion de idle en un tiempo minimo
+    /// </summary>
+    [SerializeField] float twitchFrecuencyMin;
+    /// <summary>
+    /// Controla el tiempo maximo que pasara para que el enemigo empieza a hacer twitch
+    /// </summary>
+    [SerializeField] float twitchFrecuencyMax;
+    [SerializeField] float twitchTimer;
+    [SerializeField] bool _twitching = false;
+
+
+    [Header("Animator")]
     [SerializeField] private Animator animator;
-    [SerializeField] List<string> animations =  new List<string>();
+
+    [Header("AnimationNames")]
+    [SerializeField] string walkAnimation;
+    [SerializeField] string deathAnimation;
+    [SerializeField] string riseAnimation;
+    [SerializeField] List<string> attackAnimations =  new List<string>();
+    [SerializeField] List<string> hurtAnimations =  new List<string>();
+    [SerializeField] List<string> idleAnimations =  new List<string>();
     [Space(5)]
+
 
     [Header("AudioSettings")]
     public AudioClip FootstepSound;
@@ -92,7 +116,10 @@ public class EnemyAI : MonoBehaviour
                 {
                     StartAudioHell();
                 }
-                Roaming();    
+                
+                Idleing();
+                
+                   
                 break;
             }
 
@@ -100,9 +127,9 @@ public class EnemyAI : MonoBehaviour
             {
                 distance = Vector3.Distance(transform.position, player.position);
 
-                if(animations != null && !isAttacking && distance > 2f)
+                if(walkAnimation != null && !isAttacking && distance > 2f)
                 {
-                    animator.Play(animations[0]);
+                    animator.Play(walkAnimation);
                     agent.destination = player.position;
                     agent.isStopped = false;
                 }
@@ -124,17 +151,17 @@ public class EnemyAI : MonoBehaviour
                 {
                     StopAudioHell();
                 }
-                if(animations != null && enemyData.deadTime >=0)
+                if(deathAnimation != null && enemyData.deadTime >=0)
                 {
-                    animator.Play(animations[3]);
+                    animator.Play(deathAnimation);
                 }
                 agent.isStopped = true;
                 enemyData.deadTime -= 1 * Time.deltaTime;
                 if(enemyData.deadTime <= 0)
                 {
-                    if(animations != null)
+                    if(riseAnimation != null)
                     {
-                        animator.Play(animations[4]);
+                        animator.Play(riseAnimation);
                     }
                 }
                 break;
@@ -142,16 +169,16 @@ public class EnemyAI : MonoBehaviour
 
             case EnemyData.EnemyState.ambushState:
             {
-                if(animations != null && !enemyData.startAmbush)
+                if(deathAnimation != null && !enemyData.startAmbush)
                 {
-                    animator.Play(animations[3]);
+                    animator.Play(deathAnimation);
                 }
                 agent.isStopped = true;
                 if(enemyData.startAmbush)
                 {
-                    if(animations != null)
+                    if(riseAnimation != null)
                     {
-                        animator.Play(animations[4]);
+                        animator.Play(riseAnimation);
                     }
                 }
                 break;
@@ -169,6 +196,9 @@ public class EnemyAI : MonoBehaviour
     }
 
 #region IdleMethods
+/// <summary>
+/// Selecciona el siguiente objetivo en la patrulla
+/// </summary>
     void GetNewTarget()
     {
         chasingTarget = false;
@@ -183,21 +213,53 @@ public class EnemyAI : MonoBehaviour
         agent.destination = roamingTargets[currentTarget].position;
     }
 
-    void Roaming()
+    void Idleing()
     {
-        agent.isStopped = false;
-        if(agent.destination == null || chasingTarget)
+        CheckPlayerDistance(); 
+        TwitchGenerator();
+        if(canRoam && !_twitching)
         {
-            GetNewTarget();
+            agent.isStopped = false;
+            animator.Play(walkAnimation);
+            if(agent.destination == null || chasingTarget)
+            {
+                GetNewTarget();
+            }   
+            distance = Vector3.Distance(transform.position, agent.destination);
+
+            if(distance <= 2f)
+            {
+                GetNewTarget();
+            }
+        }
+        else
+        {
+            agent.isStopped = true;
+        }
+    }
+
+    void TwitchGenerator()
+    {
+        if(_twitching)
+        {
+            return;
         }
 
-        CheckPlayerDistance();
-        distance = Vector3.Distance(transform.position, agent.destination);
-
-        if(distance <= 2f)
+        twitchTimer -= Time.deltaTime;
+        if(twitchTimer <= 0)
         {
-            GetNewTarget();
+            if(idleAnimations != null)
+            {
+                _twitching = true;
+                twitchTimer = Random.Range(twitchFrecuencyMin, twitchFrecuencyMax);
+                animator.Play(idleAnimations[Random.Range(0, idleAnimations.Count)]);
+            }
         }
+    }
+
+    public void StopTwitch()
+    {
+        _twitching = false;
     }
 
     void CheckPlayerDistance()
@@ -220,14 +282,19 @@ public class EnemyAI : MonoBehaviour
 
 
 
-    public void TakeDamage()
+    public void TakeDamage(int damageDealt)
     {
         if(enemyData.deadTime <= 0)
         {
-            enemyData.enemyHealth = 0;
+            enemyData.enemyHealth -= damageDealt;
+            if(hurtAnimations != null && !isAttacking)
+            {
+                animator.Play(hurtAnimations[Random.Range(0, hurtAnimations.Count)]);
+            }
+
             if(enemyData.enemyHealth <= 0)
             {
-                Debug.Log("DamageTaken");
+                Debug.Log("EnemyDead");
                 enemyData.currentState = EnemyData.EnemyState.deadState;
                 enemyData.deadTime = 30f;
             }
@@ -253,9 +320,9 @@ public class EnemyAI : MonoBehaviour
 
     public void StartAttack()
     {
-        if(animations != null && !isAttacking)
+        if(attackAnimations != null && !isAttacking)
         {
-            animator.Play(animations[Random.Range(1, 3)]);
+            animator.Play(attackAnimations[Random.Range(0, attackAnimations.Count)]);
             isAttacking = true;
             unstuckTime = 3f;
         }
@@ -272,12 +339,12 @@ public class EnemyAI : MonoBehaviour
         enemyData.deadTime = 0;
     }
 
-    void EnableAttack()
+    public void EnableAttack()
     {
         attackCollider.enabled = true;
     }
 
-    void DisableAttack()
+    public void DisableAttack()
     {
         attackCollider.enabled = false;
     }

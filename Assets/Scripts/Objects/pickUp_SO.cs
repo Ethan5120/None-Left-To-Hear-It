@@ -1,9 +1,10 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+
 
 [CreateAssetMenu(fileName = "PickUpData", menuName = "SceneData/PickUpData")]
 public class pickUp_SO : ScriptableObject
 {
-    public bool hasBeenCollected;
+    public List<bool> itemActiveState;
 }

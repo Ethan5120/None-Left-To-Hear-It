@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
+using Cinemachine;
 
 public class CameraTrigger : MonoBehaviour
 {
-    [SerializeField] int cameraToTrigger;
-    [SerializeField] CameraChanger cameraChanger;
+    [SerializeField] CinemachineVirtualCamera cameraToTrigger;
+    [SerializeField] CameraManager cameraChanger;
     void OnTriggerEnter(Collider collider)
     {
         if(collider.CompareTag("Player"))

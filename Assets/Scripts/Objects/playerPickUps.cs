@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public class playerPickUps : MonoBehaviour, IInteractable
 {
     [SerializeField] PlayerSO playerData;
-    [SerializeField] pickUp_SO memory;
+    [SerializeField] ItemManager itemManager;
     public enum objectType 
     {
         Key,
@@ -26,29 +26,26 @@ public class playerPickUps : MonoBehaviour, IInteractable
 
     void  Awake()
     {
-        if(memory != null)
-        {
-            if(memory.hasBeenCollected)
-            {
-                gameObject.SetActive(false);
-            }
-        }
-        else
-        {
-            memory = ScriptableObject.CreateInstance<pickUp_SO>();
-        } 
+        itemManager = FindAnyObjectByType<ItemManager>();
     }
 
 
     public void Interact()
     {
+        for (int i = 0; i < itemManager.items.Count; i++)
+        {
+            if (itemManager.items[i] == gameObject)
+            {
+                itemManager.itemsStates.itemActiveState[i] = true;
+            }
+        }
+
         Debug.Log("Interact");
         switch (objectSelected)
         {
             case objectType.Key:
             {
                 playerData.PlayerKeys[keyIndex] = true;
-                memory.hasBeenCollected = true;
                 gameObject.SetActive(false);
                 turnOnPanel.Raise(this, $"Key Number {keyIndex + 1}");
                 break;
@@ -57,7 +54,6 @@ public class playerPickUps : MonoBehaviour, IInteractable
             case objectType.Pills:
             {
                 playerData.playerPills += pillsAmmount;
-                memory.hasBeenCollected = true;
                 gameObject.SetActive(false);
                 turnOnPanel.Raise(this, $"{pillsAmmount}x Pill(s)");
                 break;
@@ -66,7 +62,6 @@ public class playerPickUps : MonoBehaviour, IInteractable
             case objectType.Ammo:
             {
                 playerData.playerAmmo += ammoAmmount;
-                memory.hasBeenCollected = true;
                 gameObject.SetActive(false);
                 turnOnPanel.Raise(this, $"{ammoAmmount}x Bullet(s)");
                 break;

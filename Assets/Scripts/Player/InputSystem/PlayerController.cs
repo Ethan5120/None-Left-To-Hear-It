@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     [Space(5)]
 
     [Header("GameManagerVariables")]
-    [SerializeField] CameraChanger cameraManager;
+    [SerializeField] CameraManager cameraManager;
     [SerializeField] string cameraObjectName;
     [SerializeField] PlayerSO playerData;
     [Space(5)]
@@ -73,7 +73,7 @@ public class PlayerController : MonoBehaviour
         Aim.action.performed += EnterThirdPerson;
         Shoot.action.performed += PlayerShoot;
         Interact.action.performed += InteractCall;
-        cameraManager = GameObject.Find(cameraObjectName).GetComponent<CameraChanger>();
+        cameraManager = GameObject.Find(cameraObjectName).GetComponent<CameraManager>();
         pAnimator = GetComponent<Animator>();
     }
 

@@ -111,8 +111,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.19090977, y: 1.4879335, z: 0.19010448}
-  m_Center: {x: 0, y: 0.47880828, z: 0}
+  m_Size: {x: 0.49230152, y: 1.4879335, z: 0.19010448}
+  m_Center: {x: -0.0015845692, y: 0.47880828, z: 0}
 --- !u!114 &7567895835533561645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerData: {fileID: 11400000, guid: d1a095b37d3d3b549880142d542f7fb1, type: 2}
-  memory: {fileID: 0}
+  itemManager: {fileID: 0}
   objectSelected: 2
   keyIndex: 0
   pillsAmmount: 0

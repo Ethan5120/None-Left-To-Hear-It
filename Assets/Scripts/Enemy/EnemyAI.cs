@@ -213,6 +213,9 @@ public class EnemyAI : MonoBehaviour
         agent.destination = roamingTargets[currentTarget].position;
     }
 
+/// <summary>
+/// Genera las acciones del idle
+/// </summary>
     void Idleing()
     {
         CheckPlayerDistance(); 
@@ -281,7 +284,10 @@ public class EnemyAI : MonoBehaviour
 #endregion
 
 
-
+/// <summary>
+/// Ocaciona daño al enemigo y si no esta atacando es aturdido
+/// </summary>
+/// <param name="damageDealt"> La cantidad de daño que recibira el enemigo </param>
     public void TakeDamage(int damageDealt)
     {
         if(enemyData.deadTime <= 0)

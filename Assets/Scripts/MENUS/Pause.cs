@@ -8,41 +8,63 @@ using TMPro;
 
 public class Pause : MonoBehaviour
 {
+    [Header("Canvas Screens")]
     public GameObject PauseMenu;
-    public GameObject PauseVHS;
+    public GameObject PauseVHSEffect;
     public GameObject Inventory;
-
     public GameObject PControls, PSettings, PQuit;
+    [Space(5)] 
 
-    public PlayerController player; 
-
+    [Header("Status Game Canvas")]    
     public bool paused;
     public bool inventaryOpen;
+    [Space(5)] 
 
+    [Header("Scenes to go on Pause Menu")]
     public string menuSceneName;
     public string endingSceneName;
+    [Space(5)] 
 
+    [Header("Key Data")]
     public PlayerSO keyData;
+    [Space(5)] 
 
-    public GameObject k0, k1, k2, k3;
+    [Header("Keys")]
+    public GameObject k0;
+    public GameObject k1;
+    public GameObject k2;
+    public GameObject k3;
+    [Space(5)]
+
+    [Header("Inventory text")]	
     [SerializeField] TextMeshProUGUI AmmoText;
     [SerializeField] TextMeshProUGUI PillsText;
+    [Space(5)]	
 
+    [Header("Player")]
+    public PlayerController player;
+    [Space(5)]	
 
+    [Header("Canvas Animator")]
     private Animator animatorCanvas;
+    [Space(5)]
 
+    [Header("Buttons")]
     [SerializeField] Button startPauseButton;
     [SerializeField] Button startInventoryButton;
+    [Space(5)]
 
     [Header("PickUpUI")]
     [SerializeField] GameObject PickUpPanel;
     [SerializeField] TextMeshProUGUI pickedUpText;
     [SerializeField] float timeTurnedOn;
     [SerializeField] float pick_timer;
+    [Space(5)]
+
 
     [Header("HealthUI")]
     [SerializeField] Image hpDisplay;
-
+    
 
 
     private void Start()
@@ -105,7 +127,7 @@ public class Pause : MonoBehaviour
                 //Cursor.visible = true;
                 //Cursor.lockState = CursorLockMode.None;
                 AudioListener.pause = true;
-                PauseVHS.SetActive(true);
+                PauseVHSEffect.SetActive(true);
                 startPauseButton.Select();
             }
             if(paused == false)
@@ -120,7 +142,7 @@ public class Pause : MonoBehaviour
                 //Cursor.visible = false;
                 //Cursor.lockState = CursorLockMode.Locked;
                 AudioListener.pause = false;
-                PauseVHS.SetActive(false);
+                PauseVHSEffect.SetActive(false);
             }
         }
     }
@@ -138,7 +160,7 @@ public class Pause : MonoBehaviour
             {
                 player.enabled = false;  
                 PauseMenu.SetActive(false);             
-                Time.timeScale = 0;
+                Time.timeScale = 1;
                 Inventory.SetActive(true);
                 //Cursor.visible = true;
                 //Cursor.lockState = CursorLockMode.None;
@@ -170,7 +192,7 @@ public class Pause : MonoBehaviour
         //Cursor.visible = false;
         //Cursor.lockState= CursorLockMode.Locked;
         AudioListener.pause= false;
-        PauseVHS.SetActive(false);
+        PauseVHSEffect.SetActive(false);
     }
     public void backToMenu()
     {

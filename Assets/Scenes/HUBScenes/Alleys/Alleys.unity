@@ -22482,10 +22482,15 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: -232
       objectReference: {fileID: 0}
+    - target: {fileID: 2137466761823619767, guid: 9c842af545cc17944931bf9dfca32c52,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4163857905687885554, guid: 9c842af545cc17944931bf9dfca32c52,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4870497450122529253, guid: 9c842af545cc17944931bf9dfca32c52,
         type: 3}
@@ -22527,10 +22532,15 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1756735667}
+    - target: {fileID: 6502919628126098348, guid: 9c842af545cc17944931bf9dfca32c52,
+        type: 3}
+      propertyPath: PauseVHSEffect
+      value: 
+      objectReference: {fileID: 943027295}
     - target: {fileID: 7044486589049523037, guid: 9c842af545cc17944931bf9dfca32c52,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8111001665887992831, guid: 9c842af545cc17944931bf9dfca32c52,
         type: 3}
@@ -22580,6 +22590,12 @@ GameObject:
 --- !u!95 &943027294 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 1944732092960517385, guid: 9c842af545cc17944931bf9dfca32c52,
+    type: 3}
+  m_PrefabInstance: {fileID: 943027292}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &943027295 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2137466761823619767, guid: 9c842af545cc17944931bf9dfca32c52,
     type: 3}
   m_PrefabInstance: {fileID: 943027292}
   m_PrefabAsset: {fileID: 0}

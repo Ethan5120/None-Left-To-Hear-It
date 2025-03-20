@@ -15,19 +15,31 @@ public class Pause : MonoBehaviour
     public GameObject PControls, PSettings, PQuit;
     [Space(5)] 
 
+
+
+
     [Header("Status Game Canvas")]    
     public bool paused;
     public bool inventaryOpen;
     [Space(5)] 
+
+
+
 
     [Header("Scenes to go on Pause Menu")]
     public string menuSceneName;
     public string endingSceneName;
     [Space(5)] 
 
+
+
+
     [Header("Key Data")]
     public PlayerSO keyData;
     [Space(5)] 
+
+
+
 
     [Header("Keys")]
     public GameObject k0;
@@ -36,23 +48,38 @@ public class Pause : MonoBehaviour
     public GameObject k3;
     [Space(5)]
 
+
+
+
     [Header("Inventory text")]	
     [SerializeField] TextMeshProUGUI AmmoText;
     [SerializeField] TextMeshProUGUI PillsText;
     [Space(5)]	
 
+
+
+
     [Header("Player")]
     public PlayerController player;
     [Space(5)]	
+
+
+
 
     [Header("Canvas Animator")]
     private Animator animatorCanvas;
     [Space(5)]
 
+
+
+
     [Header("Buttons")]
     [SerializeField] Button startPauseButton;
     [SerializeField] Button startInventoryButton;
     [Space(5)]
+
+
+
 
     [Header("PickUpUI")]
     [SerializeField] GameObject PickUpPanel;
@@ -60,6 +87,7 @@ public class Pause : MonoBehaviour
     [SerializeField] float timeTurnedOn;
     [SerializeField] float pick_timer;
     [Space(5)]
+
 
 
     [Header("HealthUI")]
@@ -164,6 +192,7 @@ public class Pause : MonoBehaviour
                 Inventory.SetActive(true);
                 //Cursor.visible = true;
                 //Cursor.lockState = CursorLockMode.None;
+                PauseVHSEffect.SetActive(true);
                 AudioListener.pause = false;
                 startInventoryButton.Select();
             }
@@ -175,6 +204,7 @@ public class Pause : MonoBehaviour
                 Inventory.SetActive(false);
                 //Cursor.visible = false;
                 //Cursor.lockState = CursorLockMode.Locked;
+                PauseVHSEffect.SetActive(false);
                 AudioListener.pause = false;
             }
         }

@@ -7645,6 +7645,11 @@ MonoBehaviour:
   - Rifle_Held
   - Rifle_Aim
   - Rifle_Shoot
+  isGrounded: 1
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  groundCheckDistance: 2
   FootstepsSound: {fileID: 8300000, guid: 0c973715a8a12a84fb16337f4d06fa5e, type: 3}
   CockingSound: {fileID: 8300000, guid: 9a7435d3e96a93945b1fbd5a18f7b733, type: 3}
   PickUpSound: {fileID: 8300000, guid: e0a60089e43c17c4581d67897a0ab2c8, type: 3}

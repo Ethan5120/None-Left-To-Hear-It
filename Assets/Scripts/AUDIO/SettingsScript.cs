@@ -1,14 +1,22 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 
-public class VolumeSettings : MonoBehaviour
+public class SettingsScript : MonoBehaviour
 {
+
+    [Header("Audio Settings")]
     [SerializeField] private AudioMixer MasterMixer;
     [SerializeField] private Slider musicSlider;
     [SerializeField] private Slider sfxSlider;
     [SerializeField] private Slider masterSlider;
+
+    Resolution[] resolutions;
+
+    [Header("Resolution Settings")]
+    public Dropdown resolutionDropdown;     
 
     private void Start()
     {
@@ -22,6 +30,34 @@ public class VolumeSettings : MonoBehaviour
             SetSFXVolume();
             SetMasterVolume();
         }
+
+        resolutions = Screen.resolutions;
+
+        resolutionDropdown.ClearOptions();
+
+        List<string> options = new List<string>();
+
+        int currentResolutionIndex = 0;
+        for (int i = 0; i < resolutions.Length; i++)
+        {
+            string option = resolutions[i].width + " x " + resolutions[i].height;
+            options.Add(option);
+
+            if (resolutions[i].width == Screen.currentResolution.width && resolutions[i].height == Screen.currentResolution.height)
+            {
+                currentResolutionIndex = i;
+            }
+        }
+        
+        resolutionDropdown.AddOptions(options);
+        resolutionDropdown.value = currentResolutionIndex;
+        resolutionDropdown.RefreshShownValue();
+    }
+
+    public void SetResolution(int resolutionIndex)
+    {
+        Resolution resolution = resolutions[resolutionIndex];
+        Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);   
     }
 
     public void SetMusicVolume()
@@ -54,5 +90,11 @@ public class VolumeSettings : MonoBehaviour
         SetMusicVolume();
         SetSFXVolume();
         SetMasterVolume();
+    }
+
+    public void SetFullScreen(bool isFullScreen)
+    {
+        Screen.fullScreen = isFullScreen;
+        PlayerPrefs.SetInt("FullScreen", isFullScreen ? 1 : 0);
     }
 }

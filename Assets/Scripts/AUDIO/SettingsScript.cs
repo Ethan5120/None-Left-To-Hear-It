@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
@@ -12,15 +13,19 @@ public class SettingsScript : MonoBehaviour
     [SerializeField] private Slider musicSlider;
     [SerializeField] private Slider sfxSlider;
     [SerializeField] private Slider masterSlider;
-
-    Resolution[] resolutions;
+    [Space(10)]
 
     [Header("Resolution Settings")]
-    public Dropdown resolutionDropdown;     
+    [SerializeField] private TMP_Dropdown resolutionDropdown;
+    private Resolution[] resolutions;
+    private List<Resolution> filteredResolutions;
 
+    private float currentRefreshRate;
+    private int currentResolutionIndex = 0;
+    
     private void Start()
     {
-        if(PlayerPrefs.HasKey("MusicVolume"))
+        if (PlayerPrefs.HasKey("MusicVolume"))
         {
             LoadVolume();
         }
@@ -32,23 +37,39 @@ public class SettingsScript : MonoBehaviour
         }
 
         resolutions = Screen.resolutions;
+        filteredResolutions = new List<Resolution>();
 
         resolutionDropdown.ClearOptions();
+        currentRefreshRate = (float)Screen.currentResolution.refreshRateRatio.value;
 
-        List<string> options = new List<string>();
+        Debug.Log("Current Refresh Rate: " + currentRefreshRate);
 
-        int currentResolutionIndex = 0;
         for (int i = 0; i < resolutions.Length; i++)
         {
-            string option = resolutions[i].width + " x " + resolutions[i].height;
-            options.Add(option);
+            Debug.Log("Resolution: " + resolutions[i]);
+            if ((float)resolutions[i].refreshRateRatio.value == currentRefreshRate)
+            {
+                filteredResolutions.Add(resolutions[i]);
+            }
+        }
 
-            if (resolutions[i].width == Screen.currentResolution.width && resolutions[i].height == Screen.currentResolution.height)
+        // Automatically set the highest resolution
+        Resolution highestResolution = filteredResolutions[filteredResolutions.Count - 1];
+        Screen.SetResolution(highestResolution.width, highestResolution.height, Screen.fullScreen);
+        PlayerPrefs.SetInt("ResolutionWidth", highestResolution.width);
+        PlayerPrefs.SetInt("ResolutionHeight", highestResolution.height);
+
+        List<string> options = new List<string>();
+        for (int i = 0; i < filteredResolutions.Count; i++)
+        {
+            string ResolutionOption = filteredResolutions[i].width + " x " + filteredResolutions[i].height + " " + filteredResolutions[i].refreshRateRatio.value.ToString("0.##") + " Hz";
+            options.Add(ResolutionOption);
+            if (filteredResolutions[i].width == highestResolution.width && filteredResolutions[i].height == highestResolution.height)
             {
                 currentResolutionIndex = i;
             }
         }
-        
+
         resolutionDropdown.AddOptions(options);
         resolutionDropdown.value = currentResolutionIndex;
         resolutionDropdown.RefreshShownValue();
@@ -56,8 +77,10 @@ public class SettingsScript : MonoBehaviour
 
     public void SetResolution(int resolutionIndex)
     {
-        Resolution resolution = resolutions[resolutionIndex];
-        Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);   
+        Resolution resolution = filteredResolutions[resolutionIndex];
+        Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
+        PlayerPrefs.SetInt("ResolutionWidth", resolution.width);
+        PlayerPrefs.SetInt("ResolutionHeight", resolution.height);
     }
 
     public void SetMusicVolume()

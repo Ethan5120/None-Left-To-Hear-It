@@ -19,9 +19,16 @@ public class SettingsScript : MonoBehaviour
     [SerializeField] private TMP_Dropdown resolutionDropdown;
     private Resolution[] resolutions;
     private List<Resolution> filteredResolutions;
-
     private float currentRefreshRate;
     private int currentResolutionIndex = 0;
+    [Space(10)]	
+
+    [Header("Brightness Settings")]	
+    public Slider slider;
+    public float sliderValue;
+    public Image panelBrillo;
+    public float valorBlack;
+    public float valorWhite;
     
     private void Start()
     {
@@ -73,6 +80,10 @@ public class SettingsScript : MonoBehaviour
         resolutionDropdown.AddOptions(options);
         resolutionDropdown.value = currentResolutionIndex;
         resolutionDropdown.RefreshShownValue();
+
+        // settings del brillo
+        slider.value = PlayerPrefs.GetFloat("Brillo", 0.5f);
+        panelBrillo.color = new Color(panelBrillo.color.r, panelBrillo.color.g, panelBrillo.color.b, sliderValue / 3);
     }
 
     public void SetResolution(int resolutionIndex)
@@ -119,5 +130,25 @@ public class SettingsScript : MonoBehaviour
     {
         Screen.fullScreen = isFullScreen;
         PlayerPrefs.SetInt("FullScreen", isFullScreen ? 1 : 0);
+    }
+    
+    void Update()
+    {
+        valorBlack = 1 - sliderValue - 0.5f;
+        valorWhite = sliderValue - 0.5f;
+        if (sliderValue < 0.5f)
+        {
+            panelBrillo.color = new Color( 0, 0, 0, valorBlack);
+        }
+        if (sliderValue > 0.5f)
+        {
+            panelBrillo.color = new Color(255, 255, 255, valorWhite);
+        }
+    }
+    public void ChangeSliderBrillo(float valor)
+    {
+        sliderValue = valor;
+        PlayerPrefs.SetFloat("Brillo", sliderValue);
+        panelBrillo.color = new Color(panelBrillo.color.r, panelBrillo.color.g, panelBrillo.color.b, sliderValue / 3);
     }
 }

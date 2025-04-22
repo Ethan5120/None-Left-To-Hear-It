@@ -3,13 +3,13 @@ using UnityEngine;
 
 public class EnemyTrigger : MonoBehaviour
 {
-    [SerializeField] List<EnemyData> enemies = new List<EnemyData>();
+    [SerializeField] List<EnemyAI> enemies = new List<EnemyAI>();
 
     void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Player"))
         {
-            foreach(EnemyData enemy in enemies)
+            foreach(EnemyAI enemy in enemies)
             {
                 enemy.startAmbush = true;
             }

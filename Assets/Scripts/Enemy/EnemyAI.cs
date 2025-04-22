@@ -5,19 +5,27 @@ using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
-    [Header("EnemySettings")]
+    [Header("Enemy Data")]
     public EnemyData enemyData;
-    public EnemyData.EnemyState newState;
+
+    [Header("EnemyState")]
+    public int enemyMaxHealth = 1;
+    public int enemyCurrentHealth = 1;
+    public bool startAmbush = false;
+
+    [Header("EnemySettings")]
+    public EnemyData.EnemyState startingState;
     private Transform player;
     [SerializeField] LayerMask playerLayer;
+    [SerializeField] bool canRoam;
     [SerializeField] Transform[] roamingTargets;
+    [SerializeField] Transform startLocation;
     [SerializeField] NavMeshAgent agent;
     [SerializeField] private float distance;
     [SerializeField] bool isAttacking;
     [SerializeField] bool chasingTarget;
     [SerializeField] float detectionRange;
     [SerializeField] float interestRange;
-    [SerializeField] bool canRoam;
 
 
     [Header("EnemyTimers")]
@@ -67,6 +75,7 @@ public class EnemyAI : MonoBehaviour
     [Header("AttackData")]
     private SphereCollider attackCollider;
 
+#region Initialitazion Methods
     void Awake()
     {
         animator = GetComponent<Animator>();
@@ -74,28 +83,23 @@ public class EnemyAI : MonoBehaviour
         {
             if(enemyData.firstLoad)
             {
-                enemyData.startAmbush = false;
-                enemyData.currentState = enemyData.startingState;
-                transform.SetPositionAndRotation(enemyData.startingPosition, enemyData.startingRotation);
-                enemyData.enemyHealth = 1;
-                enemyData.newRotation = enemyData.startingRotation;
+                startAmbush = false;
+                enemyData.currentState = startingState;
+                enemyCurrentHealth = enemyMaxHealth;
                 enemyData.deadTime = 0;
                 enemyData.firstLoad = false;     
             }
             else
             {
-                transform.SetPositionAndRotation(enemyData.newPositions[Random.Range(0,enemyData.newPositions.Length)], enemyData.newRotation);
+                SetStartLocation();
             }
         }
         else
         {
             enemyData = ScriptableObject.CreateInstance<EnemyData>();
-            enemyData.startingPosition = transform.position;
-            enemyData.startingRotation = transform.rotation;
-            enemyData.startingState = newState;
         }
 
-        
+        startLocation = gameObject.transform;
 
 
         player = FindObjectOfType<PlayerController>().transform;
@@ -105,7 +109,16 @@ public class EnemyAI : MonoBehaviour
         attackCollider.enabled = false;
     }
 
+    void SetStartLocation()
+    {
+        if(canRoam)
+        {
+            gameObject.transform.position = roamingTargets[Random.Range(0, roamingTargets.Length)].position;
+        }
+    }
 
+
+#endregion
     void Update()
     {
         switch (enemyData.currentState)
@@ -169,12 +182,12 @@ public class EnemyAI : MonoBehaviour
 
             case EnemyData.EnemyState.ambushState:
             {
-                if(deathAnimation != null && !enemyData.startAmbush)
+                if(deathAnimation != null && !startAmbush)
                 {
                     animator.Play(deathAnimation);
                 }
                 agent.isStopped = true;
-                if(enemyData.startAmbush)
+                if(startAmbush)
                 {
                     if(riseAnimation != null)
                     {
@@ -235,6 +248,7 @@ public class EnemyAI : MonoBehaviour
                 GetNewTarget();
             }
         }
+        //aqui pon que se regrese a su lugar de spawn
         else
         {
             agent.isStopped = true;
@@ -292,13 +306,13 @@ public class EnemyAI : MonoBehaviour
     {
         if(enemyData.deadTime <= 0)
         {
-            enemyData.enemyHealth -= damageDealt;
+            enemyCurrentHealth -= damageDealt;
             if(hurtAnimations != null && !isAttacking)
             {
                 animator.Play(hurtAnimations[Random.Range(0, hurtAnimations.Count)]);
             }
 
-            if(enemyData.enemyHealth <= 0)
+            if(enemyCurrentHealth <= 0)
             {
                 Debug.Log("EnemyDead");
                 enemyData.currentState = EnemyData.EnemyState.deadState;
@@ -341,7 +355,7 @@ public class EnemyAI : MonoBehaviour
     public void Resurrect()
     {
         enemyData.currentState = EnemyData.EnemyState.idleState;
-        enemyData.enemyHealth = 1;
+        enemyCurrentHealth = enemyMaxHealth / 2;
         enemyData.deadTime = 0;
     }
 

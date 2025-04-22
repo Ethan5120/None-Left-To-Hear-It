@@ -18,7 +18,7 @@ public class playerPickUps : MonoBehaviour, IInteractable
     [SerializeField]int ammoAmmount;
 
     [SerializeField] bool isAmbushTrigger;
-    [SerializeField] List<EnemyData> enemies = new List<EnemyData>();
+    [SerializeField] List<EnemyAI> enemies = new List<EnemyAI>();
 
     [Header("UI Data")]
     [SerializeField] GameEvent turnOnPanel;
@@ -71,7 +71,7 @@ public class playerPickUps : MonoBehaviour, IInteractable
         }
         if(isAmbushTrigger)
         {
-            foreach(EnemyData enemy in enemies)
+            foreach(EnemyAI enemy in enemies)
             {
                 enemy.startAmbush = true;
             }

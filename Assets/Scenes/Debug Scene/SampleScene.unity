@@ -12876,18 +12876,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyData: {fileID: 11400000, guid: f87ea4b0013a6534ba476991d1543b19, type: 2}
-  newState: 0
+  enemyMaxHealth: 1
+  enemyCurrentHealth: 1
+  startAmbush: 0
+  startingState: 0
   playerLayer:
     serializedVersion: 2
     m_Bits: 0
+  canRoam: 0
   roamingTargets: []
+  startLocation: {fileID: 0}
   agent: {fileID: 0}
   distance: 0
   isAttacking: 0
   chasingTarget: 0
   detectionRange: 0
   interestRange: 0
-  canRoam: 0
   unstuckTime: 0
   twitchFrecuencyMin: 0
   twitchFrecuencyMax: 0
@@ -36350,6 +36354,7 @@ GameObject:
   - component: {fileID: 6278954128281776809}
   - component: {fileID: 6658716289965844501}
   - component: {fileID: 6658716289965844500}
+  - component: {fileID: 6658716289965844502}
   m_Layer: 0
   m_Name: Enemy_DEF_V2
   m_TagString: Untagged
@@ -36393,23 +36398,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyData: {fileID: 11400000, guid: 6de78a79f6b0c8342bcb4e05f4c310cd, type: 2}
-  newState: 0
+  enemyMaxHealth: 1
+  enemyCurrentHealth: 1
+  startAmbush: 0
+  startingState: 0
   playerLayer:
     serializedVersion: 2
     m_Bits: 128
+  canRoam: 0
   roamingTargets:
   - {fileID: 1942457437}
   - {fileID: 1286947642}
   - {fileID: 155431647}
   - {fileID: 1988371131}
   - {fileID: 1943311631}
+  startLocation: {fileID: 0}
   agent: {fileID: 0}
   distance: 0
   isAttacking: 0
   chasingTarget: 0
   detectionRange: 10
-  interestRange: 20
-  canRoam: 0
+  interestRange: 15
   unstuckTime: 0
   twitchFrecuencyMin: 2
   twitchFrecuencyMax: 5
@@ -36441,6 +36450,27 @@ MonoBehaviour:
   RiseSource: {fileID: 964530426}
   ArmSwingSource: {fileID: 166729995}
   VoicesSource: {fileID: 555177751}
+--- !u!65 &6658716289965844502
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6658716289965844499}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 4.3878136, z: 8.765175}
+  m_Center: {x: 0, y: 1.6939065, z: 3.8825865}
 --- !u!4 &6659936911651433885
 Transform:
   m_ObjectHideFlags: 0

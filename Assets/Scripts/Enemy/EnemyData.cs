@@ -7,5 +7,7 @@ public class EnemyData : ScriptableObject
     public bool firstLoad = true;
     public enum EnemyState{idleState, chaseState, deadState, ambushState}
     public EnemyState currentState;
-    public float deadTime; 
+    public float deadTime;
+    public bool hasDied = false;
+
 }

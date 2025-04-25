@@ -19,7 +19,7 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] LayerMask playerLayer;
     [SerializeField] bool canRoam;
     [SerializeField] Transform[] roamingTargets;
-    [SerializeField] Transform startLocation;
+    [SerializeField] Vector3 startLocation;
     [SerializeField] NavMeshAgent agent;
     [SerializeField] private float distance;
     [SerializeField] bool isAttacking;
@@ -29,6 +29,9 @@ public class EnemyAI : MonoBehaviour
 
 
     [Header("EnemyTimers")]
+    /// <summary>
+    /// Failsafe en caso que el enemigo que quede atorado atacanda
+    /// </summary>
     [SerializeField] float unstuckTime;
     /// <summary>
     /// Controla la frecuencia que el enemigo hara la animacion de idle en un tiempo minimo
@@ -46,9 +49,14 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private Animator animator;
 
     [Header("AnimationNames")]
+    [SerializeField] string standardAnimation;
+    [Space(2)]
     [SerializeField] string walkAnimation;
+    [Space(2)]
     [SerializeField] string deathAnimation;
+    [Space(2)]
     [SerializeField] string riseAnimation;
+    [Space(2)]
     [SerializeField] List<string> attackAnimations =  new List<string>();
     [SerializeField] List<string> hurtAnimations =  new List<string>();
     [SerializeField] List<string> idleAnimations =  new List<string>();
@@ -73,6 +81,8 @@ public class EnemyAI : MonoBehaviour
     [Space(5)]
 
     [Header("AttackData")]
+    [SerializeField] float attackCooldown = 0.5f;
+    [SerializeField] float attackTimer;
     private SphereCollider attackCollider;
 
 #region Initialitazion Methods
@@ -92,6 +102,10 @@ public class EnemyAI : MonoBehaviour
             else
             {
                 SetStartLocation();
+                if(enemyData.hasDied == true)
+                {
+                    enemyCurrentHealth = enemyMaxHealth / 2;
+                }
             }
         }
         else
@@ -99,11 +113,12 @@ public class EnemyAI : MonoBehaviour
             enemyData = ScriptableObject.CreateInstance<EnemyData>();
         }
 
-        startLocation = gameObject.transform;
+        startLocation = gameObject.transform.position;
 
 
         player = FindObjectOfType<PlayerController>().transform;
         agent = GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>();
 
         attackCollider = GetComponent<SphereCollider>();
         attackCollider.enabled = false;
@@ -147,7 +162,7 @@ public class EnemyAI : MonoBehaviour
                     agent.isStopped = false;
                 }
 
-                if(distance <= 2f)
+                if(distance <= 3f)
                 {
                     Debug.Log("StartAttack");
                     //Aqui tenemos que checar si esta viendo al jugador NO LO OLVIDES
@@ -249,6 +264,20 @@ public class EnemyAI : MonoBehaviour
             }
         }
         //aqui pon que se regrese a su lugar de spawn
+        else if(!canRoam && !_twitching)
+        {
+            agent.destination = startLocation;
+            distance = Vector3.Distance(transform.position, agent.destination);
+            if(distance > 1)
+            {
+                agent.isStopped = false;
+            }
+            else
+            {
+                agent.isStopped = true;
+                animator.Play(standardAnimation);
+            }
+        }
         else
         {
             agent.isStopped = true;
@@ -316,6 +345,7 @@ public class EnemyAI : MonoBehaviour
             {
                 Debug.Log("EnemyDead");
                 enemyData.currentState = EnemyData.EnemyState.deadState;
+                enemyData.hasDied = true;
                 enemyData.deadTime = 30f;
             }
         }
@@ -324,32 +354,47 @@ public class EnemyAI : MonoBehaviour
 #region AttacksMethods
     void AttackCheck()
     {
+        attackTimer -= 1 * Time.deltaTime;
         RaycastHit hit;
-        if(Physics.Raycast(transform.position, transform.forward, out hit, 10f, playerLayer))
+        if(Physics.Raycast(new Vector3(transform.position.x, 2.5f, transform.position.z), transform.forward, out hit, 5f, playerLayer))
         {
             Debug.DrawRay(transform.position, transform.forward * hit.distance);
             Debug.Log("PlayerIsInFront");
             StartAttack();
         }
-        else
+        else if(!isAttacking)
         {
             Debug.DrawRay(transform.position, transform.forward * hit.distance);
-            transform.LookAt(player);
+            ///
+            Quaternion lookRotation = Quaternion.LookRotation(player.position - transform.position);
+            lookRotation = Quaternion.Euler(transform.rotation.eulerAngles.x, lookRotation.eulerAngles.y, transform.rotation.eulerAngles.z);
+            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, 0.05f);
         }
     }
 
     public void StartAttack()
     {
-        if(attackAnimations != null && !isAttacking)
+        if(attackAnimations != null && !isAttacking && attackTimer <= 0)
         {
             animator.Play(attackAnimations[Random.Range(0, attackAnimations.Count)]);
             isAttacking = true;
             unstuckTime = 3f;
         }
     }
+    
+    void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.GetComponent<PlayerController>())
+        {
+            other.gameObject.GetComponent<PlayerController>().TakeDamage();
+        }
+    }
+#endregion
 
+#region AnimationEvents
     public void EndAttack()
-    { 
+    {
+        attackTimer = attackCooldown; 
         isAttacking = false;
     }
     public void Resurrect()
@@ -367,14 +412,6 @@ public class EnemyAI : MonoBehaviour
     public void DisableAttack()
     {
         attackCollider.enabled = false;
-    }
-
-    void OnTriggerEnter(Collider other)
-    {
-        if(other.gameObject.GetComponent<PlayerController>())
-        {
-            other.gameObject.GetComponent<PlayerController>().TakeDamage();
-        }
     }
 #endregion
 
@@ -414,4 +451,17 @@ public class EnemyAI : MonoBehaviour
         VoicesSource.Stop();
     }
 #endregion
+
+#region TestMethods
+void OnDrawGizmosSelected() 
+{
+        Gizmos.color = Color.red;
+        Vector3 direction = transform.TransformDirection(Vector3.forward) * 5;
+        Gizmos.DrawRay(new Vector3(transform.position.x, 2.5f, transform.position.z), direction);
+}
+
+
+#endregion
+
+
 }

@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ba4e77062079ec4f973ffcd0047a161, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
-  playerHP: 3
+  playerHP: 931
   playerPills: 1
-  playerAmmo: 11
+  playerAmmo: 7
   PlayerKeys: 01000000
   isInHub: 1
   isFirstLoad: 0

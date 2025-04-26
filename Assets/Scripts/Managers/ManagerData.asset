@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aacb7651d6e6c5f47a6c299ca699cb3c, type: 3}
   m_Name: ManagerData
   m_EditorClassIdentifier: 
-  isInHub: 0
+  isInHub: 1
   isFirstLoad: 0
-  gameTime: 1
+  gameTime: 0

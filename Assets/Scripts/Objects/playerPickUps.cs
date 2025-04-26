@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class playerPickUps : MonoBehaviour, IInteractable
+public class playerPickUps : MonoBehaviour, I_Interactable
 {
     [SerializeField] PlayerSO playerData;
     [SerializeField] ItemManager itemManager;

@@ -1,7 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class FinalDoor : MonoBehaviour, IInteractable
+public class FinalDoor : MonoBehaviour, I_Interactable
 {
 
     [SerializeField] PlayerSO playerData;

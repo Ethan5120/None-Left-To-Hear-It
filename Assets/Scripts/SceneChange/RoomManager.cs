@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class RoomManager : MonoBehaviour
 {
-    [SerializeField] PlayerSO playerData;
+    [SerializeField] GM_ScriptableObject managerData;
     void Awake()
     {
-        playerData.isInHub = false;
+        managerData.isInHub = false;
     }
 
 }

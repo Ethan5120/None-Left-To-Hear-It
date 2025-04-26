@@ -12,6 +12,8 @@ public class CameraManager : MonoBehaviour
 
     [SerializeField] GameObject cameraVolume;
     [SerializeField] CinemachineVirtualCamera currentCamera;
+    [SerializeField] CinemachineVirtualCamera InteractCamera;
+
 
     void Awake()
     {

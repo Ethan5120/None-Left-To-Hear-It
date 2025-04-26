@@ -3,10 +3,11 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
-public class DoorController : MonoBehaviour, IInteractable
+public class DoorController : MonoBehaviour, I_Interactable
 {
 
     [SerializeField] PlayerSO playerData;
+    [SerializeField] GM_ScriptableObject managerData;
     [SerializeField] int neededKey;
     public SceneField sceneToLoad;
     [SerializeField] Animator animator;
@@ -52,7 +53,7 @@ public class DoorController : MonoBehaviour, IInteractable
 
     void SetSpawn()
     {
-        if(playerData.isInHub)
+        if(managerData.isInHub)
         {
             playerData.spawnPosition = positionToSpawn;
             playerData.spawnRotation = rotationToSpawn;

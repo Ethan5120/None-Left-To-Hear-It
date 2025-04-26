@@ -10,9 +10,8 @@ public class PlayerSO : ScriptableObject
     public int playerAmmo;
     public List<bool> PlayerKeys = new List<bool>();
 
-    [Header("HUB Data")]
-    public bool isInHub;
-    public bool isFirstLoad;
+    [Header("Spawn Data")]
     public Vector3 spawnPosition;
     public Quaternion spawnRotation;
+
 }

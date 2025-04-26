@@ -3,11 +3,6 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
-interface IInteractable
-{
-    public void Interact();
-}
-
 public class PlayerController : MonoBehaviour
 {
     [Header("InputSystemDeclarations")]
@@ -17,6 +12,7 @@ public class PlayerController : MonoBehaviour
     [Space(5)]
 
     [Header("GameManagerVariables")]
+    public GM_ScriptableObject managerData;
     [SerializeField] CameraManager cameraManager;
     [SerializeField] string cameraObjectName;
     [SerializeField] PlayerSO playerData;
@@ -42,7 +38,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("PlayeStatus")]
     [SerializeField] bool isAim = false; //Checa si el jugador esta apuntando
-    [SerializeField] bool isInteracting = false; //Checa si el jugador esta interactuando
+    [SerializeField] public bool isInteracting = false; //Checa si el jugador esta interactuando
     [SerializeField] bool isTakingDamage = false; //Checa si el jugador esta recibiendo daño
     [Space(5)]
 
@@ -123,7 +119,7 @@ public class PlayerController : MonoBehaviour
         Ray r = new Ray (transform.position, transform.forward);
         if(Physics.Raycast(r, out RaycastHit hitInfo, interactRange, interactLayer))
         {
-            if(hitInfo.collider.gameObject.TryGetComponent(out IInteractable interactObject) && !isAim && !isTakingDamage)
+            if(hitInfo.collider.gameObject.TryGetComponent(out I_Interactable interactObject) && !isAim && !isTakingDamage)
             {
                 if(hitInfo.collider.gameObject.TryGetComponent(out playerPickUps pickUps))
                 {
@@ -164,12 +160,12 @@ public class PlayerController : MonoBehaviour
 
             if(playerInput.y > 0 && !isInteracting && !isTakingDamage)
             {   
-                controller.Move(transform.forward * playerInput.y * playerSpeed * Time.deltaTime);
+                controller.Move(transform.forward * playerInput.y * playerSpeed * Time.deltaTime * managerData.gameTime);
                 pAnimator.Play(pAnims[1]);
             }
             else if(playerInput.y < 0 && !isInteracting && !isTakingDamage)
             {
-                controller.Move(transform.forward * playerInput.y * (playerSpeed/2) * Time.deltaTime);
+                controller.Move(transform.forward * playerInput.y * (playerSpeed/2) * Time.deltaTime * managerData.gameTime);
                 pAnimator.Play(pAnims[2]);
             }
 
@@ -181,7 +177,7 @@ public class PlayerController : MonoBehaviour
             
             
 
-            transform.Rotate(transform.up, playerRotation * playerInput.x * Time.deltaTime);
+            transform.Rotate(transform.up, playerRotation * playerInput.x * Time.deltaTime * managerData.gameTime);
         }
         else
         {
@@ -191,7 +187,7 @@ public class PlayerController : MonoBehaviour
                 gunAnimator.Play(gunAnims[1]);
             }
             //transform.Rotate(transform.right, playerAimSpeed * -playerInput.y * Time.deltaTime); //<----Encender a su propio riesgo
-            transform.Rotate(transform.up, playerAimSpeed * playerInput.x * Time.deltaTime);
+            transform.Rotate(transform.up, playerAimSpeed * playerInput.x * Time.deltaTime * managerData.gameTime);
         }
        
         
@@ -206,9 +202,12 @@ public class PlayerController : MonoBehaviour
     
     void Update()
     {
-        playerInput = Move.action.ReadValue<Vector2>();
-        CheckGround();
-        PlayerMovement();
+        if(managerData.gameTime > 0)
+        {
+            playerInput = Move.action.ReadValue<Vector2>();
+            CheckGround();
+            PlayerMovement();
+        }
     }
 
 

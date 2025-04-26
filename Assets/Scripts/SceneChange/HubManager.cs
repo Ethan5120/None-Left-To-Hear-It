@@ -4,6 +4,7 @@ using UnityEngine;
 public class HubManager : MonoBehaviour
 {
     [SerializeField] PlayerSO playerData;
+    [SerializeField] GM_ScriptableObject managerData;
     [SerializeField] List<pickUp_SO> pickUps = new List<pickUp_SO>();
     [SerializeField] List<EnemyData> enemies = new List<EnemyData>();
 
@@ -11,9 +12,9 @@ public class HubManager : MonoBehaviour
     void Awake()
     {
         player = FindObjectOfType<PlayerController>().gameObject;
-        if(playerData != null)
+        if(playerData != null || managerData != null)
         {
-            if(playerData.isFirstLoad)
+            if(managerData.isFirstLoad)
             {
                 /*foreach(EnemyData enemy in enemies)
                 {
@@ -40,13 +41,13 @@ public class HubManager : MonoBehaviour
                         playerData.PlayerKeys[i] = false;
                     }
                 }*/
-                playerData.isFirstLoad = false;
+                managerData.isFirstLoad = false;
             }
             else
             {
                 player.transform.SetPositionAndRotation(playerData.spawnPosition, playerData.spawnRotation);
             }
-            playerData.isInHub = true;
+            managerData.isInHub = true;
         }
     }
 }

@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class SetReset : MonoBehaviour
 {
-     [SerializeField] PlayerSO playerData;
+    [SerializeField] GM_ScriptableObject managerData;
     void Awake()
     {
-        playerData.isFirstLoad = true;
+        managerData.isFirstLoad = true;
     }
 }

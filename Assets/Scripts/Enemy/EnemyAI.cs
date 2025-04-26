@@ -7,6 +7,7 @@ public class EnemyAI : MonoBehaviour
 {
     [Header("Enemy Data")]
     public EnemyData enemyData;
+    public GM_ScriptableObject managerData;
 
     [Header("EnemyState")]
     public int enemyMaxHealth = 1;
@@ -155,7 +156,7 @@ public class EnemyAI : MonoBehaviour
             {
                 distance = Vector3.Distance(transform.position, player.position);
 
-                if(walkAnimation != null && !isAttacking && distance > 2f)
+                if(walkAnimation != null && !isAttacking && distance > 2f && managerData.gameTime > 0)
                 {
                     animator.Play(walkAnimation);
                     agent.destination = player.position;
@@ -184,7 +185,7 @@ public class EnemyAI : MonoBehaviour
                     animator.Play(deathAnimation);
                 }
                 agent.isStopped = true;
-                enemyData.deadTime -= 1 * Time.deltaTime;
+                enemyData.deadTime -= 1 * Time.deltaTime  * managerData.gameTime;
                 if(enemyData.deadTime <= 0)
                 {
                     if(riseAnimation != null)
@@ -215,7 +216,7 @@ public class EnemyAI : MonoBehaviour
 
         if(isAttacking)
         {
-            unstuckTime-= Time.deltaTime;
+            unstuckTime-= Time.deltaTime * managerData.gameTime;
             if(unstuckTime <= 0)
             {
                 isAttacking = false;
@@ -248,7 +249,7 @@ public class EnemyAI : MonoBehaviour
     {
         CheckPlayerDistance(); 
         TwitchGenerator();
-        if(canRoam && !_twitching)
+        if(canRoam && !_twitching && managerData.gameTime > 0)
         {
             agent.isStopped = false;
             animator.Play(walkAnimation);
@@ -264,7 +265,7 @@ public class EnemyAI : MonoBehaviour
             }
         }
         //aqui pon que se regrese a su lugar de spawn
-        else if(!canRoam && !_twitching)
+        else if(!canRoam && !_twitching && managerData.gameTime > 0)
         {
             agent.destination = startLocation;
             distance = Vector3.Distance(transform.position, agent.destination);
@@ -291,7 +292,7 @@ public class EnemyAI : MonoBehaviour
             return;
         }
 
-        twitchTimer -= Time.deltaTime;
+        twitchTimer -= Time.deltaTime * managerData.gameTime;
         if(twitchTimer <= 0)
         {
             if(idleAnimations != null)
@@ -354,7 +355,7 @@ public class EnemyAI : MonoBehaviour
 #region AttacksMethods
     void AttackCheck()
     {
-        attackTimer -= 1 * Time.deltaTime;
+        attackTimer -= 1 * Time.deltaTime * managerData.gameTime;
         RaycastHit hit;
         if(Physics.Raycast(new Vector3(transform.position.x, 2.5f, transform.position.z), transform.forward, out hit, 5f, playerLayer))
         {

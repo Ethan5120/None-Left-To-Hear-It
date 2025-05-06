@@ -9,6 +9,7 @@ public class PlayerSO : ScriptableObject
     public int playerPills;
     public int playerAmmo;
     public List<bool> PlayerKeys = new List<bool>();
+    public bool hasGun;
 
     [Header("Spawn Data")]
     public Vector3 spawnPosition;

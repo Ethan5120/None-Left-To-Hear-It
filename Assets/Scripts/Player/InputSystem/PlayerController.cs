@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     [Header("InputSystemDeclarations")]
     private Vector2 playerInput;
     [SerializeField] CharacterController controller;
-    [SerializeField] public InputActionReference Move, Aim, Shoot, Interact, Pause, Inventory;
+    [SerializeField] public InputActionReference Move, Aim, Shoot, Interact, Pause, Inventory, Run;
     [Space(5)]
 
     [Header("GameManagerVariables")]
@@ -19,7 +19,8 @@ public class PlayerController : MonoBehaviour
     [Space(5)]
 
     [Header("PlayerVariables")]
-    [SerializeField] float playerSpeed = 3;
+    [SerializeField] float playerWalkSpeed = 1;
+    [SerializeField] float playerRunSpeed = 3;
     [SerializeField] float playerRotation = 40;
     [SerializeField] float playerAimSpeed = 20;
     [Space(5)]
@@ -36,15 +37,30 @@ public class PlayerController : MonoBehaviour
     [SerializeField] LayerMask interactLayer;
     [Space(5)]
 
-    [Header("PlayeStatus")]
+    [Header("PlayerStatus")]
     [SerializeField] bool isAim = false; //Checa si el jugador esta apuntando
+    [SerializeField] bool isAimingAnim = false;
+    [SerializeField] float isRun = 0; //Checa si el jugador esta apuntando
     [SerializeField] public bool isInteracting = false; //Checa si el jugador esta interactuando
     [SerializeField] bool isTakingDamage = false; //Checa si el jugador esta recibiendo daño
     [Space(5)]
 
     [Header("AnimationData")]
-    Animator pAnimator;
-    [SerializeField] List<string> pAnims =  new List<string>(); //En esta lista vamos a meter las animaciones del jugador
+    [SerializeField] Animator pAnimator;
+    [SerializeField] string a_Idle;
+    [SerializeField] string a_Walk;
+    [SerializeField] string a_Run;
+    [SerializeField] string a_Interact;
+
+    [SerializeField] string a_Hurt;
+    [SerializeField] string a_Death;
+    //Animations With Guns
+    [SerializeField] List<string> a_w_Idle =  new List<string>();
+    [SerializeField] List<string> a_w_Aim =  new List<string>(); 
+    [SerializeField] List<string> a_w_Attack =  new List<string>();
+    [SerializeField] List<string> a_w_NoAmmo =  new List<string>();
+    [SerializeField] List<string> a_w_Hurt =  new List<string>();
+    [SerializeField] GameObject Gun;
     [SerializeField] Animator gunAnimator;
     [SerializeField] List<string> gunAnims =  new List<string>();
     [Space(5)]
@@ -69,6 +85,7 @@ public class PlayerController : MonoBehaviour
         Aim.action.performed += EnterThirdPerson;
         Shoot.action.performed += PlayerShoot;
         Interact.action.performed += InteractCall;
+
         cameraManager = GameObject.Find(cameraObjectName).GetComponent<CameraManager>();
         pAnimator = GetComponent<Animator>();
     }
@@ -78,9 +95,13 @@ public class PlayerController : MonoBehaviour
         Aim.action.performed -= EnterThirdPerson;
         Shoot.action.performed -= PlayerShoot;
         Interact.action.performed -= InteractCall;
+    }
 
+    void Start()
+    {
+        ActivateGun();
+    }
 
-    }   
 
     private void EnterThirdPerson(InputAction.CallbackContext context)
     {
@@ -88,30 +109,43 @@ public class PlayerController : MonoBehaviour
         {
             cameraManager.TriggerThirdPerson();
             isAim = true;
+            if(playerData.hasGun)
+            {
+                pAnimator.Play(a_w_Aim[0]);
+                gunAnimator.Play(gunAnims[1]);
+                isAimingAnim = true;
+                spawnPoint.SetActive(true);
+            }
         }
         else if(shootTimer == 0 && !isTakingDamage && !isInteracting)
         {
             cameraManager.TriggerThirdPerson();
+            spawnPoint.SetActive(false);
             isAim = false;
         }
     }
 
     private void PlayerShoot(InputAction.CallbackContext context)
     {
-        if(isAim && shootTimer <= 0 && playerData.playerAmmo > 0 && !isTakingDamage)
+        if(playerData.hasGun)
         {
-            pAnimator.Play(pAnims[5]);
-            gunAnimator.Play(gunAnims[2]);
-            var bull = Instantiate(bullet, spawnPoint.transform.position, transform.rotation);
-            bull.GetComponent<bulletScript>().bulletLife = 5f;
-            shootTimer = shootCooldown;
-            playerData.playerAmmo--;
+            if(isAim && shootTimer <= 0 && playerData.playerAmmo > 0 && !isTakingDamage)
+            {
+                pAnimator.Play(a_w_Attack[0]);
+                gunAnimator.Play(gunAnims[3]);
+                var bull = Instantiate(bullet, spawnPoint.transform.position, transform.rotation);
+                bull.GetComponent<bulletScript>().bulletLife = 5f;
+                shootTimer = shootCooldown;
+                playerData.playerAmmo--;
+            }
+            else if (isAim && shootTimer <= 0 && !isTakingDamage)
+            {
+                pAnimator.Play(a_w_NoAmmo[0]);
+                gunAnimator.Play(gunAnims[3]);
+                shootTimer = shootCooldown;
+            }
         }
-        else if (isAim && shootTimer <= 0 && !isTakingDamage)
-        {
-            pAnimator.Play(pAnims[6]);
-            shootTimer = shootCooldown;
-        }
+        
     }
 
     private void InteractCall(InputAction.CallbackContext context)
@@ -124,7 +158,7 @@ public class PlayerController : MonoBehaviour
                 if(hitInfo.collider.gameObject.TryGetComponent(out playerPickUps pickUps))
                 {
                     isInteracting = true;
-                    pAnimator.Play(pAnims[7]);
+                    pAnimator.Play(a_Interact);
                 }
                 interactObject.Interact();
             }
@@ -150,29 +184,35 @@ public class PlayerController : MonoBehaviour
         //Use the move method to move the player to the front and back
         if(!isAim)
         {
-            gunAnimator.Play(gunAnims[0]);
+            if(playerData.hasGun){gunAnimator.Play(gunAnims[0]);}
             if(playerInput.y == 0 && playerInput.x != 0 && !isInteracting && !isTakingDamage)
             {
-                pAnimator.Play(pAnims[3]);
+                pAnimator.Play(a_Walk);
             }
-
-
 
             if(playerInput.y > 0 && !isInteracting && !isTakingDamage)
             {   
-                controller.Move(transform.forward * playerInput.y * playerSpeed * Time.deltaTime * managerData.gameTime);
-                pAnimator.Play(pAnims[1]);
+                if(isRun == 0)
+                {
+                    controller.Move(transform.forward * playerInput.y * playerWalkSpeed * Time.deltaTime * managerData.gameTime);
+                    pAnimator.Play(a_Walk);
+                }
+                else
+                {
+                    controller.Move(transform.forward * playerInput.y * playerRunSpeed * Time.deltaTime * managerData.gameTime);
+                    pAnimator.Play(a_Run);
+                }
             }
             else if(playerInput.y < 0 && !isInteracting && !isTakingDamage)
             {
-                controller.Move(transform.forward * playerInput.y * (playerSpeed/2) * Time.deltaTime * managerData.gameTime);
-                pAnimator.Play(pAnims[2]);
+                controller.Move(transform.forward * playerInput.y * playerWalkSpeed * Time.deltaTime * managerData.gameTime);
+                pAnimator.Play(a_Walk);
             }
 
 
             if(playerInput.y == 0 && playerInput.x == 0 && !isAim && !isInteracting && !isTakingDamage)
             {
-                pAnimator.Play(pAnims[0]);
+                pAnimator.Play(a_Idle);
             }
             
             
@@ -183,8 +223,16 @@ public class PlayerController : MonoBehaviour
         {
             if(isAim && shootTimer == 0 && !isTakingDamage)
             {
-                pAnimator.Play(pAnims[4]);
-                gunAnimator.Play(gunAnims[1]);
+                if(playerData.hasGun && !isAimingAnim)
+                {
+                    pAnimator.Play(a_w_Idle[0]);
+                    gunAnimator.Play(gunAnims[2]);
+                }
+                else if(!playerData.hasGun)
+                {
+                    pAnimator.Play(a_Idle);
+                }
+                
             }
             //transform.Rotate(transform.right, playerAimSpeed * -playerInput.y * Time.deltaTime); //<----Encender a su propio riesgo
             transform.Rotate(transform.up, playerAimSpeed * playerInput.x * Time.deltaTime * managerData.gameTime);
@@ -205,6 +253,7 @@ public class PlayerController : MonoBehaviour
         if(managerData.gameTime > 0)
         {
             playerInput = Move.action.ReadValue<Vector2>();
+            isRun = Run.action.ReadValue<float>();
             CheckGround();
             PlayerMovement();
         }
@@ -218,11 +267,18 @@ public class PlayerController : MonoBehaviour
         playerData.playerHP--;
         if(playerData.playerHP > 0)
         {
-            pAnimator.Play(pAnims[8]);
+            if(!isAim)
+            {
+                pAnimator.Play(a_Hurt);
+            }
+            else
+            {
+                pAnimator.Play(a_w_Hurt[0]);
+            }
         }
         else
         {
-            pAnimator.Play(pAnims[9]);
+            pAnimator.Play(a_Death);
         }
     }
 
@@ -240,6 +296,12 @@ public class PlayerController : MonoBehaviour
         SceneManager.LoadScene(DeathScene);
     }
 
+
+    void ActivateGun()
+    {
+        Gun.gameObject.SetActive(playerData.hasGun);
+    }
+
 #region AnimationEvents
 //The following events are used in animation events.
     void Reload()
@@ -255,6 +317,11 @@ public class PlayerController : MonoBehaviour
     void StopDamage()
     {
         isTakingDamage = false;
+    }
+
+    void StopAiming()
+    {
+        isAimingAnim = false;
     }
 #endregion
  

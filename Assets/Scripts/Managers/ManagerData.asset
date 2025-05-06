@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isInHub: 1
   isFirstLoad: 0
-  gameTime: 0
+  gameTime: 1

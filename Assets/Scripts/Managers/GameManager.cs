@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] GM_ScriptableObject GM;
     [SerializeField] ItemManager items;
     void Start()
     {  
-       items.InitializeItems(); 
+        GM.gameTime = 1;
+        items.InitializeItems(); 
     }
 
 

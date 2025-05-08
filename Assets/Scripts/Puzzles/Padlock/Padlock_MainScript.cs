@@ -9,8 +9,8 @@ public class Padlock_MainScript : MonoBehaviour, I_Interactable
     public bool isInteractingLock;
 
     [SerializeField] GameEvent lockOpen;
-    [SerializeField] CameraManager camManager;
-    [SerializeField] GameObject interactCamera;
+    [SerializeField] CinemachineVirtualCamera interactCamera;
+    [SerializeField] GameObject DialButtons;
     [SerializeField] GM_ScriptableObject managerData;
 
     void OnEnable()
@@ -25,7 +25,10 @@ public class Padlock_MainScript : MonoBehaviour, I_Interactable
 
     public void Start()
     {
-        interactCamera.SetActive(false);
+        interactCamera.Priority = 0;
+        isInteractingLock = false;
+        DialButtons.SetActive(isInteractingLock);
+
     }
 
     private void CheckResults(string dialName, int number)
@@ -55,18 +58,20 @@ public class Padlock_MainScript : MonoBehaviour, I_Interactable
 
     public void Interact()
     {
-        if(isInteractingLock == true)
-        {
-            isInteractingLock = false;
-            interactCamera.SetActive(false);
-            managerData.gameTime = 1;
-        }
-        else
+        if(!isInteractingLock)
         {
             Debug.Log("interactingLock");
             isInteractingLock = true;
-            interactCamera.SetActive(true);
+            DialButtons.SetActive(isInteractingLock);
+            interactCamera.Priority = 80;
             managerData.gameTime = 0; 
+        }
+        else
+        {
+            isInteractingLock = false;
+            DialButtons.SetActive(isInteractingLock);
+            interactCamera.Priority = 0;
+            managerData.gameTime = 1;
         }
     }
 }

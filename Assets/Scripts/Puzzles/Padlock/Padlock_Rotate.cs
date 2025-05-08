@@ -16,15 +16,23 @@ public class Padlock_Rotate : MonoBehaviour
         transform.Rotate(0, 0, -36f * numberShown); //Rota la rueda a su posicion correxpondiente
         Rotated(name, numberShown); //Indica el resultado al control 
     }
-    private void OnMouseDown()
+    public void DialUp()
     {
         if(coroutineAllowed && player.isInteracting)
         {
-            StartCoroutine("RotateDial");
+            StartCoroutine("RotateUpDial");
         }
     }
 
-    private IEnumerator RotateDial()
+    public void DialDown()
+    {
+        if(coroutineAllowed && player.isInteracting)
+        {
+            StartCoroutine("RotateDownDial");
+        }
+    }
+
+    private IEnumerator RotateUpDial()
     {
         coroutineAllowed = false;
 
@@ -37,6 +45,28 @@ public class Padlock_Rotate : MonoBehaviour
         coroutineAllowed = true;
 
         numberShown +=1;
+
+        if(numberShown > 5)
+        {
+            numberShown = 0;
+        }
+
+        Rotated(name, numberShown);
+    }
+
+    private IEnumerator RotateDownDial()
+    {
+        coroutineAllowed = false;
+
+        for(int i = 0; i <= 11; i++)
+        {
+            transform.Rotate(0, 0, 3f);
+            yield return new WaitForSeconds(0.01f);
+        }
+
+        coroutineAllowed = true;
+
+        numberShown -=1;
 
         if(numberShown > 5)
         {

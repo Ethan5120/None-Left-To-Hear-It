@@ -98,7 +98,8 @@ public class EnemyAI : MonoBehaviour
                 enemyData.currentState = startingState;
                 enemyCurrentHealth = enemyMaxHealth;
                 enemyData.deadTime = 0;
-                enemyData.firstLoad = false;     
+                enemyData.firstLoad = false;
+                SetStartLocation();
             }
             else
             {
@@ -130,6 +131,10 @@ public class EnemyAI : MonoBehaviour
         if(canRoam)
         {
             gameObject.transform.position = roamingTargets[Random.Range(0, roamingTargets.Length)].position;
+        }
+        else
+        {
+            startLocation = transform.localPosition;
         }
     }
 
@@ -337,6 +342,7 @@ public class EnemyAI : MonoBehaviour
         if(enemyData.deadTime <= 0)
         {
             enemyCurrentHealth -= damageDealt;
+            Debug.Log("EnemyHurt");
             if(hurtAnimations != null && !isAttacking)
             {
                 animator.Play(hurtAnimations[Random.Range(0, hurtAnimations.Count)]);

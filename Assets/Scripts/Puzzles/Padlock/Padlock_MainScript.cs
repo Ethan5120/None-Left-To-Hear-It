@@ -1,23 +1,25 @@
+using System.Collections.Generic;
 using System.Linq;
 using Cinemachine;
 using UnityEngine;
 
 public class Padlock_MainScript : MonoBehaviour, I_Interactable
 {
-    [SerializeField] private int[] result, solution;
+    [SerializeField] private int[] result;
+    [SerializeField] private int[] solution;
 
     public bool isInteractingLock;
 
-    [SerializeField] GameEvent lockOpen;
+    //[SerializeField] GameEvent lockOpen;
     [SerializeField] CinemachineVirtualCamera interactCamera;
     [SerializeField] GameObject DialButtons;
     [SerializeField] GM_ScriptableObject managerData;
+    [SerializeField] List<GameObject> Dials = new List<GameObject>();
 
     void OnEnable()
     {
         Padlock_Rotate.Rotated += CheckResults;
     }
-
     void OnDisable()
     {
         Padlock_Rotate.Rotated -= CheckResults;
@@ -28,31 +30,28 @@ public class Padlock_MainScript : MonoBehaviour, I_Interactable
         interactCamera.Priority = 0;
         isInteractingLock = false;
         DialButtons.SetActive(isInteractingLock);
-
+        if(solution.Length != Dials.Count)
+        {
+            solution = new int[Dials.Count];
+        }
     }
 
-    private void CheckResults(string dialName, int number)
+    private void CheckResults(GameObject dial, int number)
     {
-        switch(dialName)
+        for(int i = 0; i < Dials.Count; i++)
         {
-            case "Dial1":
-                result[0] = number;
-                break;
-            
-            case "Dial2":
-                result[1] = number;
-                break;
-
-            case "Dial3":
-                result[2] = number;
-                break;
+            if(dial == Dials[i])
+            {
+                result[i] = number;
+            }
         }
+        
 
         if(result.SequenceEqual(solution))
         {
             Debug.Log("Open");
             Interact();
-            lockOpen.Raise(this, null);
+            //lockOpen.Raise(this, null);
         }
     }
 

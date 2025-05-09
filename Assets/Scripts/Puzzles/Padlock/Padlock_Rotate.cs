@@ -4,37 +4,34 @@ using UnityEngine;
 
 public class Padlock_Rotate : MonoBehaviour
 {
-    public static event Action<string, int> Rotated = delegate { };
+    public static event Action<GameObject, int> Rotated = delegate { };
     private bool coroutineAllowed;
-    [SerializeField] int numberShown;
-    public PlayerController player;
+    public int numberShown;
     
     private void Start()
     {
-        player = FindObjectOfType<PlayerController>();
         coroutineAllowed = true;
         transform.Rotate(0, 0, -36f * numberShown); //Rota la rueda a su posicion correxpondiente
-        Rotated(name, numberShown); //Indica el resultado al control 
+        Rotated(gameObject, numberShown); //Indica el resultado al control 
     }
-    public void DialUp()
+    public void RotateDial(bool Increasing)
     {
-        if(coroutineAllowed && player.isInteracting)
+        if(coroutineAllowed && Increasing)
         {
             StartCoroutine("RotateUpDial");
         }
-    }
-
-    public void DialDown()
-    {
-        if(coroutineAllowed && player.isInteracting)
+        else
         {
             StartCoroutine("RotateDownDial");
         }
     }
 
+
     private IEnumerator RotateUpDial()
     {
         coroutineAllowed = false;
+        Debug.Log("Rotating");
+
 
         for(int i = 0; i <= 11; i++)
         {
@@ -46,17 +43,19 @@ public class Padlock_Rotate : MonoBehaviour
 
         numberShown +=1;
 
-        if(numberShown > 5)
+        if(numberShown > 9)
         {
             numberShown = 0;
         }
 
-        Rotated(name, numberShown);
+        Rotated(gameObject, numberShown);
     }
 
     private IEnumerator RotateDownDial()
     {
         coroutineAllowed = false;
+        Debug.Log("Rotating");
+
 
         for(int i = 0; i <= 11; i++)
         {
@@ -68,11 +67,11 @@ public class Padlock_Rotate : MonoBehaviour
 
         numberShown -=1;
 
-        if(numberShown > 5)
+        if(numberShown < 0)
         {
-            numberShown = 0;
+            numberShown = 9;
         }
 
-        Rotated(name, numberShown);
+        Rotated(gameObject, numberShown);
     }
 }

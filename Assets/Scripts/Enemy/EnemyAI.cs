@@ -27,6 +27,7 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] bool chasingTarget;
     [SerializeField] float detectionRange;
     [SerializeField] float interestRange;
+    [SerializeField] ParticleSystem BloodSplats;
 
 
     [Header("EnemyTimers")]
@@ -342,6 +343,7 @@ public class EnemyAI : MonoBehaviour
         if(enemyData.deadTime <= 0)
         {
             enemyCurrentHealth -= damageDealt;
+            BloodSplats.Play();
             Debug.Log("EnemyHurt");
             if(hurtAnimations != null && !isAttacking)
             {

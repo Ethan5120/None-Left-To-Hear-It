@@ -28,8 +28,8 @@ public class PlayerController : MonoBehaviour
     [Header("ShootingSettings")]
     [SerializeField] GameObject bullet;
     [SerializeField] GameObject spawnPoint;
-    [SerializeField] float shootCooldown;
-    float shootTimer;
+    [SerializeField] bool isShooting;
+    [SerializeField] float unstuckTime; //En caso que se atore disparando.
     [Space(5)]
 
     [Header ("InteractSettings")]
@@ -117,7 +117,7 @@ public class PlayerController : MonoBehaviour
                 spawnPoint.SetActive(true);
             }
         }
-        else if(shootTimer == 0 && !isTakingDamage && !isInteracting)
+        else if(!isShooting && !isTakingDamage && !isInteracting)
         {
             cameraManager.TriggerThirdPerson();
             spawnPoint.SetActive(false);
@@ -129,20 +129,22 @@ public class PlayerController : MonoBehaviour
     {
         if(playerData.hasGun)
         {
-            if(isAim && shootTimer <= 0 && playerData.playerAmmo > 0 && !isTakingDamage)
+            if(isAim && !isShooting && playerData.playerAmmo > 0 && !isTakingDamage && !isAimingAnim)
             {
                 pAnimator.Play(a_w_Attack[0]);
                 gunAnimator.Play(gunAnims[3]);
                 var bull = Instantiate(bullet, spawnPoint.transform.position, transform.rotation);
                 bull.GetComponent<bulletScript>().bulletLife = 5f;
-                shootTimer = shootCooldown;
+                isShooting = true;
                 playerData.playerAmmo--;
+                unstuckTime = 0.5f;
             }
-            else if (isAim && shootTimer <= 0 && !isTakingDamage)
+            else if (isAim && !isShooting && !isTakingDamage && !isAimingAnim)
             {
                 pAnimator.Play(a_w_NoAmmo[0]);
                 gunAnimator.Play(gunAnims[3]);
-                shootTimer = shootCooldown;
+                isShooting = true;
+                unstuckTime = 0.5f;
             }
         }
         
@@ -221,7 +223,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            if(isAim && shootTimer == 0 && !isTakingDamage)
+            if(isAim && !isShooting && !isTakingDamage)
             {
                 if(playerData.hasGun && !isAimingAnim)
                 {
@@ -256,6 +258,14 @@ public class PlayerController : MonoBehaviour
             isRun = Run.action.ReadValue<float>();
             CheckGround();
             PlayerMovement();
+        }
+        if(unstuckTime >= 0)
+        {
+            unstuckTime -= 1 * Time.deltaTime * managerData.gameTime;
+            if(unstuckTime <= 0)
+            {
+                isShooting = false;
+            }
         }
     }
 
@@ -306,7 +316,7 @@ public class PlayerController : MonoBehaviour
 //The following events are used in animation events.
     void Reload()
     {
-        shootTimer = 0;
+        isShooting = false;
     }
 
     void StopInteract()

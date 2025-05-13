@@ -33,5 +33,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Transitions/PostGame.unity
     guid: 9b66a3eb49d668347b04ec91303d1406
   m_configObjects:
+    com.unity.addressableassets: {fileID: 11400000, guid: 3fe8765f766232643b75c155a774a51e,
+      type: 2}
     com.unity.input.settings: {fileID: 11400000, guid: 8d761e5d13bd57b4abb4eddb8cf6f562,
+      type: 2}
+    com.unity.localization.settings: {fileID: 11400000, guid: 0dbeed6220d2f1c49945d3e578867bb4,
       type: 2}

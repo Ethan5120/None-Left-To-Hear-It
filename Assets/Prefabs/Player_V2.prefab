@@ -6894,7 +6894,8 @@ MonoBehaviour:
   playerAimSpeed: 50
   bullet: {fileID: 7148494144607915820, guid: 2cf9024972dbe2c41b7c44517655c5e6, type: 3}
   spawnPoint: {fileID: 7757533442147515689}
-  shootCooldown: 3
+  isShooting: 0
+  unstuckTime: 0
   interactRange: 3
   interactLayer:
     serializedVersion: 2
@@ -6996,7 +6997,7 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 3
   m_Height: 4.4
-  m_Radius: 0.5
+  m_Radius: 0.8
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08

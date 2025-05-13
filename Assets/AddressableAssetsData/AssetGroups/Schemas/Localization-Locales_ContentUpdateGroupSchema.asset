@@ -9,13 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ba4e77062079ec4f973ffcd0047a161, type: 3}
-  m_Name: PlayerData
+  m_Script: {fileID: 11500000, guid: 5834b5087d578d24c926ce20cd31e6d6, type: 3}
+  m_Name: Localization-Locales_ContentUpdateGroupSchema
   m_EditorClassIdentifier: 
-  playerHP: 928
-  playerPills: 3
-  playerAmmo: 97
-  PlayerKeys: 01010000
-  hasGun: 1
-  spawnPosition: {x: 9.155, y: 0.656, z: -12.536}
-  spawnRotation: {x: 0, y: 1, z: 0, w: -0.00000004371139}
+  m_Group: {fileID: 11400000, guid: fb0f79a8a4a45a443b05ee8cb606f011, type: 2}
+  m_StaticContent: 0

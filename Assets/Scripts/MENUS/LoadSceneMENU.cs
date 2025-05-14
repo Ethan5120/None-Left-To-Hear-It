@@ -7,10 +7,11 @@ using UnityEngine.SceneManagement;
 
 public class LoadSceneMENU : MonoBehaviour
 {
-   public string Game;
+   public SceneField sceneToLoad;
+
    public void LoadNewSceneMENU()
    {
-        SceneManager.LoadScene(Game);
+        SceneManager.LoadScene(sceneToLoad);
    }
 
     public void QuitGame()

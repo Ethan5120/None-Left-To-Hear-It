@@ -1929,6 +1929,17 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_BoolArgument
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3443494466069174593, guid: 2e0aa15acb1e3f744a515d2abb4bbb55,
+        type: 3}
+      propertyPath: sceneToLoad._sceneName
+      value: SampleScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 3443494466069174593, guid: 2e0aa15acb1e3f744a515d2abb4bbb55,
+        type: 3}
+      propertyPath: sceneToLoad._sceneAsset
+      value: 
+      objectReference: {fileID: 102900000, guid: 99c9720ab356a0642a771bea13969a05,
+        type: 3}
     - target: {fileID: 3499660707681538273, guid: 2e0aa15acb1e3f744a515d2abb4bbb55,
         type: 3}
       propertyPath: m_SizeDelta.x

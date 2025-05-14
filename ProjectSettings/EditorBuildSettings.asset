@@ -8,12 +8,15 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Transitions/StartUpWARNING.unity
     guid: cdfe81c4a3ebb9844b1af86b124fe69f
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Menus/MenuBLOCKOUT.unity
     guid: 499a5dcc2df088d449feffe6dd4aec17
   - enabled: 0
     path: Assets/Scenes/Transitions/PreGame.unity
     guid: d28a57603db4f2f43baa74c8af74a1bf
+  - enabled: 1
+    path: Assets/Scenes/Debug Scene/SampleScene.unity
+    guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
     path: Assets/Scenes/HUBScenes/Alleys/Alleys.unity
     guid: e8a3ec081c0a1fc4cbd9504cf79f8375

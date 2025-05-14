@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHP: 928
   playerPills: 5
-  playerAmmo: 90
+  playerAmmo: 89
   PlayerKeys: 01010000
   hasGun: 1
   spawnPosition: {x: 10.5, y: 0.6308122, z: 33.24}

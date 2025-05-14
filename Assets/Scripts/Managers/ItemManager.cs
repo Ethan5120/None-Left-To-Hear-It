@@ -21,4 +21,12 @@ public class ItemManager : MonoBehaviour
             }
         }
     }
+
+    public void ResetItems()
+    {
+        for(int i = 0; i < itemsStates.itemActiveState.Count; i++)
+        {
+            itemsStates.itemActiveState[i] = false;
+        }
+    }
 }

@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38a813723e07db7409c9a751c1887b04, type: 3}
   m_Name: PickUpDataDebug
   m_EditorClassIdentifier: 
-  itemActiveState: 00000000
+  itemActiveState: 00000001

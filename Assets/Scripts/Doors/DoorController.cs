@@ -24,7 +24,7 @@ public class DoorController : MonoBehaviour, I_Interactable
     public void Interact()
     {
         Debug.Log("Interact");
-        SetSpawn();
+        //SetSpawn();
         StartAnim();
     }
 
@@ -33,7 +33,7 @@ public class DoorController : MonoBehaviour, I_Interactable
     {
         if(playerData.PlayerKeys[neededKey] == true && changeCamera != null)
         {
-            Time.timeScale = 0f;
+            managerData.gameTime = 0;
             changeCamera.SetActive(true);
             setDestination.Raise(this, sceneToLoad);
             saveData.Raise(this, null);
@@ -44,11 +44,6 @@ public class DoorController : MonoBehaviour, I_Interactable
         {
             Debug.Log("This Door is Close");
         }
-    }
-    void Update()
-    {
-        float deltaTime = Time.unscaledDeltaTime;
-        animator.Update(deltaTime / 2);
     }
 
     void SetSpawn()

@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     [Space(5)]
 
     [Header("PlayerVariables")]
+    [SerializeField] SceneField DeathScene;
     [SerializeField] float playerWalkSpeed = 1;
     [SerializeField] float playerRunSpeed = 3;
     [SerializeField] float playerRotation = 40;
@@ -301,7 +302,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void DeathAnimEvent(string DeathScene)
+    public void DeathAnimEvent()
     {
         SceneManager.LoadScene(DeathScene);
     }

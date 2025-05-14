@@ -11,10 +11,4 @@ public class GameManager : MonoBehaviour
         GM.gameTime = 1;
         items.InitializeItems(); 
     }
-
-
-    void Update()
-    {
-        
-    }
 }

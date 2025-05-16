@@ -15,7 +15,7 @@ MonoBehaviour:
   playerHP: 4
   playerPills: 5
   playerAmmo: 5
-  PlayerKeys: 00010000
+  PlayerKeys: 00000000
   hasGun: 1
-  spawnPosition: {x: 11.191, y: 0.7, z: 32.065}
+  spawnPosition: {x: -8.208, y: 0.029, z: 19.616}
   spawnRotation: {x: 0, y: 1, z: 0, w: -0.00000004371139}

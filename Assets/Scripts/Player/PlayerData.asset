@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ba4e77062079ec4f973ffcd0047a161, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
-  playerHP: 928
+  playerHP: 4
   playerPills: 5
-  playerAmmo: 89
-  PlayerKeys: 01010000
+  playerAmmo: 5
+  PlayerKeys: 00010000
   hasGun: 1
-  spawnPosition: {x: 10.5, y: 0.6308122, z: 33.24}
+  spawnPosition: {x: 11.191, y: 0.7, z: 32.065}
   spawnRotation: {x: 0, y: 1, z: 0, w: -0.00000004371139}

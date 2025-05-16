@@ -275,9 +275,10 @@ public class EnemyAI : MonoBehaviour
         {
             agent.destination = startLocation;
             distance = Vector3.Distance(transform.position, agent.destination);
-            if(distance > 1)
+            if (distance > 1)
             {
                 agent.isStopped = false;
+                animator.Play(walkAnimation);
             }
             else
             {

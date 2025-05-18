@@ -8,39 +8,21 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Transitions/StartUpWARNING.unity
     guid: cdfe81c4a3ebb9844b1af86b124fe69f
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Menus/MenuBLOCKOUT.unity
     guid: 499a5dcc2df088d449feffe6dd4aec17
   - enabled: 0
     path: Assets/Scenes/Transitions/PreGame.unity
     guid: d28a57603db4f2f43baa74c8af74a1bf
-  - enabled: 0
-    path: Assets/Scenes/Debug Scene/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 0
-    path: Assets/Scenes/HUBScenes/Alleys/Alleys.unity
-    guid: e8a3ec081c0a1fc4cbd9504cf79f8375
-  - enabled: 0
-    path: Assets/Scenes/Credits/Credits.unity
-    guid: 3cb4c2da9cfb8fd48a2f5dde22b143a2
-  - enabled: 0
-    path: Assets/Scenes/Transitions/DeathScene.unity
-    guid: fc88179c356613e499e066427f5c5b09
-  - enabled: 0
-    path: Assets/Scenes/HUBScenes/Alleys/RoomScenes/Room1/Room1.unity
-    guid: b09dd2a1c324a0445a43b6ec9c1e391a
-  - enabled: 0
-    path: Assets/Scenes/HUBScenes/Alleys/RoomScenes/Room2/Room2.unity
-    guid: 522dd44fa48a5eb44af99056c4c4764a
-  - enabled: 0
-    path: Assets/Scenes/HUBScenes/Alleys/RoomScenes/Room3/Room3.unity
-    guid: 83998b020cb91604d8a50bca1fc2353a
-  - enabled: 0
-    path: Assets/Scenes/Transitions/PostGame.unity
-    guid: 9b66a3eb49d668347b04ec91303d1406
   - enabled: 1
     path: Assets/Scenes/HUBScenes/Hospital/Hospital_Main.unity
     guid: b45f9b2a12733c647867caac801949ec
+  - enabled: 1
+    path: Assets/Scenes/Transitions/DeathScene.unity
+    guid: fc88179c356613e499e066427f5c5b09
+  - enabled: 1
+    path: Assets/Scenes/Credits/Credits.unity
+    guid: 3cb4c2da9cfb8fd48a2f5dde22b143a2
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 3fe8765f766232643b75c155a774a51e,
       type: 2}

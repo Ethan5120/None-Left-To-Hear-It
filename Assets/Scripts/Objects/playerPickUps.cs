@@ -4,12 +4,14 @@ using System.Collections.Generic;
 public class playerPickUps : MonoBehaviour, I_Interactable
 {
     [SerializeField] PlayerSO playerData;
+    [SerializeField] PlayerController player;
     [SerializeField] ItemManager itemManager;
-    public enum objectType 
+    public enum objectType
     {
         Key,
         Pills,
-        Ammo
+        Ammo,
+        Weapon
     }
 
     public objectType objectSelected = objectType.Key;
@@ -45,30 +47,37 @@ public class playerPickUps : MonoBehaviour, I_Interactable
         switch (objectSelected)
         {
             case objectType.Key:
-            {
-                playerData.PlayerKeys[keyIndex] = true;
-                gameObject.SetActive(false);
-                turnOnPanel.Raise(this, TextToDisplay);
-                break;
-            }
+                {
+                    playerData.PlayerKeys[keyIndex] = true;
+                    gameObject.SetActive(false);
+                    turnOnPanel.Raise(this, TextToDisplay);
+                    break;
+                }
 
             case objectType.Pills:
-            {
-                playerData.playerPills += pillsAmmount;
-                gameObject.SetActive(false);
-                turnOnPanel.Raise(this, TextToDisplay);
-                break;
-            }
+                {
+                    playerData.playerPills += pillsAmmount;
+                    gameObject.SetActive(false);
+                    turnOnPanel.Raise(this, TextToDisplay);
+                    break;
+                }
 
             case objectType.Ammo:
-            {
-                playerData.playerAmmo += ammoAmmount;
-                gameObject.SetActive(false);
-                turnOnPanel.Raise(this, TextToDisplay);
-                break;
-            }
+                {
+                    playerData.playerAmmo += ammoAmmount;
+                    gameObject.SetActive(false);
+                    turnOnPanel.Raise(this, TextToDisplay);
+                    break;
+                }
 
-
+            case objectType.Weapon:
+                {
+                    playerData.hasGun = true;
+                    player.ActivateGun();
+                    gameObject.SetActive(false);
+                    turnOnPanel.Raise(this, TextToDisplay);
+                    break;
+                }
         }
         if(isAmbushTrigger)
         {

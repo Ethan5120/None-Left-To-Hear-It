@@ -239,6 +239,21 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 312032622e978004a92a66123b424168,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 312032622e978004a92a66123b424168,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 312032622e978004a92a66123b424168,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 312032622e978004a92a66123b424168,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: -25.95
       objectReference: {fileID: 0}
@@ -286,6 +301,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 312032622e978004a92a66123b424168,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 312032622e978004a92a66123b424168,
         type: 3}
@@ -364,6 +384,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerData: {fileID: 11400000, guid: d1a095b37d3d3b549880142d542f7fb1, type: 2}
+  player: {fileID: 0}
   itemManager: {fileID: 0}
   objectSelected: 0
   keyIndex: 1
@@ -372,6 +393,7 @@ MonoBehaviour:
   isAmbushTrigger: 0
   enemies: []
   turnOnPanel: {fileID: 11400000, guid: 5aeb7b66046780548a25daa09bc78cf8, type: 2}
+  TextToDisplay: 
 --- !u!4 &5259419578614997811 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 312032622e978004a92a66123b424168,

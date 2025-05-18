@@ -310,7 +310,7 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    void ActivateGun()
+    public void ActivateGun()
     {
         Gun.gameObject.SetActive(playerData.hasGun);
     }

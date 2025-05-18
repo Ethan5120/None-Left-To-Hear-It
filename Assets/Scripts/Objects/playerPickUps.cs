@@ -22,6 +22,7 @@ public class playerPickUps : MonoBehaviour, I_Interactable
 
     [Header("UI Data")]
     [SerializeField] GameEvent turnOnPanel;
+    [SerializeField] string TextToDisplay;
 
 
     void  Awake()
@@ -47,7 +48,7 @@ public class playerPickUps : MonoBehaviour, I_Interactable
             {
                 playerData.PlayerKeys[keyIndex] = true;
                 gameObject.SetActive(false);
-                turnOnPanel.Raise(this, $"Key Number {keyIndex + 1}");
+                turnOnPanel.Raise(this, TextToDisplay);
                 break;
             }
 
@@ -55,7 +56,7 @@ public class playerPickUps : MonoBehaviour, I_Interactable
             {
                 playerData.playerPills += pillsAmmount;
                 gameObject.SetActive(false);
-                turnOnPanel.Raise(this, $"{pillsAmmount}x Pill(s)");
+                turnOnPanel.Raise(this, TextToDisplay);
                 break;
             }
 
@@ -63,7 +64,7 @@ public class playerPickUps : MonoBehaviour, I_Interactable
             {
                 playerData.playerAmmo += ammoAmmount;
                 gameObject.SetActive(false);
-                turnOnPanel.Raise(this, $"{ammoAmmount}x Bullet(s)");
+                turnOnPanel.Raise(this, TextToDisplay);
                 break;
             }
 

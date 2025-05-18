@@ -91,9 +91,9 @@ public class EnemyAI : MonoBehaviour
     void Awake()
     {
         animator = GetComponent<Animator>();
-        if(enemyData != null)
+        if (enemyData != null)
         {
-            if(enemyData.firstLoad)
+            if (enemyData.firstLoad)
             {
                 startAmbush = false;
                 enemyData.currentState = startingState;
@@ -105,7 +105,7 @@ public class EnemyAI : MonoBehaviour
             else
             {
                 SetStartLocation();
-                if(enemyData.hasDied == true)
+                if (enemyData.hasDied == true)
                 {
                     enemyCurrentHealth = enemyMaxHealth / 2;
                 }
@@ -114,6 +114,8 @@ public class EnemyAI : MonoBehaviour
         else
         {
             enemyData = ScriptableObject.CreateInstance<EnemyData>();
+            enemyData.currentState = startingState;
+            enemyCurrentHealth = enemyMaxHealth;
         }
 
         startLocation = gameObject.transform.position;
@@ -171,8 +173,6 @@ public class EnemyAI : MonoBehaviour
 
                 if(distance <= 3f)
                 {
-                    Debug.Log("StartAttack");
-                    //Aqui tenemos que checar si esta viendo al jugador NO LO OLVIDES
                     AttackCheck();
                 }
 

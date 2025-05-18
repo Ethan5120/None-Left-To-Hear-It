@@ -13,30 +13,30 @@ public class Pause : MonoBehaviour
     public GameObject PauseVHSEffect;
     public GameObject Inventory;
     public GameObject PControls, PSettings, PQuit;
-    [Space(5)] 
+    [Space(5)]
 
 
 
 
-    [Header("Status Game Canvas")]    
+    [Header("Status Game Canvas")]
     public bool paused;
     public bool inventaryOpen;
-    [Space(5)] 
+    [Space(5)]
 
 
 
 
     [Header("Scenes to go on Pause Menu")]
-    public string menuSceneName;
-    public string endingSceneName;
-    [Space(5)] 
+    public SceneField menuScene;
+    public SceneField endingScene;
+    [Space(5)]
 
 
 
 
     [Header("Key Data")]
     public PlayerSO keyData;
-    [Space(5)] 
+    [Space(5)]
 
 
 
@@ -51,17 +51,17 @@ public class Pause : MonoBehaviour
 
 
 
-    [Header("Inventory text")]	
+    [Header("Inventory text")]
     [SerializeField] TextMeshProUGUI AmmoText;
     [SerializeField] TextMeshProUGUI PillsText;
-    [Space(5)]	
+    [Space(5)]
 
 
 
 
     [Header("Player")]
     public PlayerController player;
-    [Space(5)]	
+    [Space(5)]
 
 
 
@@ -83,8 +83,11 @@ public class Pause : MonoBehaviour
 
     [Header("PickUpUI")]
     [SerializeField] GameObject PickUpPanel;
+    [SerializeField] TextMeshProUGUI PreText;
     [SerializeField] TextMeshProUGUI pickedUpText;
-    [SerializeField] float timeTurnedOn;
+    [SerializeField] TextMeshProUGUI InfoText;
+    [SerializeField] float timeItem;
+    [SerializeField] float timeDoor;
     [SerializeField] float pick_timer;
     [Space(5)]
 
@@ -92,7 +95,7 @@ public class Pause : MonoBehaviour
 
     [Header("HealthUI")]
     [SerializeField] Image hpDisplay;
-    
+
 
 
     private void Start()
@@ -100,6 +103,7 @@ public class Pause : MonoBehaviour
         paused = false;
         inventaryOpen = false;
         animatorCanvas = GetComponent<Animator>();
+        pick_timer = 0;
         Time.timeScale = 1;
     }
 
@@ -114,23 +118,26 @@ public class Pause : MonoBehaviour
     {
         player.Pause.action.performed -= ButtonPause;
         player.Inventory.action.performed -= ButtonInventory;
-    }   
+    }
 
     // Update is called once per frame
     void Update()
     {
-        if(pick_timer > 0)
+        if (pick_timer > 0)
         {
             PickUpPanel.SetActive(true);
             pick_timer -= Time.deltaTime;
         }
         else
         {
+            PreText.gameObject.SetActive(false);
+            pickedUpText.gameObject.SetActive(false);
+            InfoText.gameObject.SetActive(false);
             PickUpPanel.SetActive(false);
         }
 
         UpdateInventory();
-        if(Time.timeScale == 0) //ESTO PERMITE LAS ANIMACIONES UNICAMENTE DEL CANVAS REPRODUCIRSE
+        if (Time.timeScale == 0) //ESTO PERMITE LAS ANIMACIONES UNICAMENTE DEL CANVAS REPRODUCIRSE
         {
             float deltaTime = Time.unscaledDeltaTime;
             animatorCanvas.Update(deltaTime);
@@ -140,16 +147,16 @@ public class Pause : MonoBehaviour
     public void ButtonPause(InputAction.CallbackContext context)
     {
         paused = !paused;
-        if(inventaryOpen == true)
+        if (inventaryOpen == true)
         {
-            paused  = false;
+            paused = false;
         }
         else
         {
-            if(paused == true) 
+            if (paused == true)
             {
-                player.enabled = false;  
-                PauseMenu.SetActive(true);             
+                player.enabled = false;
+                PauseMenu.SetActive(true);
                 Time.timeScale = 0;
                 Inventory.SetActive(false);
                 //Cursor.visible = true;
@@ -158,9 +165,9 @@ public class Pause : MonoBehaviour
                 PauseVHSEffect.SetActive(true);
                 startPauseButton.Select();
             }
-            if(paused == false)
+            if (paused == false)
             {
-                player.enabled=true;
+                player.enabled = true;
                 PauseMenu.SetActive(false);
                 Time.timeScale = 1;
                 Inventory.SetActive(false);
@@ -178,16 +185,16 @@ public class Pause : MonoBehaviour
     public void ButtonInventory(InputAction.CallbackContext context)
     {
         inventaryOpen = !inventaryOpen;
-        if(paused == true)
+        if (paused == true)
         {
-            inventaryOpen  = false;
+            inventaryOpen = false;
         }
         else
         {
-            if(inventaryOpen == true) 
+            if (inventaryOpen == true)
             {
-                player.enabled = false;  
-                PauseMenu.SetActive(false);             
+                player.enabled = false;
+                PauseMenu.SetActive(false);
                 Time.timeScale = 1;
                 Inventory.SetActive(true);
                 //Cursor.visible = true;
@@ -196,9 +203,9 @@ public class Pause : MonoBehaviour
                 AudioListener.pause = false;
                 startInventoryButton.Select();
             }
-            if(inventaryOpen == false)
+            if (inventaryOpen == false)
             {
-                player.enabled=true;
+                player.enabled = true;
                 PauseMenu.SetActive(false);
                 Time.timeScale = 1;
                 Inventory.SetActive(false);
@@ -218,10 +225,10 @@ public class Pause : MonoBehaviour
         Inventory.SetActive(false);
         paused = false;
         inventaryOpen = false;
-        Time.timeScale=1;
+        Time.timeScale = 1;
         //Cursor.visible = false;
         //Cursor.lockState= CursorLockMode.Locked;
-        AudioListener.pause= false;
+        AudioListener.pause = false;
         PauseVHSEffect.SetActive(false);
     }
     public void backToMenu()
@@ -230,7 +237,7 @@ public class Pause : MonoBehaviour
         //Cursor.visible = true;
         //Cursor.lockState = CursorLockMode.None;
         AudioListener.pause = false;
-        SceneManager.LoadScene(menuSceneName);
+        SceneManager.LoadScene(menuScene);
         Debug.Log("Yendo A Menu");
 
     }
@@ -241,7 +248,7 @@ public class Pause : MonoBehaviour
         //Cursor.visible = true;
         //Cursor.lockState = CursorLockMode.None;
         AudioListener.pause = false;
-        SceneManager.LoadScene(endingSceneName);
+        SceneManager.LoadScene(endingScene);
         Debug.Log("Yendo Al Final");
     }
 
@@ -257,42 +264,56 @@ public class Pause : MonoBehaviour
         k1.SetActive(keyData.PlayerKeys[1]);
         k2.SetActive(keyData.PlayerKeys[2]);
         k3.SetActive(keyData.PlayerKeys[3]);
-        
+
         AmmoText.text = $"x{keyData.playerAmmo}";
         PillsText.text = $"x{keyData.playerPills}";
 
         switch (keyData.playerHP)
         {
             case 1:
-            {
-                hpDisplay.color = Color.red;
-                break;
-            }
+                {
+                    hpDisplay.color = Color.red;
+                    break;
+                }
             case 2:
-            {
-                hpDisplay.color = Color.yellow;
-                break;
-            }
+                {
+                    hpDisplay.color = Color.yellow;
+                    break;
+                }
             case 3:
-            {
-                hpDisplay.color = Color.green;
-                break;
-            }
+                {
+                    hpDisplay.color = Color.green;
+                    break;
+                }
             default:
-            {
-                hpDisplay.color = Color.red;
-                break;
-            }
+                {
+                    hpDisplay.color = Color.red;
+                    break;
+                }
         }
     }
 
-    public void SetTextAndTime(Component sender, object data)
+    public void SetItemTextAndTime(Component sender, object data)
     {
-        Debug.Log("Trigered");
-        if(data is string)
+        if (sender is playerPickUps)
         {
-            pickedUpText.text = (string) data;
+            if (data is string)
+            {
+                PreText.gameObject.SetActive(true);
+                pickedUpText.gameObject.SetActive(true);
+                pickedUpText.text = (string)data;
+            }
+            pick_timer = timeItem;
         }
-        pick_timer = timeTurnedOn;
+        else
+        {
+            if (data is string)
+            {
+                InfoText.gameObject.SetActive(true);
+                InfoText.text = (string)data;
+            }
+            pick_timer = timeDoor;
+        }
     }
+
 }

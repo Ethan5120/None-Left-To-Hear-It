@@ -312,7 +312,7 @@ public class PlayerController : MonoBehaviour
 
     public void ActivateGun()
     {
-        Gun.gameObject.SetActive(playerData.hasGun);
+        Gun.SetActive(playerData.hasGun);
     }
 
 #region AnimationEvents

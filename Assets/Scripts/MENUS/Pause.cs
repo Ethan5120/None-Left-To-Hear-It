@@ -28,7 +28,6 @@ public class Pause : MonoBehaviour
 
     [Header("Scenes to go on Pause Menu")]
     public SceneField menuScene;
-    public SceneField endingScene;
     [Space(5)]
 
 
@@ -36,6 +35,7 @@ public class Pause : MonoBehaviour
 
     [Header("Key Data")]
     public PlayerSO keyData;
+    public GM_ScriptableObject GM;
     [Space(5)]
 
 
@@ -159,8 +159,8 @@ public class Pause : MonoBehaviour
                 PauseMenu.SetActive(true);
                 Time.timeScale = 0;
                 Inventory.SetActive(false);
-                //Cursor.visible = true;
-                //Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
                 AudioListener.pause = true;
                 PauseVHSEffect.SetActive(true);
                 startPauseButton.Select();
@@ -174,8 +174,8 @@ public class Pause : MonoBehaviour
                 PControls.SetActive(false);
                 PSettings.SetActive(false);
                 PQuit.SetActive(false);
-                //Cursor.visible = false;
-                //Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
                 AudioListener.pause = false;
                 PauseVHSEffect.SetActive(false);
             }
@@ -197,8 +197,8 @@ public class Pause : MonoBehaviour
                 PauseMenu.SetActive(false);
                 Time.timeScale = 1;
                 Inventory.SetActive(true);
-                //Cursor.visible = true;
-                //Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
                 PauseVHSEffect.SetActive(true);
                 AudioListener.pause = false;
                 startInventoryButton.Select();
@@ -209,8 +209,8 @@ public class Pause : MonoBehaviour
                 PauseMenu.SetActive(false);
                 Time.timeScale = 1;
                 Inventory.SetActive(false);
-                //Cursor.visible = false;
-                //Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
                 PauseVHSEffect.SetActive(false);
                 AudioListener.pause = false;
             }
@@ -226,30 +226,20 @@ public class Pause : MonoBehaviour
         paused = false;
         inventaryOpen = false;
         Time.timeScale = 1;
-        //Cursor.visible = false;
-        //Cursor.lockState= CursorLockMode.Locked;
+        Cursor.visible = false;
+        Cursor.lockState= CursorLockMode.Locked;
         AudioListener.pause = false;
         PauseVHSEffect.SetActive(false);
     }
     public void backToMenu()
     {
         Time.timeScale = 1;
-        //Cursor.visible = true;
-        //Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
         AudioListener.pause = false;
         SceneManager.LoadScene(menuScene);
         Debug.Log("Yendo A Menu");
 
-    }
-
-    public void EndGame()
-    {
-        Time.timeScale = 1;
-        //Cursor.visible = true;
-        //Cursor.lockState = CursorLockMode.None;
-        AudioListener.pause = false;
-        SceneManager.LoadScene(endingScene);
-        Debug.Log("Yendo Al Final");
     }
 
     public void quitGamePause()

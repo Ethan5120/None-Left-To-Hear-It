@@ -148,7 +148,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 1c850dba8b3363e47bcb1d91dc67b534, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.301
-  m_Pitch: 1
+  m_Pitch: 0.79
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -7797,12 +7797,12 @@ MonoBehaviour:
   - Enemy_Idle1
   - Enemy_Idle2
   - Enemy_Idle3
-  FootstepSound: {fileID: 8300000, guid: e68a46978a9fb0844bd37a274f413c86, type: 3}
+  FootstepSound: {fileID: 8300000, guid: 33f9753aa5c4ff74f9dd424d23caa435, type: 3}
   Deathsound: {fileID: 8300000, guid: a209e31a7951d6345a65e6dd87e059c9, type: 3}
   BiteSound: {fileID: 8300000, guid: 6af939a941370de48a3c1a696226a8cb, type: 3}
   RiseSound: {fileID: 8300000, guid: 2691f5d1817721a4c8901a6235b1210e, type: 3}
   ArmSwingSound: {fileID: 8300000, guid: f7a8fa61577365e448b17c70af2255c2, type: 3}
-  RadioSound: {fileID: 0}
+  RadioSound: {fileID: 8300000, guid: 362757da122c99a41b84a940a3f3770b, type: 3}
   FootstepSource: {fileID: 8762816056021123340}
   DeathSource: {fileID: 6735186404662831567}
   BiteSource: {fileID: 402777954332706794}
@@ -7830,7 +7830,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.68
   m_Height: 4.0705633
   m_Direction: 1
   m_Center: {x: 0, y: 2, z: 0}
@@ -8326,7 +8326,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 1c850dba8b3363e47bcb1d91dc67b534, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 362757da122c99a41b84a940a3f3770b, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.072
   m_Pitch: 1
@@ -8336,8 +8336,8 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 3.365211
-  MaxDistance: 11.466544
+  MinDistance: 8.571158
+  MaxDistance: 16.391947
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
@@ -8778,15 +8778,15 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 1c850dba8b3363e47bcb1d91dc67b534, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.165
-  m_Pitch: 0.31
+  m_Volume: 0.179
+  m_Pitch: 0.48
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 4.2138352
+  MinDistance: 8.387651
   MaxDistance: 13.8843
   Pan2D: 0
   rolloffMode: 2

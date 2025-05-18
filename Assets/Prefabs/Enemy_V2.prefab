@@ -8783,7 +8783,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: d076aa978f7d02e4fa9b685055036e0b, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.189
+  m_Volume: 0.403
   m_Pitch: 0.29
   Loop: 0
   Mute: 0
@@ -8791,8 +8791,8 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 5.422064
-  MaxDistance: 10.47054
+  MinDistance: 5.8504157
+  MaxDistance: 11.907762
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
@@ -9102,6 +9102,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6821261375147619628}
   - component: {fileID: 6735186404662831567}
+  - component: {fileID: 8531889000402716755}
   m_Layer: 0
   m_Name: Death
   m_TagString: Untagged
@@ -9135,7 +9136,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 5578305826445115808, guid: d21aafccc20035c4db76cf2505dc9e8e,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 1c850dba8b3363e47bcb1d91dc67b534, type: 3}
+  m_audioClip: {fileID: 8300000, guid: a209e31a7951d6345a65e6dd87e059c9, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 2.38
@@ -9145,8 +9146,8 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 7.7941537
-  MaxDistance: 17.34
+  MinDistance: 25.76416
+  MaxDistance: 31.52216
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
@@ -9221,6 +9222,15 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!170 &8531889000402716755
+AudioDistortionFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3840785123647924496}
+  m_Enabled: 1
+  m_DistortionLevel: 0.5
 --- !u!1 &3875611182864386136
 GameObject:
   m_ObjectHideFlags: 0

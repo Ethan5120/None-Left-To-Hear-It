@@ -27197,6 +27197,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4276093607551026895, guid: e7e4855a6ce23ff4fbdaf1ec394005cf,
+        type: 3}
+      propertyPath: MinDistance
+      value: 11.344943
+      objectReference: {fileID: 0}
+    - target: {fileID: 5121509845192040208, guid: e7e4855a6ce23ff4fbdaf1ec394005cf,
+        type: 3}
+      propertyPath: maxWaitTime
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7164672803513175136, guid: e7e4855a6ce23ff4fbdaf1ec394005cf,
         type: 3}
       propertyPath: m_Range
@@ -27205,7 +27215,7 @@ PrefabInstance:
     - target: {fileID: 7164672803513175136, guid: e7e4855a6ce23ff4fbdaf1ec394005cf,
         type: 3}
       propertyPath: m_Intensity
-      value: 0.08
+      value: 2.14
       objectReference: {fileID: 0}
     - target: {fileID: 8615353020662708616, guid: e7e4855a6ce23ff4fbdaf1ec394005cf,
         type: 3}

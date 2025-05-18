@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject spawnPoint;
     [SerializeField] bool isShooting;
     [SerializeField] float unstuckTime; //En caso que se atore disparando.
+    [SerializeField] ParticleSystem muzzleFlash;
     [Space(5)]
 
     [Header ("InteractSettings")]
@@ -139,6 +140,7 @@ public class PlayerController : MonoBehaviour
                 isShooting = true;
                 playerData.playerAmmo--;
                 unstuckTime = 0.5f;
+                muzzleFlash.Play();
             }
             else if (isAim && !isShooting && !isTakingDamage && !isAimingAnim)
             {

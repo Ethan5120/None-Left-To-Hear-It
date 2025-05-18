@@ -11,7 +11,7 @@ PrefabInstance:
     - target: {fileID: 196043957858824421, guid: ad8e028b344f9be498db3314a2ec4274,
         type: 3}
       propertyPath: m_Name
-      value: Foco_de_Ethan (2) Variant
+      value: FocoApagado
       objectReference: {fileID: 0}
     - target: {fileID: 717106278936685151, guid: ad8e028b344f9be498db3314a2ec4274,
         type: 3}

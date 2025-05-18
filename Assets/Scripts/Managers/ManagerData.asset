@@ -15,4 +15,4 @@ MonoBehaviour:
   isInHub: 1
   isFirstLoad: 0
   gameTime: 1
-  isHubDoorOpen: 1
+  isHubDoorOpen: 0

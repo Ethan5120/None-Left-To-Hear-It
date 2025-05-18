@@ -966,6 +966,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1098283723401872035, guid: 9c842af545cc17944931bf9dfca32c52,
+        type: 3}
+      propertyPath: m_Name
+      value: K7
+      objectReference: {fileID: 0}
     - target: {fileID: 1357584901367017224, guid: 9c842af545cc17944931bf9dfca32c52,
         type: 3}
       propertyPath: response.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1116,6 +1121,22 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2167097944371830162, guid: 9c842af545cc17944931bf9dfca32c52,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a3de8ef23deb6fa42b8a3bd914b36d59,
+        type: 3}
+    - target: {fileID: 2371623180317204333, guid: 9c842af545cc17944931bf9dfca32c52,
+        type: 3}
+      propertyPath: m_Name
+      value: K2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2371623180317204333, guid: 9c842af545cc17944931bf9dfca32c52,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2451800329603208168, guid: 9c842af545cc17944931bf9dfca32c52,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -1146,6 +1167,11 @@ PrefabInstance:
       propertyPath: m_fontStyle
       value: 16
       objectReference: {fileID: 0}
+    - target: {fileID: 3248021642653631438, guid: 9c842af545cc17944931bf9dfca32c52,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3537184244278137233, guid: 9c842af545cc17944931bf9dfca32c52,
         type: 3}
       propertyPath: sfxSlider
@@ -1162,6 +1188,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 40429844}
     - target: {fileID: 4163857905687885554, guid: 9c842af545cc17944931bf9dfca32c52,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4279493275829911698, guid: 9c842af545cc17944931bf9dfca32c52,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0b6e6c8c496f3884eb35acbc61634b4a,
+        type: 3}
+    - target: {fileID: 4650910108209009662, guid: 9c842af545cc17944931bf9dfca32c52,
         type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -1211,6 +1248,16 @@ PrefabInstance:
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 5498967860363118414, guid: 9c842af545cc17944931bf9dfca32c52,
+        type: 3}
+      propertyPath: m_Name
+      value: K3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5509936837860988513, guid: 9c842af545cc17944931bf9dfca32c52,
+        type: 3}
+      propertyPath: m_Name
+      value: K5
+      objectReference: {fileID: 0}
     - target: {fileID: 5734611458703107659, guid: 9c842af545cc17944931bf9dfca32c52,
         type: 3}
       propertyPath: m_VertexColorAlwaysGammaSpace
@@ -1258,6 +1305,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6502919628126098348, guid: 9c842af545cc17944931bf9dfca32c52,
         type: 3}
+      propertyPath: k2
+      value: 
+      objectReference: {fileID: 202346711}
+    - target: {fileID: 6502919628126098348, guid: 9c842af545cc17944931bf9dfca32c52,
+        type: 3}
+      propertyPath: k3
+      value: 
+      objectReference: {fileID: 202346710}
+    - target: {fileID: 6502919628126098348, guid: 9c842af545cc17944931bf9dfca32c52,
+        type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 543450651673766240}
@@ -1286,6 +1343,12 @@ PrefabInstance:
       propertyPath: pickedUpText
       value: 
       objectReference: {fileID: 1601142073}
+    - target: {fileID: 6744055367502950588, guid: 9c842af545cc17944931bf9dfca32c52,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a3de8ef23deb6fa42b8a3bd914b36d59,
+        type: 3}
     - target: {fileID: 6877318915026225495, guid: 9c842af545cc17944931bf9dfca32c52,
         type: 3}
       propertyPath: m_IsActive
@@ -1391,6 +1454,11 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0.49995
       objectReference: {fileID: 0}
+    - target: {fileID: 8457432280907681331, guid: 9c842af545cc17944931bf9dfca32c52,
+        type: 3}
+      propertyPath: m_Name
+      value: K6
+      objectReference: {fileID: 0}
     - target: {fileID: 8486961069128475306, guid: 9c842af545cc17944931bf9dfca32c52,
         type: 3}
       propertyPath: m_fontStyle
@@ -1451,6 +1519,12 @@ PrefabInstance:
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 8922333356133939058, guid: 9c842af545cc17944931bf9dfca32c52,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 986d12229335c2b4f8f51fa1998beba8,
+        type: 3}
     - target: {fileID: 9119500792660307454, guid: 9c842af545cc17944931bf9dfca32c52,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -4936,6 +5010,18 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -3053535562915157126, guid: 858dcafe12681e344b4c0037da5cd48d, type: 3}
+--- !u!1 &202346710 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5498967860363118414, guid: 9c842af545cc17944931bf9dfca32c52,
+    type: 3}
+  m_PrefabInstance: {fileID: 40429841}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &202346711 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2371623180317204333, guid: 9c842af545cc17944931bf9dfca32c52,
+    type: 3}
+  m_PrefabInstance: {fileID: 40429841}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &208430666
 GameObject:
   m_ObjectHideFlags: 0
@@ -113161,7 +113247,7 @@ PrefabInstance:
     - target: {fileID: 1796270339314768579, guid: 2d6a30da05a0da245998f577529713ee,
         type: 3}
       propertyPath: TextToDisplay
-      value: Got the EXIT Key
+      value: EXIT Key
       objectReference: {fileID: 0}
     - target: {fileID: 4879340757395487113, guid: 2d6a30da05a0da245998f577529713ee,
         type: 3}

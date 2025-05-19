@@ -18,8 +18,8 @@ public class SetReset : MonoBehaviour
 
     void ResetPlayer()
     {
-        playerData.spawnPosition = new Vector3(-16.25f, 0.029f, 26);
-        playerData.spawnRotation = Quaternion.Euler(0, 90, 0);
+        PlayerController.newPlayerSpawn = new Vector3(-16.25f, 0.029f, 26);
+        PlayerController.newPlayerRotation = Quaternion.Euler(0, 90, 0);
         playerData.playerAmmo = 0;
         playerData.playerPills = 0;
         playerData.playerHP = 3;

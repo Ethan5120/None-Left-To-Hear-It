@@ -73,6 +73,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float groundCheckDistance = 2;
     [Space(5)]
 
+    [Header("PlayerStaticVariable")]
+    public static Vector3 newPlayerSpawn;
+    public static Quaternion newPlayerRotation;
+
+
     ////Audio////
     [Header("AudioClips")]
 
@@ -102,16 +107,24 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         ActivateGun();
+        Invoke("LateSpawn", 0.2f);
+    }
+
+    void LateSpawn()
+    {
+        transform.SetPositionAndRotation(newPlayerSpawn, newPlayerRotation);
+        Physics.SyncTransforms();
+        Debug.Log("LateSpawnUsed");
     }
 
 
     private void EnterThirdPerson(InputAction.CallbackContext context)
     {
-        if(!isAim && !isInteracting && !isTakingDamage)
+        if (!isAim && !isInteracting && !isTakingDamage)
         {
             cameraManager.TriggerThirdPerson();
             isAim = true;
-            if(playerData.hasGun)
+            if (playerData.hasGun)
             {
                 pAnimator.Play(a_w_Aim[0]);
                 gunAnimator.Play(gunAnims[1]);
@@ -119,7 +132,7 @@ public class PlayerController : MonoBehaviour
                 spawnPoint.SetActive(true);
             }
         }
-        else if(!isShooting && !isTakingDamage && !isInteracting)
+        else if (!isShooting && !isTakingDamage && !isInteracting)
         {
             cameraManager.TriggerThirdPerson();
             spawnPoint.SetActive(false);

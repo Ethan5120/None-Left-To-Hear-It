@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -23,11 +24,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void Start()
+    void Awake()
     {
         GM.gameTime = 1;
-        SpawnPlayer();
-        items.InitializeItems(); 
+        if (items)
+        {
+            items.InitializeItems();   
+        }
         
     }
 }

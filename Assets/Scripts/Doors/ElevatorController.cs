@@ -60,8 +60,8 @@ public class ElevatorController : MonoBehaviour, I_Interactable
 
     void SetSpawn()
     {
-        playerData.spawnPosition = positionToSpawn;
-        playerData.spawnRotation = rotationToSpawn;
+        PlayerController.newPlayerSpawn = positionToSpawn;
+        PlayerController.newPlayerRotation = rotationToSpawn;
     }
 
 }

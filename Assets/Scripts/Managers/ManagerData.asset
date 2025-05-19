@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameTime: 1
   isHubDoorOpen: 0
-  isEnergyOn: 0
+  isEnergyOn: 1

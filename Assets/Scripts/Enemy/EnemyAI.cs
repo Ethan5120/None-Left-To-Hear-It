@@ -384,7 +384,7 @@ public class EnemyAI : MonoBehaviour
 
     public void StartAttack()
     {
-        if(attackAnimations != null && !isAttacking && attackTimer <= 0)
+        if(attackAnimations != null && !isAttacking && attackTimer <= 0 && managerData.gameTime > 0)
         {
             animator.Play(attackAnimations[Random.Range(0, attackAnimations.Count)]);
             isAttacking = true;

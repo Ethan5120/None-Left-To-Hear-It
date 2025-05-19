@@ -10,7 +10,7 @@ public class VolumenSlider : MonoBehaviour
 
     private void Start()
     {
-        SetVolume(PlayerPrefs.GetFloat("SavedVolumenMaestro", 50));
+        SetVolume(PlayerPrefs.GetFloat("MasterVol", 50));
     }
 
     public void SetVolume(float _value)
@@ -20,8 +20,8 @@ public class VolumenSlider : MonoBehaviour
             _value = .001f;
         }
         RefreshSlider(_value);
-        PlayerPrefs.SetFloat("SavedVolumenMaestro", _value);
-        masterMixer.SetFloat("VolumenMaestro", Mathf.Log10(_value / 100) * 20f);
+        PlayerPrefs.SetFloat("MasterVol", _value);
+        masterMixer.SetFloat("MasterVol", Mathf.Log10(_value / 100) * 20f);
     }
 
     public void SetVolumeFromSlider()

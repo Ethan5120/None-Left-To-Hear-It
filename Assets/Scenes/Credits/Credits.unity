@@ -1074,7 +1074,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 14.5}
+  m_AnchoredPosition: {x: 0, y: 2}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1378623066
@@ -1146,48 +1146,58 @@ MonoBehaviour:
   m_text: 'CREDITS
 
 
+
     PROJECT LEAD
 
-    SPIDER51
+    Spider51
 
     (Ethan C)
 
 
-    Level Designer
 
-    Akko
-
-    (Jazmin)
-
-
-    Character
+    Level
     Designer
 
-    ElXavi456
+    Akko983
 
-    (Javier A)
+    (Jazmin G)
+
+
+
+    Character Designer
+
+    ElXavi
+
+    (Javier
+    A)
+
 
 
     VFX Programmer
 
     Bonko
 
-    (Diego
-    A)
+    (Diego A)
 
 
 
 
-    Thanks to:
-
-    Insert Youtuber #1 Here
 
 
-    Insert Youtuber #2 Here
+
+    Shoutouts to:
+
+    Queenfaith
+
+
+
+    SPOOKOPHONIC
+
 
 
     For
     making playthroughs of the original demo
+
 
 
     Also thanks to everyone who has
@@ -1195,19 +1205,30 @@ MonoBehaviour:
 
 
 
-    Special Thanks to our family members,
-    which without them this wouldn''t be posible
 
 
-    And finally...
+    Special Thanks to our family
+    members, which without them this wouldn''t be posible
+
+
+    Shoutouts to koalas.
+
+
+
+    And
+    finally...
 
 
 
 
 
 
-    Thank
-    YOU for playing.'
+
+
+
+
+
+    Thank YOU for playing.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f2ac7b12426ac23418ce954a81683ab2, type: 2}
   m_sharedMaterial: {fileID: 8219218460719066235, guid: f2ac7b12426ac23418ce954a81683ab2,

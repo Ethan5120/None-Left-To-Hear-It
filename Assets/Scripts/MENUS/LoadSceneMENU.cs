@@ -9,10 +9,23 @@ public class LoadSceneMENU : MonoBehaviour
 {
    public SceneField sceneToLoad;
 
-   public void LoadNewSceneMENU()
-   {
+    void Start()
+    {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        AudioListener.pause = false;
+        Time.timeScale = 1f;
+    }
+
+    public void LoadNewSceneMENU()
+    {
         SceneManager.LoadScene(sceneToLoad);
-   }
+    }
+
+    public void LoadByText(string text)
+    {
+        SceneManager.LoadScene(text);
+    }
 
     public void QuitGame()
     {

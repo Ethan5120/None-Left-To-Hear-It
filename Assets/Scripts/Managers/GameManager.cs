@@ -13,7 +13,6 @@ public class GameManager : MonoBehaviour
 
     void SpawnPlayer()
     {
-        player = FindObjectOfType<PlayerController>().gameObject;
         if (playerData != null)
         {
             player.transform.SetPositionAndRotation(playerData.spawnPosition, playerData.spawnRotation);

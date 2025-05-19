@@ -105,6 +105,7 @@ public class Pause : MonoBehaviour
         animatorCanvas = GetComponent<Animator>();
         pick_timer = 0;
         Time.timeScale = 1;
+        AudioListener.pause = false;
     }
 
     private void OnEnable()

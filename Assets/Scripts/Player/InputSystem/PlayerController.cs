@@ -276,6 +276,8 @@ public class PlayerController : MonoBehaviour
 
     public void TakeDamage()
     {
+        isInteracting = false;
+        isShooting = false;
         isTakingDamage = true;
         playerData.playerHP--;
         if(playerData.playerHP > 0)

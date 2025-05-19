@@ -366,7 +366,7 @@ public class EnemyAI : MonoBehaviour
     {
         attackTimer -= 1 * Time.deltaTime * managerData.gameTime;
         RaycastHit hit;
-        if(Physics.Raycast(new Vector3(transform.position.x, 1f, transform.position.z), transform.forward, out hit, 5f, playerLayer))
+        if(Physics.Raycast(new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z), transform.forward, out hit, 2f, playerLayer))
         {
             Debug.DrawRay(transform.position, transform.forward * hit.distance);
             Debug.Log("PlayerIsInFront");
@@ -466,8 +466,8 @@ public class EnemyAI : MonoBehaviour
 void OnDrawGizmosSelected() 
 {
         Gizmos.color = Color.red;
-        Vector3 direction = transform.TransformDirection(Vector3.forward) * 5;
-        Gizmos.DrawRay(new Vector3(transform.position.x, 1f, transform.position.z), direction);
+        Vector3 direction = transform.TransformDirection(Vector3.forward) * 2f;
+        Gizmos.DrawRay(new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z), direction);
 }
 
 

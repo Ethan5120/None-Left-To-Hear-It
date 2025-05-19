@@ -241,6 +241,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MenuName: MenuBLOCKOUT
+  ButtonAudio: {fileID: 0}
 --- !u!95 &148705115
 Animator:
   serializedVersion: 5

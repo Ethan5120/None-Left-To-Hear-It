@@ -12,6 +12,7 @@ public class SetReset : MonoBehaviour
         ResetItems();
         ResetEnemies();
         managerData.isHubDoorOpen = false;
+        managerData.isEnergyOn = false;
     }
 
 

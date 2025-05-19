@@ -22292,7 +22292,7 @@ GameObject:
   - component: {fileID: 1991491311}
   - component: {fileID: 1991491312}
   m_Layer: 0
-  m_Name: C_Corridor_Room-Bathroom
+  m_Name: C_StartD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22330,7 +22330,7 @@ MonoBehaviour:
   - m_Script
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
-  m_Priority: 0
+  m_Priority: 10
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 543450651673766239}
   m_Follow: {fileID: 0}

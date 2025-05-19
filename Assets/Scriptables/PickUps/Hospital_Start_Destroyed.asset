@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 38a813723e07db7409c9a751c1887b04, type: 3}
-  m_Name: PickUpDataDebug
+  m_Name: Hospital_Start_Destroyed
   m_EditorClassIdentifier: 
-  itemActiveState: 00000001
+  itemActiveState: 00

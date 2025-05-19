@@ -9,13 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ba4e77062079ec4f973ffcd0047a161, type: 3}
-  m_Name: PlayerData
+  m_Script: {fileID: 11500000, guid: 38a813723e07db7409c9a751c1887b04, type: 3}
+  m_Name: Hospital_Start
   m_EditorClassIdentifier: 
-  playerHP: 4
-  playerPills: 20
-  playerAmmo: 5
-  PlayerKeys: 00000000
-  hasGun: 0
-  spawnPosition: {x: -8.25, y: 0.029, z: 20}
-  spawnRotation: {x: 0, y: 1, z: 0, w: -0.00000004371139}
+  itemActiveState: 00

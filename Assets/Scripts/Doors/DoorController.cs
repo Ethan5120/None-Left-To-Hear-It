@@ -16,7 +16,7 @@ public class DoorController : MonoBehaviour, I_Interactable
     [SerializeField] GameEvent setDestination;
     [SerializeField] GameEvent saveData;
 
-    [Header("HubSettings")]
+    [Header("ChangeSettings")]
     [SerializeField] Vector3 positionToSpawn;
     [SerializeField] Quaternion rotationToSpawn;
 
@@ -34,6 +34,7 @@ public class DoorController : MonoBehaviour, I_Interactable
         if(playerData.PlayerKeys[neededKey] == true && changeCamera != null)
         {
             managerData.gameTime = 0;
+            SetSpawn();
             changeCamera.SetActive(true);
             setDestination.Raise(this, sceneToLoad);
             saveData.Raise(this, null);
@@ -48,11 +49,8 @@ public class DoorController : MonoBehaviour, I_Interactable
 
     void SetSpawn()
     {
-        if(managerData.isInHub)
-        {
-            playerData.spawnPosition = positionToSpawn;
-            playerData.spawnRotation = rotationToSpawn;
-        }
+        playerData.spawnPosition = positionToSpawn;
+        playerData.spawnRotation = rotationToSpawn;
     }
 
 }

@@ -1,21 +1,45 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SetReset : MonoBehaviour
 {
     [SerializeField] GM_ScriptableObject managerData;
     [SerializeField] PlayerSO playerData;
-    [SerializeField] ItemManager IManager;
+    [SerializeField] pickUp_SO[] ItemsLists;
+    [SerializeField] EnemyData[] enemies;
     void Awake()
     {
-        playerData.playerAmmo = 5;
-        playerData.playerHP = 4;
-        for(int i = 0; i < playerData.PlayerKeys.Count; i++)
+        ResetPlayer();
+        ResetItems();
+        ResetEnemies();
+        managerData.isHubDoorOpen = false;
+    }
+
+
+    void ResetPlayer()
+    {
+        playerData.spawnPosition = new Vector3(-16.25f, 0.029f, 26);
+        playerData.spawnRotation = Quaternion.Euler(0, 90, 0);
+        playerData.playerAmmo = 0;
+        playerData.playerPills = 0;
+        playerData.playerHP = 3;
+        playerData.hasGun = false;
+        for (int i = 0; i < playerData.PlayerKeys.Count; i++)
         {
             playerData.PlayerKeys[i] = false;
         }
-
-        IManager.ResetItems();
+    }
+    void ResetItems()
+    {
+        for (int j = 0; j < ItemsLists.Length; j++)
+        {
+            ItemsLists[j].Reset();
+        }
+    }
+    void ResetEnemies()
+    {
+        for (int i = 0; i < enemies.Length; i++)
+        {
+            enemies[i].firstLoad = true;
+        }
     }
 }

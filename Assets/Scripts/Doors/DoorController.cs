@@ -20,6 +20,10 @@ public class DoorController : MonoBehaviour, I_Interactable
     [SerializeField] Vector3 positionToSpawn;
     [SerializeField] Quaternion rotationToSpawn;
 
+    [Header("UI Data")]
+    [SerializeField] GameEvent turnOnPanel;
+    [SerializeField][TextArea(3,5)] string TextToDisplay;
+
 
     public void Interact()
     {
@@ -43,7 +47,7 @@ public class DoorController : MonoBehaviour, I_Interactable
         }
         else
         {
-            Debug.Log("This Door is Close");
+            turnOnPanel.Raise(this, TextToDisplay);
         }
     }
 

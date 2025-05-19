@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: PlayerData
   m_EditorClassIdentifier: 
   playerHP: 4
-  playerPills: 20
+  playerPills: 3
   playerAmmo: 5
   PlayerKeys: 00000000
   hasGun: 0
-  spawnPosition: {x: -8.25, y: 0.029, z: 20}
+  spawnPosition: {x: -16.25, y: 0.029, z: 26}
   spawnRotation: {x: 0, y: 1, z: 0, w: -0.00000004371139}

@@ -15,8 +15,8 @@ public class DoorOpens : MonoBehaviour, I_Interactable
 
     [Header("UI Data")]
     [SerializeField] GameEvent turnOnPanel;
-    [SerializeField] string TextToOpen;
-    [SerializeField] string TextToClosed;
+    [SerializeField] [TextArea(3,5)]string TextToOpen;
+    [SerializeField] [TextArea(3,5)]string TextToClosed;
 
 
     // Start is called before the first frame update
@@ -41,7 +41,7 @@ public class DoorOpens : MonoBehaviour, I_Interactable
             GM.isHubDoorOpen = true;
             turnOnPanel.Raise(this, TextToOpen);
         }
-        else
+        else if(!GM.isHubDoorOpen)
         {
             //Sound of Closed
             turnOnPanel.Raise(this, TextToClosed);

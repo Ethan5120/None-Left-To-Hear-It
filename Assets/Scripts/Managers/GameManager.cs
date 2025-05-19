@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] PlayerSO playerData;
     [SerializeField] GameObject player;
 
-    void Awake()
+    void SpawnPlayer()
     {
         player = FindObjectOfType<PlayerController>().gameObject;
         if (playerData != null)
@@ -25,8 +25,10 @@ public class GameManager : MonoBehaviour
     }
 
     void Start()
-    { 
+    {
         GM.gameTime = 1;
+        SpawnPlayer();
         items.InitializeItems(); 
+        
     }
 }

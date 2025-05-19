@@ -7,4 +7,13 @@ using UnityEngine;
 public class pickUp_SO : ScriptableObject
 {
     public List<bool> itemActiveState;
+
+
+    public void Reset()
+    {
+        for (int i = 0; i < itemActiveState.Count; i++)
+        {
+            itemActiveState[i] = false;
+        }   
+    }
 }

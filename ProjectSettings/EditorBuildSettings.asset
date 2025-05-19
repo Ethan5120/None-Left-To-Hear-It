@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Transitions/StartUpWARNING.unity
     guid: cdfe81c4a3ebb9844b1af86b124fe69f
   - enabled: 1
@@ -15,8 +15,20 @@ EditorBuildSettings:
     path: Assets/Scenes/Transitions/PreGame.unity
     guid: d28a57603db4f2f43baa74c8af74a1bf
   - enabled: 1
+    path: Assets/Scenes/HUBScenes/Hospital/Hospital_Start.unity
+    guid: 09785c7f7e3e28642880cb677227de36
+  - enabled: 1
+    path: Assets/Scenes/HUBScenes/Hospital/Hospital_Start_Destroyed.unity
+    guid: dbe3b9abf4dcf4c44bb2153dae0293fb
+  - enabled: 1
     path: Assets/Scenes/HUBScenes/Hospital/Hospital_Main.unity
     guid: b45f9b2a12733c647867caac801949ec
+  - enabled: 1
+    path: Assets/Scenes/HUBScenes/Hospital/Hospital_SaveRoom.unity
+    guid: a2cfb7c003c7d2e43842c8f0238481f5
+  - enabled: 1
+    path: Assets/Scenes/HUBScenes/Hospital/Hospital_Morgue.unity
+    guid: 064a859bd722a864aa5097b608c3d005
   - enabled: 1
     path: Assets/Scenes/Transitions/DeathScene.unity
     guid: fc88179c356613e499e066427f5c5b09

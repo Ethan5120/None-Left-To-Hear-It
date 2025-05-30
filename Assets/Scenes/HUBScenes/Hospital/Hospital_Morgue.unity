@@ -55310,7 +55310,7 @@ PrefabInstance:
     - target: {fileID: 730750903911555603, guid: 8f57bbdafd8558d429bbc822692ed50f,
         type: 3}
       propertyPath: startingState
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 730750903911555603, guid: 8f57bbdafd8558d429bbc822692ed50f,
         type: 3}
@@ -55325,7 +55325,7 @@ PrefabInstance:
     - target: {fileID: 2015795269583334439, guid: 8f57bbdafd8558d429bbc822692ed50f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -30.381
+      value: -24.745
       objectReference: {fileID: 0}
     - target: {fileID: 2015795269583334439, guid: 8f57bbdafd8558d429bbc822692ed50f,
         type: 3}
@@ -55335,7 +55335,7 @@ PrefabInstance:
     - target: {fileID: 2015795269583334439, guid: 8f57bbdafd8558d429bbc822692ed50f,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 21.745
+      value: 19.362
       objectReference: {fileID: 0}
     - target: {fileID: 2015795269583334439, guid: 8f57bbdafd8558d429bbc822692ed50f,
         type: 3}
@@ -55382,6 +55382,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f57bbdafd8558d429bbc822692ed50f, type: 3}
+--- !u!114 &2122746035 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 730750903911555603, guid: 8f57bbdafd8558d429bbc822692ed50f,
+    type: 3}
+  m_PrefabInstance: {fileID: 2122746034}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8f1a3e2b00c82c4499a02e86b10addd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!64 &2125096085
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -55693,6 +55705,16 @@ PrefabInstance:
       propertyPath: TextToDisplay
       value: Gasoline. Now I can power the generator.
       objectReference: {fileID: 0}
+    - target: {fileID: 1796270339314768579, guid: b280749ac71658448a7a19240a4dd210,
+        type: 3}
+      propertyPath: enemies.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1796270339314768579, guid: b280749ac71658448a7a19240a4dd210,
+        type: 3}
+      propertyPath: enemies.Array.data[0]
+      value: 
+      objectReference: {fileID: 2122746035}
     - target: {fileID: 4879340757395487113, guid: b280749ac71658448a7a19240a4dd210,
         type: 3}
       propertyPath: m_Name
@@ -55716,7 +55738,7 @@ PrefabInstance:
     - target: {fileID: 5259419578614997811, guid: b280749ac71658448a7a19240a4dd210,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -28.975
+      value: -28.43
       objectReference: {fileID: 0}
     - target: {fileID: 5259419578614997811, guid: b280749ac71658448a7a19240a4dd210,
         type: 3}
@@ -55726,7 +55748,7 @@ PrefabInstance:
     - target: {fileID: 5259419578614997811, guid: b280749ac71658448a7a19240a4dd210,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 24.052
+      value: 23.803
       objectReference: {fileID: 0}
     - target: {fileID: 5259419578614997811, guid: b280749ac71658448a7a19240a4dd210,
         type: 3}

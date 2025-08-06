@@ -24,7 +24,7 @@ public class playerPickUps : MonoBehaviour, I_Interactable
 
     [Header("UI Data")]
     [SerializeField] GameEvent turnOnPanel;
-    [SerializeField] [TextArea(3,5)]string TextToDisplay;
+    [TextArea(3,5)] public string TextToDisplay;
 
 
     void  Awake()

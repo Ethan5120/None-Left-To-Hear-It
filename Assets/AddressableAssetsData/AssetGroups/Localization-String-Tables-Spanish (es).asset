@@ -42,6 +42,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-es
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e7a6627d513a4e7408ee6305f29e28b4
+    m_Address: PauseTable_es
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-es
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: 8bcb087ad767ca84cae75149871d7807, type: 2}
   m_SchemaSet:

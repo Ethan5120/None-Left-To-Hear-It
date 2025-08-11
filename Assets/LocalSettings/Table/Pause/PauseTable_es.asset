@@ -10,28 +10,36 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
-  m_Name: QuitTable_es
+  m_Name: PauseTable_es
   m_EditorClassIdentifier: 
   m_LocaleId:
     m_Code: es
-  m_SharedData: {fileID: 11400000, guid: e7ab49923665dfc4c9f3bd189e357392, type: 2}
+  m_SharedData: {fileID: 11400000, guid: 15237621c03302e4487c3f978dd4beaa, type: 2}
   m_Metadata:
     m_Items: []
   m_TableData:
-  - m_Id: 35988045824
+  - m_Id: 833249738752
+    m_Localized: PAUSADO
+    m_Metadata:
+      m_Items: []
+  - m_Id: 957732487168
+    m_Localized: CONTINUAR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1034869932032
+    m_Localized: CONTROLES
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1080344576000
+    m_Localized: AJUSTES
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1128830730240
+    m_Localized: "VOLVER AL MEN\xDA PRINCIPAL?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1787583922176
     m_Localized: SALIR AL ESCRITORIO?
-    m_Metadata:
-      m_Items: []
-  - m_Id: 205014302720
-    m_Localized: SI
-    m_Metadata:
-      m_Items: []
-  - m_Id: 241420861440
-    m_Localized: NO
-    m_Metadata:
-      m_Items: []
-  - m_Id: 1730097267474432
-    m_Localized: "SALIR AL MEN\xDA PRINCIPAL?"
     m_Metadata:
       m_Items: []
   references:

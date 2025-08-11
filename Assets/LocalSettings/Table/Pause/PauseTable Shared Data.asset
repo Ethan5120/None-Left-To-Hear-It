@@ -10,36 +10,44 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
-  m_Name: QuitTable Shared Data
+  m_Name: PauseTable Shared Data
   m_EditorClassIdentifier: 
-  m_TableCollectionName: QuitTable
-  m_TableCollectionNameGuidString: e7ab49923665dfc4c9f3bd189e357392
+  m_TableCollectionName: PauseTable
+  m_TableCollectionNameGuidString: 15237621c03302e4487c3f978dd4beaa
   m_Entries:
-  - m_Id: 35988045824
-    m_Key: QUIT TO DESKTOP?
+  - m_Id: 833249738752
+    m_Key: PAUSETitle
     m_Metadata:
       m_Items: []
-  - m_Id: 205014302720
-    m_Key: YES
+  - m_Id: 957732487168
+    m_Key: RESUME
     m_Metadata:
       m_Items: []
-  - m_Id: 241420861440
-    m_Key: NO
+  - m_Id: 1034869932032
+    m_Key: CONTROLS
     m_Metadata:
       m_Items: []
-  - m_Id: 1730097267474432
+  - m_Id: 1080344576000
+    m_Key: SETTINGS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1128830730240
     m_Key: GO TO MENU?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1787583922176
+    m_Key: QUIT TO DESKTOP?
     m_Metadata:
       m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
-    rid: 4270020619182276630
+    rid: 4270020729588940802
   references:
     version: 2
     RefIds:
-    - rid: 4270020619182276630
+    - rid: 4270020729588940802
       type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables,
         asm: Unity.Localization}
       data:
-        m_CustomEpoch: 1754471185450
+        m_CustomEpoch: 1754884944133

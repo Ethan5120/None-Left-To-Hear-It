@@ -17,6 +17,11 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 19cc3f6207b1d1641824bdb3cc7b2fe2
   m_SerializeEntries:
+  - m_GUID: 15237621c03302e4487c3f978dd4beaa
+    m_Address: Assets/LocalSettings/Table/Pause/PauseTable Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3b49e66b5c2b9b243b8a3d27af886c0f
     m_Address: Assets/LocalSettings/Table/StringTable Shared Data.asset
     m_ReadOnly: 1

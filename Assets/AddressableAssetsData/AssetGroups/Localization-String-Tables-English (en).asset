@@ -36,6 +36,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-en
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b32443c4ec87deb42a3820332a3de432
+    m_Address: InventoryTable_en
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c9703e9094f11f34ca137a565d7b8170
     m_Address: QuitTable_en
     m_ReadOnly: 1
